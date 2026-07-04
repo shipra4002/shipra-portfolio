@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight } from "lucide-react";
-import portrait from "@/assets/hero-portrait.jpg";
+import portraitAsset from "@/assets/hero-portrait.png.asset.json";
 
 const LINES = [
   "People don't remember products.",
@@ -116,7 +116,7 @@ export function HeroSection() {
 
         {/* Right: editorial portrait with soft glow + float */}
         <motion.div
-          className="relative order-1 mx-auto w-full max-w-sm md:order-2 md:max-w-none"
+          className="relative order-1 mx-auto w-full max-w-xs md:order-2 md:max-w-sm"
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
@@ -136,7 +136,7 @@ export function HeroSection() {
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           >
             <img
-              src={portrait}
+              src={portraitAsset.url}
               alt="Editorial portrait of Shipra Maurya"
               width={1024}
               height={1280}
