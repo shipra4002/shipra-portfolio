@@ -152,6 +152,20 @@ function Hero() {
               ))}
             </Reveal>
 
+            <Reveal delay={0.15} className="mt-8">
+              <div className="mb-3 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+                My Contribution
+              </div>
+              <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                {contributions.map((c) => (
+                  <li key={c} className="flex items-start gap-3 text-sm text-foreground">
+                    <span className="mt-2 h-1 w-1 rounded-full bg-terracotta" />
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+
             <Reveal delay={0.18} className="mt-8 flex flex-wrap gap-3">
               {links.map((l) => (
                 <a
