@@ -15,6 +15,7 @@ import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
 import heroImg from "@/assets/kalavansh-hero.jpg";
 import artisan1 from "@/assets/kalavansh-artisan-1.jpg";
 import artisan2 from "@/assets/kalavansh-artisan-2.jpg";
+import artisan3 from "@/assets/kalavansh-artisan-3.jpg";
 
 export const Route = createFileRoute("/work/kalavansh")({
   head: () => ({
