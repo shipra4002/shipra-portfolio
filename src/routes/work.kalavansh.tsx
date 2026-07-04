@@ -743,6 +743,7 @@ function LookingBack() {
 function KalaVanshCaseStudy() {
   return (
     <div className="min-h-screen bg-background">
+      <PageNav />
       <Hero />
       <WatchTheStory />
       <BehindTheThinking />
