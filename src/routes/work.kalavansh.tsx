@@ -128,7 +128,7 @@ function Hero() {
   ];
 
   return (
-    <header ref={ref} className="relative px-6 pt-28 md:px-10 md:pt-32">
+    <header ref={ref} className="relative px-6 pt-28 pb-16 md:px-10 md:pt-32 md:pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <BackLink />
@@ -179,7 +179,7 @@ function Hero() {
                   href={l.href}
                   target={l.href.startsWith("http") ? "_blank" : undefined}
                   rel={l.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 px-5 py-2.5 text-sm text-foreground transition-all duration-300 hover:border-foreground/40 hover:gap-3"
+                  className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 px-5 py-2.5 text-sm text-foreground transition-all duration-300 hover:translate-y-[-2px] hover:border-terracotta hover:bg-terracotta hover:text-primary-foreground hover:shadow-md hover:gap-3"
                 >
                   <l.icon className="size-4" />
                   {l.label}
@@ -210,6 +210,7 @@ function Hero() {
     </header>
   );
 }
+
 
 /* ────────────────────────────── Watch The Story ────────────────────────────── */
 
