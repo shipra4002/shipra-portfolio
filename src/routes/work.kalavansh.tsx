@@ -8,13 +8,14 @@ import {
   ExternalLink,
   Github,
   Presentation,
-  Quote,
+  
 } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
 import heroImg from "@/assets/kalavansh-hero.jpg";
 import artisan1 from "@/assets/kalavansh-artisan-1.jpg";
 import artisan2 from "@/assets/kalavansh-artisan-2.jpg";
+import artisan3 from "@/assets/kalavansh-artisan-3.jpg";
 
 export const Route = createFileRoute("/work/kalavansh")({
   head: () => ({
@@ -228,17 +229,18 @@ function TheSpark() {
 
 function WantedToUnderstand() {
   const stats = [
-    { n: "27", l: "In-depth interviews" },
-    { n: "5", l: "States visited" },
-    { n: "9", l: "Craft clusters" },
-    { n: "40+", l: "Hours of field notes" },
+    { n: "15+", l: "Artisans interviewed" },
+    { n: "Multiple", l: "Craft forms" },
+    { n: "User & Artisan", l: "Interviews" },
+    { n: "Secondary + Field", l: "Research & observations" },
   ];
 
   const journey = [
-    { t: "Immersion", d: "Lived alongside two weaving families to observe daily rhythms, not just workflows." },
-    { t: "Conversations", d: "Open interviews with artisans, middlemen, and urban buyers—each side of the chain." },
-    { t: "Shadowing", d: "Followed a single saree from loom to storefront to understand where value quietly disappeared." },
-    { t: "Synthesis", d: "Mapped emotions, incentives and friction into a single system view." },
+    { t: "Observation", d: "Watched artisans in their daily rhythm before asking a single question." },
+    { t: "Interviews", d: "Open conversations with artisans and users—listening for what went unsaid." },
+    { t: "Field Research", d: "Spent time on the ground, inside workshops and homes where craft lives." },
+    { t: "Pattern Mapping", d: "Connected scattered moments into recurring emotional and systemic themes." },
+    { t: "Insights", d: "Distilled everything into a few truths that reshaped how I saw the problem." },
   ];
 
   return (
@@ -264,7 +266,7 @@ function WantedToUnderstand() {
             variants={staggerItem}
             className="rounded-[18px] border border-border bg-surface p-7 text-center"
           >
-            <div className="font-serif text-[clamp(2.4rem,6vw,3.4rem)] font-light text-terracotta">
+            <div className="font-serif text-[clamp(1.5rem,3vw,2.1rem)] font-light leading-tight text-terracotta">
               {s.n}
             </div>
             <div className="mt-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">
@@ -339,48 +341,49 @@ function ChangedMyThinking() {
 
 function VoicesFromTheField() {
   const voices = [
-    {
-      quote:
-        "People buy my work. Nobody knows it is mine. I am proud of it, but the pride stays inside my house.",
-      name: "Ramesh",
-      role: "Handloom weaver, 3rd generation",
-      img: artisan2,
-    },
-    {
-      quote:
-        "When someone visits and watches me work, they pay more—not for the pot, for the moment.",
-      name: "Lakshmi",
-      role: "Potter & clay artist",
-      img: artisan1,
-    },
+    { quote: "I am not worthy of wearing what I make.", img: artisan2 },
+    { quote: "What will a degree do?", img: artisan1 },
+    { quote: "I need to earn for my siblings.", img: artisan3 },
   ];
 
   return (
     <Section>
       <ChapterLabel index="04" title="Voices From The Field" />
-      <div className="grid gap-6 md:grid-cols-2">
+      <Reveal className="max-w-2xl">
+        <p className="text-lg leading-relaxed text-muted-foreground">
+          Not testimonials—moments from the field that quietly changed the way I saw
+          the problem.
+        </p>
+      </Reveal>
+
+      <div className="mt-16 space-y-20 md:space-y-28">
         {voices.map((v, i) => (
-          <Reveal key={v.name} delay={i * 0.06}>
-            <figure className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-border bg-surface">
-              <div className="relative aspect-[16/11] overflow-hidden">
+          <Reveal key={i} delay={0.05}>
+            <figure
+              className={`flex flex-col items-center gap-8 md:gap-14 ${
+                i % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
+              }`}
+            >
+              <div className="w-full max-w-sm shrink-0 overflow-hidden rounded-[24px] border border-border">
                 <img
                   src={v.img}
-                  alt={`Portrait of ${v.name}`}
+                  alt="Portrait of an artisan from the field"
                   loading="lazy"
                   width={800}
                   height={1000}
-                  className="size-full object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                  className="aspect-[4/5] size-full object-cover"
                 />
               </div>
-              <blockquote className="flex flex-1 flex-col p-8 md:p-10">
-                <Quote className="size-6 text-terracotta" />
-                <p className="mt-4 font-serif text-[clamp(1.2rem,2.2vw,1.6rem)] font-light leading-snug">
+              <blockquote className="relative flex-1 px-2 md:px-6">
+                <span
+                  aria-hidden
+                  className="block font-serif text-[clamp(4rem,10vw,7rem)] leading-[0.5] text-terracotta/25"
+                >
+                  &ldquo;
+                </span>
+                <p className="mt-2 font-serif text-[clamp(1.8rem,4vw,3rem)] font-light leading-[1.25] text-foreground">
                   {v.quote}
                 </p>
-                <figcaption className="mt-auto pt-8 text-sm">
-                  <span className="text-foreground">{v.name}</span>
-                  <span className="text-muted-foreground"> — {v.role}</span>
-                </figcaption>
               </blockquote>
             </figure>
           </Reveal>
