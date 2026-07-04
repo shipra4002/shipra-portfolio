@@ -203,14 +203,20 @@ export function HeroSection() {
             className="pointer-events-none absolute inset-x-8 bottom-0 -z-10 h-20 translate-y-7 rounded-full bg-[#8a6a52]/25 opacity-50 blur-2xl"
           />
 
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-border/50 bg-[#F6F0EA] shadow-lift">
-            {/* Subtle radial gradient backdrop */}
+          <div
+            className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-border/50 shadow-lift"
+            style={{
+              background:
+                "linear-gradient(155deg, #F3E7D6 0%, #EAD9C6 42%, #E4CDBE 100%)",
+            }}
+          >
+            {/* Colorful layered gradient backdrop */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(58% 52% at 50% 34%, rgba(216,179,106,0.16), transparent 72%)",
+                  "radial-gradient(60% 55% at 50% 32%, rgba(216,179,106,0.32), transparent 70%), radial-gradient(55% 50% at 22% 82%, rgba(176,106,76,0.22), transparent 72%), radial-gradient(50% 45% at 82% 78%, rgba(107,122,104,0.20), transparent 74%)",
               }}
             />
 
@@ -263,7 +269,7 @@ export function HeroSection() {
               alt="Editorial portrait of Shipra Maurya"
               width={1024}
               height={1280}
-              className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[94%] w-auto max-w-[92%] object-contain object-bottom"
+              className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[92%] w-auto max-w-[94%] object-contain object-bottom sm:h-[93%] md:h-[94%]"
               initial={{ opacity: 0, y: 24 }}
               animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
               transition={{
