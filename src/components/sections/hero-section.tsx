@@ -136,7 +136,7 @@ export function HeroSection() {
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           >
             <img
-              src={portrait}
+              src={portraitAsset.url}
               alt="Editorial portrait of Shipra Maurya"
               width={1024}
               height={1280}
