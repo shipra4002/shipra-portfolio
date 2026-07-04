@@ -4,10 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
+  Code,
+  Compass,
   ExternalLink,
   Eye,
   FlaskConical,
   Github,
+  LayoutTemplate,
   Lightbulb,
   Play,
   Presentation,
