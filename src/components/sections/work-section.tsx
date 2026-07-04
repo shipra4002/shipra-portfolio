@@ -23,9 +23,7 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Content */}
         <div className="flex flex-1 flex-col p-7 md:p-8">
-          <span className="text-[0.68rem] uppercase tracking-[0.2em] text-terracotta">
-            {project.kicker}
-          </span>
+          <span className="text-[0.68rem] uppercase tracking-[0.2em] text-terracotta">{project.kicker}</span>
           <h4 className="mt-3 font-serif text-2xl font-normal leading-tight tracking-tight text-card-foreground">
             {project.title}
           </h4>
@@ -57,11 +55,7 @@ export function WorkSection() {
         <Reveal className="max-w-3xl">
           <span className="text-xs uppercase tracking-[0.28em] text-terracotta">Selected Work</span>
           <h2 className="mt-7 font-serif text-[clamp(2.6rem,7vw,5rem)] font-light leading-[1.05] tracking-[-0.02em]">
-            Building.
-            <br />
-            Investigating.
-            <br />
-            Strategizing.
+            Building. Investigating. Strategizing.
           </h2>
         </Reveal>
 
@@ -69,12 +63,8 @@ export function WorkSection() {
           {workCategories.map((category) => (
             <div key={category.id}>
               <Reveal className="mb-10 flex flex-col gap-2 border-b border-white/10 pb-6 md:flex-row md:items-end md:justify-between">
-                <h3 className="font-serif text-2xl font-normal tracking-tight md:text-3xl">
-                  {category.label}
-                </h3>
-                <p className="max-w-md text-sm leading-relaxed text-white/60">
-                  {category.description}
-                </p>
+                <h3 className="font-serif text-2xl font-normal tracking-tight md:text-3xl">{category.label}</h3>
+                <p className="max-w-md text-sm leading-relaxed text-white/60">{category.description}</p>
               </Reveal>
 
               <motion.div

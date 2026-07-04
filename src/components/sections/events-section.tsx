@@ -28,11 +28,9 @@ export function EventsSection() {
     <section id="events" className="scroll-mt-24 bg-surface px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-6xl">
         <Reveal className="max-w-2xl">
-          <span className="text-xs uppercase tracking-[0.2em] text-sage">
-            Events &amp; Competitions
-          </span>
+          <span className="text-xs uppercase tracking-[0.2em] text-sage">Events &amp; Competitions</span>
           <h2 className="mt-5 font-serif text-[clamp(1.9rem,4vw,3rem)] font-light leading-[1.15] tracking-[-0.01em]">
-            Moments that shaped the way I work.
+            Beyond The Classroom.
           </h2>
         </Reveal>
 
@@ -44,11 +42,7 @@ export function EventsSection() {
           viewport={{ once: true, margin: "-60px" }}
         >
           {EVENTS.map((event) => (
-            <motion.article
-              key={event.title}
-              variants={staggerItem}
-              className="group cursor-pointer"
-            >
+            <motion.article key={event.title} variants={staggerItem} className="group cursor-pointer">
               <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-shadow duration-500 group-hover:shadow-lift">
                 <div className="aspect-[4/5] overflow-hidden">
                   <img
@@ -63,9 +57,7 @@ export function EventsSection() {
               </div>
               <div className="px-1 pt-6">
                 <h3 className="font-serif text-2xl font-normal tracking-tight">{event.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {event.subtitle}
-                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{event.subtitle}</p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm text-foreground transition-colors duration-300 group-hover:text-terracotta">
                   Learn More
                   <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
