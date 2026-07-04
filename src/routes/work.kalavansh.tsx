@@ -76,15 +76,7 @@ function ChapterLabel({ index, title }: { index: string; title: string }) {
   );
 }
 
-function Section({
-  children,
-  className = "",
-  id,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  id?: string;
-}) {
+function Section({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) {
   return (
     <section id={id} className={`px-6 py-24 md:px-10 md:py-36 ${className}`}>
       <div className="mx-auto max-w-6xl">{children}</div>
@@ -108,12 +100,12 @@ function Hero() {
 
   const contributions = [
     {
-      title: "Led Product Discovery",
+      title: "Product Discovery & User Research",
       description: "Found the gap between artisan identity and buyer trust.",
       icon: Compass,
     },
     {
-      title: "Synthesized User Research into Product Insights",
+      title: "Product Strategy",
       description: "Turned field conversations into decisions we could build around.",
       icon: Lightbulb,
     },
@@ -145,9 +137,7 @@ function Hero() {
         <div className="mt-8 grid grid-cols-1 items-center gap-10 md:mt-10 md:grid-cols-12 md:gap-14">
           <div className="md:col-span-6">
             <Reveal delay={0.05}>
-              <span className="text-xs uppercase tracking-[0.24em] text-terracotta">
-                Product Design & Strategy
-              </span>
+              <span className="text-xs uppercase tracking-[0.24em] text-terracotta">Product Design & Strategy</span>
               <h1 className="mt-6 font-serif text-[clamp(3rem,10vw,6.5rem)] font-light leading-[0.95] tracking-[-0.03em]">
                 KalaVansh
               </h1>
@@ -158,13 +148,8 @@ function Hero() {
 
             <Reveal delay={0.12} className="mt-10 flex flex-wrap gap-3">
               {meta.map((m) => (
-                <div
-                  key={m.label}
-                  className="rounded-full border border-border bg-surface px-4 py-2"
-                >
-                  <span className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
-                    {m.label}
-                  </span>
+                <div key={m.label} className="rounded-full border border-border bg-surface px-4 py-2">
+                  <span className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">{m.label}</span>
                   <span className="ml-2 text-sm text-foreground">{m.value}</span>
                 </div>
               ))}
@@ -324,7 +309,11 @@ function WatchTheStory() {
               aria-label={playing ? "Pause video" : "Play video"}
               className="pointer-events-auto flex size-10 items-center justify-center rounded-full bg-background/90 text-foreground transition-transform hover:scale-105"
             >
-              {playing ? <span className="block h-4 w-3.5 border-x-[4px] border-foreground" /> : <Play className="ml-0.5 size-4" />}
+              {playing ? (
+                <span className="block h-4 w-3.5 border-x-[4px] border-foreground" />
+              ) : (
+                <Play className="ml-0.5 size-4" />
+              )}
             </button>
             <button
               type="button"
@@ -360,26 +349,22 @@ function WatchTheStory() {
 function BehindTheThinking() {
   const cards = [
     {
-      observation:
-        "Customers admired handmade products but rarely knew the people behind them.",
+      observation: "Customers admired handmade products but rarely knew the people behind them.",
       insight: "Recognition creates emotional value.",
       decision: "Every handcrafted product should introduce its maker.",
     },
     {
-      observation:
-        "Artisans described themselves as labourers, not creators of what they made.",
+      observation: "Artisans described themselves as labourers, not creators of what they made.",
       insight: "Identity has to be given back before pride can return.",
       decision: "Build profiles that name the maker and tell their journey.",
     },
     {
-      observation:
-        "The next generation was walking away from crafts they saw as a dead end.",
+      observation: "The next generation was walking away from crafts they saw as a dead end.",
       insight: "A craft survives only when it feels aspirational.",
       decision: "Frame makers as artists worth following, not workers to pity.",
     },
     {
-      observation:
-        "Buyers wanted to support artisans but had no trustworthy way to reach them.",
+      observation: "Buyers wanted to support artisans but had no trustworthy way to reach them.",
       insight: "Trust is built through a face and a story, not a marketplace.",
       decision: "Put a direct, human connection one scan away.",
     },
@@ -390,8 +375,8 @@ function BehindTheThinking() {
       <ChapterLabel index="02" title="Behind The Thinking" />
       <Reveal className="max-w-2xl">
         <p className="text-lg leading-relaxed text-muted-foreground">
-          Not what the product is—how each decision was made. Every card traces one
-          observation to the insight it revealed, and the choice it forced.
+          Not what the product is—how each decision was made. Every card traces one observation to the insight it
+          revealed, and the choice it forced.
         </p>
       </Reveal>
 
@@ -410,13 +395,9 @@ function BehindTheThinking() {
           >
             <div className="mb-2 flex items-center gap-2">
               <Eye className="size-4 text-sage" />
-              <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
-                Observation
-              </span>
+              <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">Observation</span>
             </div>
-            <p className="font-serif text-lg font-light leading-snug text-foreground">
-              {c.observation}
-            </p>
+            <p className="font-serif text-lg font-light leading-snug text-foreground">{c.observation}</p>
 
             <div className="my-6 flex items-center gap-3">
               <span className="h-px flex-1 bg-border" />
@@ -426,9 +407,7 @@ function BehindTheThinking() {
 
             <div className="mb-2 flex items-center gap-2">
               <Lightbulb className="size-4 text-terracotta" />
-              <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
-                Product Insight
-              </span>
+              <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">Product Insight</span>
             </div>
             <p className="text-base leading-relaxed text-foreground">{c.insight}</p>
 
@@ -440,13 +419,9 @@ function BehindTheThinking() {
               </div>
               <div className="mb-2 flex items-center gap-2">
                 <Sparkles className="size-4 text-sage" />
-                <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
-                  Decision
-                </span>
+                <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">Decision</span>
               </div>
-              <p className="font-serif text-lg font-normal leading-snug text-foreground">
-                {c.decision}
-              </p>
+              <p className="font-serif text-lg font-normal leading-snug text-foreground">{c.decision}</p>
             </div>
           </motion.div>
         ))}
@@ -462,24 +437,21 @@ function InsightToExperience() {
     {
       insight: "People trust people more than products.",
       experience: "30-second artisan stories",
-      detail:
-        "A short film plays before the price—so buyers meet the maker before they meet the object.",
+      detail: "A short film plays before the price—so buyers meet the maker before they meet the object.",
       img: storyImg,
       alt: "A young artisan working batik by hand in warm light",
     },
     {
       insight: "Artisans need more than one-off product sales.",
       experience: "Workshop bookings",
-      detail:
-        "Makers earn by teaching their craft directly—turning skill into a second, steadier income.",
+      detail: "Makers earn by teaching their craft directly—turning skill into a second, steadier income.",
       img: workshopImg,
       alt: "An artisan holding a hand-painted craft in her studio",
     },
     {
       insight: "Identity creates perceived value.",
       experience: "Artisan profile pages",
-      detail:
-        "Each maker gets a name, a face and a journey—so the craft carries a person, not a label.",
+      detail: "Each maker gets a name, a face and a journey—so the craft carries a person, not a label.",
       img: profileImg,
       alt: "A smiling basket weaver beside handcrafted products",
     },
@@ -490,8 +462,7 @@ function InsightToExperience() {
       <ChapterLabel index="03" title="From Insight To Experience" />
       <Reveal className="max-w-2xl">
         <p className="text-lg leading-relaxed text-muted-foreground">
-          Every feature exists because research asked for it. Left is what we learned.
-          Right is what we built.
+          Every feature exists because research asked for it. Left is what we learned. Right is what we built.
         </p>
       </Reveal>
 
@@ -499,15 +470,13 @@ function InsightToExperience() {
       <Reveal delay={0.05} className="mt-14">
         <div className="grid items-center gap-8 overflow-hidden rounded-[22px] border border-border bg-background p-8 md:grid-cols-[1.1fr_1fr] md:p-10">
           <div>
-            <span className="text-[0.65rem] uppercase tracking-[0.2em] text-terracotta">
-              The moment it begins
-            </span>
+            <span className="text-[0.65rem] uppercase tracking-[0.2em] text-terracotta">The moment it begins</span>
             <p className="mt-4 font-serif text-[clamp(1.4rem,3vw,2rem)] font-light leading-snug">
               One QR tag turns buying into meeting.
             </p>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              A single scan on the product opens the maker&apos;s story—so the
-              relationship starts before the purchase does.
+              A single scan on the product opens the maker&apos;s story—so the relationship starts before the purchase
+              does.
             </p>
           </div>
           <div className="overflow-hidden rounded-[16px] border border-border">
@@ -525,9 +494,7 @@ function InsightToExperience() {
         {rows.map((r, i) => (
           <Reveal key={i} delay={i * 0.05}>
             <div
-              className={`grid items-stretch gap-6 md:grid-cols-2 ${
-                i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
-              }`}
+              className={`grid items-stretch gap-6 md:grid-cols-2 ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}
             >
               {/* Left — Research insight */}
               <div className="flex flex-col justify-center rounded-[22px] border border-border bg-background p-8 shadow-soft md:p-12">
@@ -542,21 +509,14 @@ function InsightToExperience() {
               {/* Right — Experience */}
               <div className="overflow-hidden rounded-[22px] border border-border shadow-soft">
                 <div className="relative">
-                  <img
-                    src={r.img}
-                    alt={r.alt}
-                    loading="lazy"
-                    className="aspect-[16/10] size-full object-cover"
-                  />
+                  <img src={r.img} alt={r.alt} loading="lazy" className="aspect-[16/10] size-full object-cover" />
                   <span className="absolute left-5 top-5 rounded-full bg-background/90 px-3 py-1 text-[0.65rem] uppercase tracking-[0.18em] text-terracotta">
                     Experience
                   </span>
                 </div>
                 <div className="bg-surface p-7">
                   <h3 className="font-serif text-xl font-normal">{r.experience}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {r.detail}
-                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{r.detail}</p>
                 </div>
               </div>
             </div>
@@ -596,8 +556,7 @@ function Validation() {
       <ChapterLabel index="04" title="Validation" />
       <Reveal className="max-w-2xl">
         <p className="text-lg leading-relaxed text-muted-foreground">
-          Every product rests on assumptions. These are the ones KalaVansh had to
-          test—and what testing them taught us.
+          Every product rests on assumptions. These are the ones KalaVansh had to test—and what testing them taught us.
         </p>
       </Reveal>
 
@@ -618,12 +577,8 @@ function Validation() {
               <c.icon className="size-5" />
             </span>
 
-            <span className="mt-6 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
-              Assumption
-            </span>
-            <p className="mt-2 font-serif text-lg font-light leading-snug text-foreground">
-              {c.assumption}
-            </p>
+            <span className="mt-6 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">Assumption</span>
+            <p className="mt-2 font-serif text-lg font-light leading-snug text-foreground">{c.assumption}</p>
 
             <span className="mt-6 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
               How we validated it
@@ -680,9 +635,7 @@ function LookingBack() {
             variants={staggerItem}
             className="rounded-[22px] border border-border bg-background p-8 shadow-soft md:p-10"
           >
-            <span className="font-serif text-sm text-gold">
-              {String(i + 1).padStart(2, "0")}
-            </span>
+            <span className="font-serif text-sm text-gold">{String(i + 1).padStart(2, "0")}</span>
             <h3 className="mt-4 font-serif text-2xl font-light leading-snug">{r.t}</h3>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{r.d}</p>
           </motion.div>
@@ -691,10 +644,7 @@ function LookingBack() {
 
       <div className="mt-20 flex flex-col items-start justify-between gap-6 border-t border-border pt-12 md:flex-row md:items-center">
         <BackLink />
-        <a
-          href="/#contact"
-          className="group inline-flex items-center gap-2 font-serif text-lg text-foreground"
-        >
+        <a href="/#contact" className="group inline-flex items-center gap-2 font-serif text-lg text-foreground">
           <span className="link-underline">Let&apos;s build something with meaning</span>
           <ArrowRight className="size-5 text-terracotta transition-transform duration-300 group-hover:translate-x-1" />
         </a>
