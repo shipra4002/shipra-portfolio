@@ -103,15 +103,30 @@ function Hero() {
 
   const meta = [
     { label: "Role", value: "Product Manager" },
-    { label: "Timeline", value: "12 weeks" },
     { label: "Team", value: "CauseCrew \u2022 Team of 3" },
   ];
 
   const contributions = [
-    "Led Product Discovery",
-    "Synthesized User Research into Product Insights",
-    "Designed the MVP Experience",
-    "Built the Functional MVP Website",
+    {
+      title: "Led Product Discovery",
+      description: "Found the gap between artisan identity and buyer trust.",
+      icon: Compass,
+    },
+    {
+      title: "Synthesized User Research into Product Insights",
+      description: "Turned field conversations into decisions we could build around.",
+      icon: Lightbulb,
+    },
+    {
+      title: "Designed the MVP Experience",
+      description: "Shaped the flows, features and feel of the first working product.",
+      icon: LayoutTemplate,
+    },
+    {
+      title: "Built the Functional MVP Website",
+      description: "Shipped a real, clickable product that artisans could actually use.",
+      icon: Code,
+    },
   ];
 
   const links = [
