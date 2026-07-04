@@ -117,7 +117,7 @@ function Hero() {
           <BackLink />
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 items-end gap-10 md:mt-14 md:grid-cols-12 md:gap-14">
+        <div className="mt-8 grid grid-cols-1 items-center gap-10 md:mt-10 md:grid-cols-12 md:gap-14">
           <div className="md:col-span-6">
             <Reveal delay={0.05}>
               <span className="text-xs uppercase tracking-[0.24em] text-terracotta">
