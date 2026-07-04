@@ -54,7 +54,7 @@ export function WorkSection() {
       <div className="relative mx-auto max-w-6xl px-6 py-32 md:px-10 md:py-44">
         <Reveal className="max-w-3xl">
           <span className="text-xs uppercase tracking-[0.28em] text-terracotta">Selected Work</span>
-          <h2 className="mt-7 font-serif text-[clamp(2.6rem,7vw,5rem)] font-light leading-[1.05] tracking-[-0.02em]">
+          <h2 className="mt-7 whitespace-nowrap font-serif text-[clamp(2.6rem,7vw,5rem)] font-light leading-[1.05] tracking-[-0.02em]">
             Building. Investigating. Strategizing.
           </h2>
         </Reveal>
