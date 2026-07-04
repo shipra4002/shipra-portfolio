@@ -122,52 +122,52 @@ function PageNav() {
   };
 
   return (
-    <>
-      {/* Desktop — floating side rail */}
-      <nav
-        aria-label="Case study sections"
-        className="fixed right-6 top-1/2 z-50 hidden -translate-y-1/2 flex-col gap-4 lg:flex"
-      >
-        {sections.map((s) => (
-          <a
-            key={s.id}
-            href={`#${s.id}`}
-            onClick={(e) => handleClick(e, s.id)}
-            className={`group relative flex items-center justify-end gap-3 text-sm transition-colors ${
-              active === s.id ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            <span className="opacity-0 transition-opacity duration-200 group-hover:opacity-100">{s.label}</span>
-            <span
-              className={`block h-2 w-2 rounded-full transition-all duration-300 ${
-                active === s.id ? "scale-125 bg-gold" : "bg-border group-hover:bg-terracotta"
-              }`}
-            />
-          </a>
-        ))}
-      </nav>
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 md:px-10">
+        <BackLink />
 
-      {/* Mobile — sticky bottom bar */}
-      <nav
-        aria-label="Case study sections"
-        className="fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full border border-border bg-background/90 px-2 py-2 shadow-lift backdrop-blur-md lg:hidden"
-      >
-        {sections.map((s) => (
-          <a
-            key={s.id}
-            href={`#${s.id}`}
-            onClick={(e) => handleClick(e, s.id)}
-            className={`rounded-full px-3 py-1.5 text-xs transition-colors ${
-              active === s.id ? "bg-gold text-primary-foreground" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            {s.label}
-          </a>
-        ))}
-      </nav>
-    </>
+        <nav aria-label="Case study sections" className="hidden items-center gap-1 md:flex">
+          {sections.map((s) => (
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              onClick={(e) => handleClick(e, s.id)}
+              className={`rounded-full px-3 py-1.5 text-sm transition-colors ${
+                active === s.id
+                  ? "bg-gold text-primary-foreground"
+                  : "text-muted-foreground hover:bg-surface hover:text-foreground"
+              }`}
+            >
+              {s.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Mobile — compact scrollable top nav */}
+        <nav
+          aria-label="Case study sections"
+          className="flex max-w-[55%] items-center gap-1 overflow-x-auto py-1 md:hidden"
+        >
+          {sections.map((s) => (
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              onClick={(e) => handleClick(e, s.id)}
+              className={`shrink-0 rounded-full px-2.5 py-1 text-xs transition-colors ${
+                active === s.id
+                  ? "bg-gold text-primary-foreground"
+                  : "text-muted-foreground hover:bg-surface hover:text-foreground"
+              }`}
+            >
+              {s.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </header>
   );
 }
+
 
 
 function Hero() {
@@ -212,13 +212,10 @@ function Hero() {
   ];
 
   return (
-    <header ref={ref} className="relative px-6 pt-28 pb-16 md:px-10 md:pt-32 md:pb-24">
+    <header ref={ref} className="relative px-6 pt-20 pb-16 md:px-10 md:pt-24 md:pb-24">
       <div className="mx-auto max-w-6xl">
-        <Reveal>
-          <BackLink />
-        </Reveal>
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-14">
 
-        <div className="mt-8 grid grid-cols-1 items-center gap-10 md:mt-10 md:grid-cols-12 md:gap-14">
           <div className="md:col-span-6">
             <Reveal delay={0.05}>
               <span className="text-xs uppercase tracking-[0.24em] text-terracotta">Product Design & Strategy</span>
