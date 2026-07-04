@@ -1,21 +1,30 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
-  ArrowUpRight,
   ExternalLink,
+  Eye,
+  FlaskConical,
   Github,
+  Lightbulb,
+  Play,
   Presentation,
-  
+  RotateCcw,
+  Sparkles,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
-import heroImg from "@/assets/kalavansh-hero.jpg";
-import artisan1 from "@/assets/kalavansh-artisan-1.jpg";
-import artisan2 from "@/assets/kalavansh-artisan-2.jpg";
-import artisan3 from "@/assets/kalavansh-artisan-3.jpg";
+import heroImg from "@/assets/kala-hero-weaver.jpg";
+import videoPoster from "@/assets/kala-video-poster.jpg";
+import kalaVideo from "@/assets/kalavansh.mp4.asset.json";
+import storyImg from "@/assets/kala-batik-woman.jpg";
+import workshopImg from "@/assets/kala-designer.png";
+import profileImg from "@/assets/kala-basket-smile.png";
+import qrPoster from "@/assets/kala-qr-poster.png";
 
 export const Route = createFileRoute("/work/kalavansh")({
   head: () => ({
@@ -24,7 +33,7 @@ export const Route = createFileRoute("/work/kalavansh")({
       {
         name: "description",
         content:
-          "Making India's artisans visible—not just their products. A product thinking journey from discovering the problem to designing a meaningful solution.",
+          "Making India's artisans visible—not just their products. A product manager's thinking journey: the observations, insights and decisions behind KalaVansh.",
       },
       { property: "og:title", content: "KalaVansh — A Case Study by Shipra Maurya" },
       {
@@ -32,7 +41,6 @@ export const Route = createFileRoute("/work/kalavansh")({
         content: "Making India's artisans visible—not just their products.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:image", content: "https://id-preview--89131a1d-8073-4281-aadd-db49d46b3a3f.lovable.app/kalavansh-og.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
@@ -92,14 +100,14 @@ function Hero() {
 
   const meta = [
     { label: "Role", value: "Product Manager · UX Research" },
-    { label: "Duration", value: "14 weeks" },
-    { label: "Team", value: "Solo → 4 collaborators" },
+    { label: "Duration", value: "12 weeks" },
+    { label: "Team", value: "Cause Crew — 4 members" },
   ];
 
   const links = [
-    { label: "Prototype", icon: ExternalLink, href: "#" },
+    { label: "Prototype", icon: ExternalLink, href: "https://kala-legacy-journeys.lovable.app" },
     { label: "Presentation Deck", icon: Presentation, href: "#" },
-    { label: "GitHub", icon: Github, href: "#" },
+    { label: "GitHub Repository", icon: Github, href: "#" },
   ];
 
   return (
@@ -119,7 +127,7 @@ function Hero() {
                 KalaVansh
               </h1>
               <p className="mt-7 max-w-md text-lg leading-relaxed text-muted-foreground md:text-xl">
-                Making India's artisans visible—not just their products.
+                Making India&apos;s artisans visible—not just their products.
               </p>
             </Reveal>
 
@@ -142,6 +150,8 @@ function Hero() {
                 <a
                   key={l.label}
                   href={l.href}
+                  target={l.href.startsWith("http") ? "_blank" : undefined}
+                  rel={l.href.startsWith("http") ? "noreferrer" : undefined}
                   className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 px-5 py-2.5 text-sm text-foreground transition-all duration-300 hover:border-foreground/40 hover:gap-3"
                 >
                   <l.icon className="size-4" />
@@ -160,7 +170,7 @@ function Hero() {
             <div className="overflow-hidden rounded-[1.75rem] border border-border shadow-lift">
               <motion.img
                 src={heroImg}
-                alt="An artisan weaving handloom textile on a wooden loom"
+                alt="A silk-saree weaver at her loom, surrounded by threads of colour"
                 width={1600}
                 height={1200}
                 style={{ y, scale }}
@@ -174,433 +184,447 @@ function Hero() {
   );
 }
 
-/* ────────────────────────────── The Spark ────────────────────────────── */
+/* ────────────────────────────── Watch The Story ────────────────────────────── */
 
-function TheSpark() {
-  const sparks = [
-    {
-      k: "The maker is erased",
-      d: "A handwoven saree travels through six hands before it reaches a shelf. The name attached to it is never the weaver's.",
-    },
-    {
-      k: "Skill without a story",
-      d: "Buyers pay for the object, not the decades of mastery behind it—because they never meet the person who made it.",
-    },
-    {
-      k: "Value leaks upward",
-      d: "The further a craft moves from its origin, the more it earns—and the less the artisan sees of it.",
-    },
-  ];
+function WatchTheStory() {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(false);
+  const [started, setStarted] = useState(false);
+
+  // Autoplay muted when ~40% of the section enters the viewport
+  useEffect(() => {
+    const el = wrapRef.current;
+    const video = videoRef.current;
+    if (!el || !video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
+            video.play().catch(() => {});
+          } else if (!entry.isIntersecting) {
+            video.pause();
+          }
+        }
+      },
+      { threshold: [0, 0.4, 0.6] },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const togglePlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) v.play().catch(() => {});
+    else v.pause();
+  };
+
+  const toggleMute = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+  };
+
+  const replay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.currentTime = 0;
+    v.play().catch(() => {});
+  };
 
   return (
-    <Section className="bg-surface">
-      <ChapterLabel index="01" title="The Spark" />
+    <Section id="watch" className="bg-surface">
+      <ChapterLabel index="01" title="Watch The Story" />
+
       <Reveal>
-        <p className="max-w-3xl font-serif text-[clamp(1.6rem,3.6vw,2.6rem)] font-light leading-[1.25] tracking-[-0.01em]">
-          I met a weaver whose work I&apos;d admired for years—and realised I had
-          never once known his name.
-        </p>
-      </Reveal>
+        <div
+          ref={wrapRef}
+          className="group relative overflow-hidden rounded-[1.75rem] border border-border bg-black shadow-lift"
+        >
+          <video
+            ref={videoRef}
+            src={kalaVideo.url}
+            poster={videoPoster}
+            muted={muted}
+            playsInline
+            preload="metadata"
+            onPlay={() => {
+              setPlaying(true);
+              setStarted(true);
+            }}
+            onPause={() => setPlaying(false)}
+            className="aspect-video size-full object-cover"
+          />
 
-      <motion.div
-        className="mt-16 grid gap-6 md:grid-cols-3"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-60px" }}
-      >
-        {sparks.map((s) => (
-          <motion.div
-            key={s.k}
-            variants={staggerItem}
-            className="rounded-[18px] border border-border bg-background p-8 shadow-soft"
-          >
-            <div className="mb-5 size-1.5 rounded-full bg-terracotta" />
-            <h3 className="font-serif text-xl font-normal leading-snug">{s.k}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
-          </motion.div>
-        ))}
-      </motion.div>
-    </Section>
-  );
-}
-
-/* ─────────────────── What I Wanted To Understand ─────────────────── */
-
-function WantedToUnderstand() {
-  const stats = [
-    { n: "15+", l: "Artisans interviewed" },
-    { n: "Multiple", l: "Craft forms" },
-    { n: "User & Artisan", l: "Interviews" },
-    { n: "Secondary + Field", l: "Research & observations" },
-  ];
-
-  const journey = [
-    { t: "Observation", d: "Watched artisans in their daily rhythm before asking a single question." },
-    { t: "Interviews", d: "Open conversations with artisans and users—listening for what went unsaid." },
-    { t: "Field Research", d: "Spent time on the ground, inside workshops and homes where craft lives." },
-    { t: "Pattern Mapping", d: "Connected scattered moments into recurring emotional and systemic themes." },
-    { t: "Insights", d: "Distilled everything into a few truths that reshaped how I saw the problem." },
-  ];
-
-  return (
-    <Section>
-      <ChapterLabel index="02" title="What I Wanted To Understand" />
-      <Reveal className="max-w-2xl">
-        <p className="text-lg leading-relaxed text-muted-foreground">
-          Not &ldquo;how do we sell more crafts?&rdquo;—but &ldquo;why does the person
-          behind the craft stay invisible?&rdquo;
-        </p>
-      </Reveal>
-
-      <motion.div
-        className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-60px" }}
-      >
-        {stats.map((s) => (
-          <motion.div
-            key={s.l}
-            variants={staggerItem}
-            className="rounded-[18px] border border-border bg-surface p-7 text-center"
-          >
-            <div className="font-serif text-[clamp(1.5rem,3vw,2.1rem)] font-light leading-tight text-terracotta">
-              {s.n}
-            </div>
-            <div className="mt-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">
-              {s.l}
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Research journey timeline */}
-      <div className="mt-20">
-        <Reveal className="mb-10 text-xs uppercase tracking-[0.24em] text-secondary-foreground/60">
-          The research journey
-        </Reveal>
-        <div className="relative border-l border-border pl-8 md:pl-10">
-          {journey.map((j, i) => (
-            <Reveal key={j.t} delay={i * 0.05} className="relative pb-12 last:pb-0">
-              <span className="absolute -left-[41px] top-1 flex size-4 items-center justify-center md:-left-[49px]">
-                <span className="size-2.5 rounded-full bg-sage ring-4 ring-background" />
+          {/* Big centre play affordance before first playback */}
+          {!started && (
+            <button
+              type="button"
+              onClick={togglePlay}
+              aria-label="Play the KalaVansh story"
+              className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors hover:bg-black/30"
+            >
+              <span className="flex size-20 items-center justify-center rounded-full bg-background/90 text-foreground shadow-lift transition-transform duration-300 group-hover:scale-105">
+                <Play className="ml-1 size-7" />
               </span>
-              <h3 className="font-serif text-xl font-normal">{j.t}</h3>
-              <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">{j.d}</p>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
+            </button>
+          )}
 
-/* ─────────────────── What Changed My Thinking ─────────────────── */
-
-function ChangedMyThinking() {
-  const shifts = [
-    {
-      before: "I assumed artisans needed a marketplace.",
-      after: "They needed recognition. Sales follow trust, not the other way around.",
-    },
-    {
-      before: "I assumed buyers wanted cheaper crafts.",
-      after: "Buyers wanted to feel connected to a story they could retell with pride.",
-    },
-    {
-      before: "I assumed the problem was distribution.",
-      after: "The real gap was identity—the maker vanished long before the product did.",
-    },
-  ];
-
-  return (
-    <Section className="bg-surface">
-      <ChapterLabel index="03" title="What Changed My Thinking" />
-      <div className="space-y-8">
-        {shifts.map((s, i) => (
-          <Reveal key={i} delay={i * 0.04}>
-            <div className="grid items-center gap-6 rounded-[22px] border border-border bg-background p-8 shadow-soft md:grid-cols-[1fr_auto_1fr] md:p-12">
-              <p className="font-serif text-lg font-light leading-relaxed text-muted-foreground line-through decoration-terracotta/40">
-                {s.before}
-              </p>
-              <ArrowRight className="hidden size-6 text-terracotta md:block" />
-              <p className="font-serif text-[clamp(1.3rem,2.4vw,1.8rem)] font-normal leading-snug text-foreground">
-                {s.after}
-              </p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-/* ─────────────────── Voices From The Field ─────────────────── */
-
-function VoicesFromTheField() {
-  const voices = [
-    { quote: "I am not worthy of wearing what I make.", img: artisan2 },
-    { quote: "What will a degree do?", img: artisan1 },
-    { quote: "I need to earn for my siblings.", img: artisan3 },
-  ];
-
-  return (
-    <Section>
-      <ChapterLabel index="04" title="Voices From The Field" />
-      <Reveal className="max-w-2xl">
-        <p className="text-lg leading-relaxed text-muted-foreground">
-          Not testimonials—moments from the field that quietly changed the way I saw
-          the problem.
-        </p>
-      </Reveal>
-
-      <div className="mt-16 space-y-20 md:space-y-28">
-        {voices.map((v, i) => (
-          <Reveal key={i} delay={0.05}>
-            <figure
-              className={`flex flex-col items-center gap-8 md:gap-14 ${
-                i % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
-              }`}
+          {/* Controls */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-end gap-2 bg-gradient-to-t from-black/50 to-transparent p-4">
+            <button
+              type="button"
+              onClick={togglePlay}
+              aria-label={playing ? "Pause video" : "Play video"}
+              className="pointer-events-auto flex size-10 items-center justify-center rounded-full bg-background/90 text-foreground transition-transform hover:scale-105"
             >
-              <div className="w-full max-w-sm shrink-0 overflow-hidden rounded-[24px] border border-border">
-                <img
-                  src={v.img}
-                  alt="Portrait of an artisan from the field"
-                  loading="lazy"
-                  width={800}
-                  height={1000}
-                  className="aspect-[4/5] size-full object-cover"
-                />
-              </div>
-              <blockquote className="relative flex-1 px-2 md:px-6">
-                <span
-                  aria-hidden
-                  className="block font-serif text-[clamp(4rem,10vw,7rem)] leading-[0.5] text-terracotta/25"
-                >
-                  &ldquo;
-                </span>
-                <p className="mt-2 font-serif text-[clamp(1.8rem,4vw,3rem)] font-light leading-[1.25] text-foreground">
-                  {v.quote}
-                </p>
-              </blockquote>
-            </figure>
-          </Reveal>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-/* ─────────────────── Patterns I Couldn't Ignore ─────────────────── */
-
-function Patterns() {
-  const nodes = [
-    "Invisible maker",
-    "No direct trust",
-    "Value captured by middlemen",
-    "Story lost in transit",
-    "Buyers crave connection",
-  ];
-
-  return (
-    <Section className="bg-surface">
-      <ChapterLabel index="05" title="Patterns I Couldn't Ignore" />
-      <Reveal className="max-w-2xl">
-        <p className="text-lg leading-relaxed text-muted-foreground">
-          Every problem I heard traced back to the same root—and fed the next.
-          It wasn&apos;t a list of issues. It was a loop.
-        </p>
-      </Reveal>
-
-      <Reveal className="mt-16">
-        <div className="rounded-[22px] border border-border bg-background p-8 md:p-14">
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-6">
-            {nodes.map((n, i) => (
-              <div key={n} className="flex items-center gap-4">
-                <span className="rounded-full border border-border bg-surface px-5 py-3 text-center text-sm font-medium text-foreground">
-                  {n}
-                </span>
-                <ArrowRight
-                  className={`size-5 shrink-0 text-terracotta ${
-                    i === nodes.length - 1 ? "rotate-90 md:rotate-0" : ""
-                  }`}
-                />
-              </div>
-            ))}
-            <span className="rounded-full bg-sage px-5 py-3 text-center text-sm font-medium text-primary-foreground">
-              Loop repeats
-            </span>
+              {playing ? <span className="block h-4 w-3.5 border-x-[4px] border-foreground" /> : <Play className="ml-0.5 size-4" />}
+            </button>
+            <button
+              type="button"
+              onClick={toggleMute}
+              aria-label={muted ? "Unmute video" : "Mute video"}
+              className="pointer-events-auto flex size-10 items-center justify-center rounded-full bg-background/90 text-foreground transition-transform hover:scale-105"
+            >
+              {muted ? <VolumeX className="size-4" /> : <Volume2 className="size-4" />}
+            </button>
+            <button
+              type="button"
+              onClick={replay}
+              aria-label="Replay from the beginning"
+              className="pointer-events-auto flex size-10 items-center justify-center rounded-full bg-background/90 text-foreground transition-transform hover:scale-105"
+            >
+              <RotateCcw className="size-4" />
+            </button>
           </div>
-          <p className="mt-10 text-center text-sm text-muted-foreground">
-            Break one link—visibility—and the whole loop starts working for the artisan
-            instead of against them.
-          </p>
         </div>
       </Reveal>
-    </Section>
-  );
-}
 
-/* ─────────────────── The Product Opportunity ─────────────────── */
-
-function ProductOpportunity() {
-  return (
-    <Section>
-      <ChapterLabel index="06" title="The Product Opportunity" />
-      <Reveal>
-        <p className="max-w-4xl font-serif text-[clamp(1.8rem,4.5vw,3rem)] font-light leading-[1.2] tracking-[-0.015em]">
-          What if every craft carried its maker with it—so buying became meeting?
+      <Reveal delay={0.1}>
+        <p className="mx-auto mt-10 max-w-xl text-center font-serif text-[clamp(1.2rem,2.6vw,1.7rem)] font-light leading-snug text-foreground">
+          Everything below explains how this story became a product.
         </p>
       </Reveal>
-
-      <Reveal className="mt-16">
-        <div className="grid items-stretch gap-4 md:grid-cols-3">
-          {[
-            {
-              t: "A face, not a label",
-              d: "Every product opens to the artisan behind it—their name, place, and craft lineage.",
-            },
-            {
-              t: "A scan that tells a story",
-              d: "A single QR bridges the physical object and the human story it carries.",
-            },
-            {
-              t: "A relationship, not a receipt",
-              d: "Buyers can follow, book workshops, and return—turning a purchase into a bond.",
-            },
-          ].map((c, i) => (
-            <div
-              key={c.t}
-              className="flex flex-col rounded-[22px] border border-border bg-surface p-8"
-            >
-              <span className="font-serif text-sm text-gold">{`0${i + 1}`}</span>
-              <h3 className="mt-4 font-serif text-xl font-normal leading-snug">{c.t}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
-            </div>
-          ))}
-        </div>
-      </Reveal>
     </Section>
   );
 }
 
-/* ─────────────────── From Insight To Experience ─────────────────── */
+/* ────────────────────────────── Behind The Thinking ────────────────────────────── */
 
-function InsightToExperience() {
-  const flows = [
-    {
-      insight: "The maker vanishes before the product does.",
-      decision: "Anchor identity to every object, permanently.",
-      experience: "A scannable KalaVansh tag that opens the artisan's living profile.",
-    },
-    {
-      insight: "Buyers pay for moments, not just objects.",
-      decision: "Let people experience the craft, not only own it.",
-      experience: "In-app workshop booking with the artisan, in person or live.",
-    },
-    {
-      insight: "Trust grows when the story is verifiable.",
-      decision: "Make provenance transparent and human.",
-      experience: "A craft timeline showing origin, technique, and the hands involved.",
-    },
-  ];
-
-  return (
-    <Section className="bg-surface">
-      <ChapterLabel index="07" title="From Insight To Experience" />
-      <div className="space-y-6">
-        {flows.map((f, i) => (
-          <Reveal key={i} delay={i * 0.04}>
-            <div className="grid gap-px overflow-hidden rounded-[22px] border border-border bg-border md:grid-cols-3">
-              {[
-                { k: "Research Insight", v: f.insight, tone: "text-terracotta" },
-                { k: "Product Decision", v: f.decision, tone: "text-sage" },
-                { k: "Final Experience", v: f.experience, tone: "text-gold" },
-              ].map((col) => (
-                <div key={col.k} className="bg-background p-8 md:p-9">
-                  <span className={`text-[0.65rem] uppercase tracking-[0.18em] ${col.tone}`}>
-                    {col.k}
-                  </span>
-                  <p className="mt-3 text-base leading-relaxed text-foreground">{col.v}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-/* ─────────────────── Measuring Success ─────────────────── */
-
-function MeasuringSuccess() {
-  const metrics = [
-    { n: "QR Scan Rate", d: "How often a product's story is actually opened." },
-    { n: "Workshop Bookings", d: "Moments booked directly with artisans." },
-    { n: "Returning Visitors", d: "People who come back to a maker's profile." },
-    { n: "Artisan Earnings", d: "Share of value returning to the maker." },
-    { n: "Customer Story Views", d: "Reach of each artisan's narrative." },
-    { n: "Trust Score", d: "Buyer confidence in provenance." },
-    { n: "Repeat Engagement", d: "Ongoing relationships, not one-off sales." },
-  ];
-
-  return (
-    <Section>
-      <ChapterLabel index="08" title="Measuring Success" />
-      <Reveal className="max-w-2xl">
-        <p className="text-lg leading-relaxed text-muted-foreground">
-          Success isn&apos;t revenue alone. It&apos;s whether the artisan became
-          more visible, more valued, and more chosen.
-        </p>
-      </Reveal>
-
-      <motion.div
-        className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-60px" }}
-      >
-        {metrics.map((m) => (
-          <motion.div
-            key={m.n}
-            variants={staggerItem}
-            className="rounded-[18px] border border-border bg-surface p-7"
-          >
-            <div className="size-1.5 rounded-full bg-sage" />
-            <h3 className="mt-5 font-serif text-lg font-normal">{m.n}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.d}</p>
-          </motion.div>
-        ))}
-      </motion.div>
-    </Section>
-  );
-}
-
-/* ─────────────────── Looking Back ─────────────────── */
-
-function LookingBack() {
+function BehindTheThinking() {
   const cards = [
     {
-      q: "What would I validate earlier?",
-      a: "Whether artisans wanted visibility at all—before designing how to give it to them.",
+      observation:
+        "Customers admired handmade products but rarely knew the people behind them.",
+      insight: "Recognition creates emotional value.",
+      decision: "Every handcrafted product should introduce its maker.",
     },
     {
-      q: "What assumptions changed?",
-      a: "That this was a commerce problem. It was a dignity problem wearing a commerce costume.",
+      observation:
+        "Artisans described themselves as labourers, not creators of what they made.",
+      insight: "Identity has to be given back before pride can return.",
+      decision: "Build profiles that name the maker and tell their journey.",
     },
     {
-      q: "What would I improve in V2?",
-      a: "Lower the tech barrier—many artisans needed the tag to work without a smartphone of their own.",
+      observation:
+        "The next generation was walking away from crafts they saw as a dead end.",
+      insight: "A craft survives only when it feels aspirational.",
+      decision: "Frame makers as artists worth following, not workers to pity.",
+    },
+    {
+      observation:
+        "Buyers wanted to support artisans but had no trustworthy way to reach them.",
+      insight: "Trust is built through a face and a story, not a marketplace.",
+      decision: "Put a direct, human connection one scan away.",
     },
   ];
 
   return (
-    <Section className="bg-surface">
-      <ChapterLabel index="09" title="Looking Back" />
+    <Section id="thinking">
+      <ChapterLabel index="02" title="Behind The Thinking" />
+      <Reveal className="max-w-2xl">
+        <p className="text-lg leading-relaxed text-muted-foreground">
+          Not what the product is—how each decision was made. Every card traces one
+          observation to the insight it revealed, and the choice it forced.
+        </p>
+      </Reveal>
+
+      <motion.div
+        className="mt-14 grid gap-6 md:grid-cols-2"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-60px" }}
+      >
+        {cards.map((c, i) => (
+          <motion.div
+            key={i}
+            variants={staggerItem}
+            className="flex flex-col rounded-[22px] border border-border bg-surface p-8 shadow-soft transition-shadow duration-300 hover:shadow-lift md:p-10"
+          >
+            <div className="mb-2 flex items-center gap-2">
+              <Eye className="size-4 text-sage" />
+              <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+                Observation
+              </span>
+            </div>
+            <p className="font-serif text-lg font-light leading-snug text-foreground">
+              {c.observation}
+            </p>
+
+            <div className="my-6 flex items-center gap-3">
+              <span className="h-px flex-1 bg-border" />
+              <ArrowRight className="size-4 rotate-90 text-gold" />
+              <span className="h-px flex-1 bg-border" />
+            </div>
+
+            <div className="mb-2 flex items-center gap-2">
+              <Lightbulb className="size-4 text-terracotta" />
+              <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+                Product Insight
+              </span>
+            </div>
+            <p className="text-base leading-relaxed text-foreground">{c.insight}</p>
+
+            <div className="mt-auto">
+              <div className="my-6 flex items-center gap-3">
+                <span className="h-px flex-1 bg-border" />
+                <ArrowRight className="size-4 rotate-90 text-gold" />
+                <span className="h-px flex-1 bg-border" />
+              </div>
+              <div className="mb-2 flex items-center gap-2">
+                <Sparkles className="size-4 text-sage" />
+                <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+                  Decision
+                </span>
+              </div>
+              <p className="font-serif text-lg font-normal leading-snug text-foreground">
+                {c.decision}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </Section>
+  );
+}
+
+/* ────────────────────────── From Insight To Experience ────────────────────────── */
+
+function InsightToExperience() {
+  const rows = [
+    {
+      insight: "People trust people more than products.",
+      experience: "30-second artisan stories",
+      detail:
+        "A short film plays before the price—so buyers meet the maker before they meet the object.",
+      img: storyImg,
+      alt: "A young artisan working batik by hand in warm light",
+    },
+    {
+      insight: "Artisans need more than one-off product sales.",
+      experience: "Workshop bookings",
+      detail:
+        "Makers earn by teaching their craft directly—turning skill into a second, steadier income.",
+      img: workshopImg,
+      alt: "An artisan holding a hand-painted craft in her studio",
+    },
+    {
+      insight: "Identity creates perceived value.",
+      experience: "Artisan profile pages",
+      detail:
+        "Each maker gets a name, a face and a journey—so the craft carries a person, not a label.",
+      img: profileImg,
+      alt: "A smiling basket weaver beside handcrafted products",
+    },
+  ];
+
+  return (
+    <Section id="experience" className="bg-surface">
+      <ChapterLabel index="03" title="From Insight To Experience" />
+      <Reveal className="max-w-2xl">
+        <p className="text-lg leading-relaxed text-muted-foreground">
+          Every feature exists because research asked for it. Left is what we learned.
+          Right is what we built.
+        </p>
+      </Reveal>
+
+      {/* It starts with a scan */}
+      <Reveal delay={0.05} className="mt-14">
+        <div className="grid items-center gap-8 overflow-hidden rounded-[22px] border border-border bg-background p-8 md:grid-cols-[1.1fr_1fr] md:p-10">
+          <div>
+            <span className="text-[0.65rem] uppercase tracking-[0.2em] text-terracotta">
+              The moment it begins
+            </span>
+            <p className="mt-4 font-serif text-[clamp(1.4rem,3vw,2rem)] font-light leading-snug">
+              One QR tag turns buying into meeting.
+            </p>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+              A single scan on the product opens the maker&apos;s story—so the
+              relationship starts before the purchase does.
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-[16px] border border-border">
+            <img
+              src={qrPoster}
+              alt="Scan-to-watch poster inviting buyers to experience the artisan's story"
+              loading="lazy"
+              className="aspect-[16/9] size-full object-cover"
+            />
+          </div>
+        </div>
+      </Reveal>
+
+      <div className="mt-8 space-y-8">
+        {rows.map((r, i) => (
+          <Reveal key={i} delay={i * 0.05}>
+            <div
+              className={`grid items-stretch gap-6 md:grid-cols-2 ${
+                i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+              }`}
+            >
+              {/* Left — Research insight */}
+              <div className="flex flex-col justify-center rounded-[22px] border border-border bg-background p-8 shadow-soft md:p-12">
+                <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+                  Research Insight
+                </span>
+                <p className="mt-4 font-serif text-[clamp(1.5rem,3vw,2.2rem)] font-light leading-[1.15] text-foreground">
+                  {r.insight}
+                </p>
+              </div>
+
+              {/* Right — Experience */}
+              <div className="overflow-hidden rounded-[22px] border border-border shadow-soft">
+                <div className="relative">
+                  <img
+                    src={r.img}
+                    alt={r.alt}
+                    loading="lazy"
+                    className="aspect-[16/10] size-full object-cover"
+                  />
+                  <span className="absolute left-5 top-5 rounded-full bg-background/90 px-3 py-1 text-[0.65rem] uppercase tracking-[0.18em] text-terracotta">
+                    Experience
+                  </span>
+                </div>
+                <div className="bg-surface p-7">
+                  <h3 className="font-serif text-xl font-normal">{r.experience}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {r.detail}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ────────────────────────────── Validation ────────────────────────────── */
+
+function Validation() {
+  const cards = [
+    {
+      icon: Eye,
+      assumption: "People will stop and scan a QR tag out of curiosity.",
+      how: "Placed scan-to-watch tags beside products and watched who paused.",
+      learned: "Curiosity reliably triggered the scan—the story hooked them.",
+    },
+    {
+      icon: Lightbulb,
+      assumption: "A maker's story creates a real emotional connection.",
+      how: "Showed the 30-second films to buyers and listened to their reactions.",
+      learned: "People connected with the person—not just the craft.",
+    },
+    {
+      icon: FlaskConical,
+      assumption: "That connection converts into workshops and repeat support.",
+      how: "Tracked intent to book and revisit after watching a story.",
+      learned: "Still open—conversion and repeat engagement need a longer pilot.",
+    },
+  ];
+
+  return (
+    <Section id="validation">
+      <ChapterLabel index="04" title="Validation" />
+      <Reveal className="max-w-2xl">
+        <p className="text-lg leading-relaxed text-muted-foreground">
+          Every product rests on assumptions. These are the ones KalaVansh had to
+          test—and what testing them taught us.
+        </p>
+      </Reveal>
+
+      <motion.div
+        className="mt-14 grid gap-6 md:grid-cols-3"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-60px" }}
+      >
+        {cards.map((c, i) => (
+          <motion.div
+            key={i}
+            variants={staggerItem}
+            className="flex flex-col rounded-[22px] border border-border bg-surface p-8 shadow-soft"
+          >
+            <span className="flex size-11 items-center justify-center rounded-full bg-background text-terracotta">
+              <c.icon className="size-5" />
+            </span>
+
+            <span className="mt-6 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+              Assumption
+            </span>
+            <p className="mt-2 font-serif text-lg font-light leading-snug text-foreground">
+              {c.assumption}
+            </p>
+
+            <span className="mt-6 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+              How we validated it
+            </span>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.how}</p>
+
+            <span className="mt-6 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+              What we learned
+            </span>
+            <p className="mt-2 text-sm leading-relaxed text-foreground">{c.learned}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+    </Section>
+  );
+}
+
+/* ────────────────────────────── Looking Back ────────────────────────────── */
+
+function LookingBack() {
+  const reflections = [
+    {
+      t: "Validate earlier",
+      d: "I'd test the riskiest assumption—repeat engagement—before polishing the product.",
+    },
+    {
+      t: "Ship a smaller MVP",
+      d: "One craft cluster, one story format—prove the loop before scaling the surface area.",
+    },
+    {
+      t: "Design onboarding for makers",
+      d: "The artisan's first upload matters more than the buyer's first scan. I'd design that path first.",
+    },
+  ];
+
+  return (
+    <Section id="looking-back" className="bg-surface">
+      <Reveal className="mb-14 md:mb-20">
+        <h2 className="font-serif text-[clamp(2.2rem,6vw,4.5rem)] font-light leading-[1.02] tracking-[-0.02em]">
+          If I built KalaVansh again…
+        </h2>
+      </Reveal>
+
       <motion.div
         className="grid gap-6 md:grid-cols-3"
         variants={staggerContainer}
@@ -608,53 +632,45 @@ function LookingBack() {
         whileInView="show"
         viewport={{ once: true, margin: "-60px" }}
       >
-        {cards.map((c) => (
+        {reflections.map((r, i) => (
           <motion.div
-            key={c.q}
+            key={i}
             variants={staggerItem}
-            className="rounded-[22px] border border-border bg-background p-8 shadow-soft"
+            className="rounded-[22px] border border-border bg-background p-8 shadow-soft md:p-10"
           >
-            <h3 className="font-serif text-xl font-normal leading-snug text-terracotta">{c.q}</h3>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{c.a}</p>
+            <span className="font-serif text-sm text-gold">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <h3 className="mt-4 font-serif text-2xl font-light leading-snug">{r.t}</h3>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{r.d}</p>
           </motion.div>
         ))}
       </motion.div>
 
-      <Reveal className="mt-24 text-center">
-        <p className="mx-auto max-w-3xl font-serif text-[clamp(1.8rem,4.5vw,3rem)] font-light leading-[1.2] tracking-[-0.015em]">
-          Great products don&apos;t just move objects. They make invisible people
-          impossible to overlook.
-        </p>
-      </Reveal>
-
-      <div className="mt-20 flex items-center justify-between border-t border-border pt-12">
+      <div className="mt-20 flex flex-col items-start justify-between gap-6 border-t border-border pt-12 md:flex-row md:items-center">
         <BackLink />
         <a
           href="/#contact"
-          className="group inline-flex items-center gap-1 text-sm text-foreground"
+          className="group inline-flex items-center gap-2 font-serif text-lg text-foreground"
         >
-          <span className="link-underline">Get in touch</span>
-          <ArrowUpRight className="size-4 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          <span className="link-underline">Let&apos;s build something with meaning</span>
+          <ArrowRight className="size-5 text-terracotta transition-transform duration-300 group-hover:translate-x-1" />
         </a>
       </div>
     </Section>
   );
 }
 
-/* ─────────────────────────────── Page ─────────────────────────────── */
+/* ────────────────────────────── Page ────────────────────────────── */
 
 function KalaVanshCaseStudy() {
   return (
     <div className="min-h-screen bg-background">
       <Hero />
-      <TheSpark />
-      <WantedToUnderstand />
-      <ChangedMyThinking />
-      <VoicesFromTheField />
-      <Patterns />
-      <ProductOpportunity />
+      <WatchTheStory />
+      <BehindTheThinking />
       <InsightToExperience />
-      <MeasuringSuccess />
+      <Validation />
       <LookingBack />
       <SiteFooter />
     </div>
