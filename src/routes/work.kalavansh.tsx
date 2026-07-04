@@ -228,17 +228,18 @@ function TheSpark() {
 
 function WantedToUnderstand() {
   const stats = [
-    { n: "27", l: "In-depth interviews" },
-    { n: "5", l: "States visited" },
-    { n: "9", l: "Craft clusters" },
-    { n: "40+", l: "Hours of field notes" },
+    { n: "15+", l: "Artisans interviewed" },
+    { n: "Multiple", l: "Craft forms" },
+    { n: "User & Artisan", l: "Interviews" },
+    { n: "Secondary + Field", l: "Research & observations" },
   ];
 
   const journey = [
-    { t: "Immersion", d: "Lived alongside two weaving families to observe daily rhythms, not just workflows." },
-    { t: "Conversations", d: "Open interviews with artisans, middlemen, and urban buyers—each side of the chain." },
-    { t: "Shadowing", d: "Followed a single saree from loom to storefront to understand where value quietly disappeared." },
-    { t: "Synthesis", d: "Mapped emotions, incentives and friction into a single system view." },
+    { t: "Observation", d: "Watched artisans in their daily rhythm before asking a single question." },
+    { t: "Interviews", d: "Open conversations with artisans and users—listening for what went unsaid." },
+    { t: "Field Research", d: "Spent time on the ground, inside workshops and homes where craft lives." },
+    { t: "Pattern Mapping", d: "Connected scattered moments into recurring emotional and systemic themes." },
+    { t: "Insights", d: "Distilled everything into a few truths that reshaped how I saw the problem." },
   ];
 
   return (
