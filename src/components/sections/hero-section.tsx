@@ -73,20 +73,39 @@ export function HeroSection() {
   const isLastLine = reduce || index === LINES.length - 1;
 
   return (
-    <section className="relative flex min-h-svh items-center px-6 pt-28 md:px-10 md:pt-24">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16">
+    <section className="relative flex min-h-svh items-end overflow-hidden px-6 pt-28 md:items-center md:px-10 md:pt-24">
+      {/* Full-bleed editorial portrait with warm blend */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute bottom-0 right-0 top-0 w-full md:w-[48%]">
+          <img
+            src={portrait}
+            alt="Editorial portrait of Shipra Maurya"
+            width={1024}
+            height={1280}
+            className="h-full w-full object-cover object-top"
+          />
+          {/* Left fade: keeps left text readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent md:from-background md:via-background/65 md:to-transparent" />
+          {/* Bottom fade: picture melts into the page */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-transparent md:via-background/35" />
+          {/* Warm glow at the bottom like the reference */}
+          <div className="absolute inset-0 bg-gradient-to-t from-terracotta/22 via-terracotta/5 to-transparent opacity-80" />
+        </div>
+      </div>
+
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 pb-20 md:grid-cols-2 md:gap-16 md:pb-0">
         {/* Left: typography */}
         <div className="order-2 md:order-1">
           <div className="space-y-6 md:space-y-8">
-            <h1 className="min-h-[3rem] font-serif text-[clamp(2rem,5vw,3.6rem)] font-light leading-[1.14] tracking-[-0.015em] text-foreground md:min-h-[4rem]">
+            <h1 className="min-h-[6rem] font-serif text-[clamp(2.5rem,5.5vw,4.5rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-foreground md:min-h-[8.5rem]">
               <span className={isLastLine ? "text-terracotta" : ""}>{displayText}</span>
               {!showFinal && (
-                <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.14em] animate-pulse bg-sage align-middle" />
+                <span className="ml-1 inline-block h-[1.05em] w-[3px] translate-y-[0.12em] animate-pulse bg-sage align-middle" />
               )}
             </h1>
 
             <motion.p
-              className="max-w-md text-lg leading-relaxed text-muted-foreground"
+              className="max-w-lg text-lg leading-relaxed text-muted-foreground md:text-xl"
               initial={{ opacity: 0, y: 14 }}
               animate={showFinal ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               transition={{ duration: 0.9, delay: reduce ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -96,9 +115,8 @@ export function HeroSection() {
             </motion.p>
           </div>
 
-
           <motion.div
-            className="mt-8"
+            className="mt-8 md:mt-10"
             initial={{ opacity: 0, y: 14 }}
             animate={showFinal ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
             transition={{ duration: 0.9, delay: reduce ? 0.1 : 0.75, ease: [0.22, 1, 0.36, 1] }}
@@ -111,39 +129,10 @@ export function HeroSection() {
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
           </motion.div>
-
         </div>
 
-        {/* Right: editorial portrait with soft glow + float */}
-        <motion.div
-          className="relative order-1 mx-auto w-full max-w-xs md:order-2 md:max-w-sm"
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {/* Soft glow behind image */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] opacity-70 blur-3xl"
-            style={{
-              background:
-                "radial-gradient(60% 60% at 30% 30%, rgba(107,122,104,0.35), transparent 70%), radial-gradient(55% 55% at 75% 80%, rgba(176,106,76,0.30), transparent 70%)",
-            }}
-          />
-          <motion.div
-            className="overflow-hidden rounded-[1.75rem] border border-border shadow-lift"
-            animate={reduce ? undefined : { y: [0, -12, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <img
-              src={portrait}
-              alt="Editorial portrait of Shipra Maurya"
-              width={1024}
-              height={1280}
-              className="aspect-[4/5] size-full object-cover"
-            />
-          </motion.div>
-        </motion.div>
+        {/* Right: empty visual column reserved for the portrait */}
+        <div className="order-1 md:order-2" />
       </div>
     </section>
   );
