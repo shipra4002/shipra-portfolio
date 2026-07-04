@@ -84,12 +84,12 @@ export function HeroSection() {
             height={1280}
             className="h-full w-full object-cover object-top"
           />
-          {/* Left fade: keeps left text readable */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent md:from-background md:via-background/65 md:to-transparent" />
+          {/* Left fade: keeps left text readable on mobile; subtle on desktop */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent md:from-background/30 md:via-background/10 md:to-transparent" />
           {/* Bottom fade: picture melts into the page */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-transparent md:via-background/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent md:via-background/15" />
           {/* Warm glow at the bottom like the reference */}
-          <div className="absolute inset-0 bg-gradient-to-t from-terracotta/22 via-terracotta/5 to-transparent opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-terracotta/12 via-transparent to-transparent opacity-90" />
         </div>
       </div>
 
