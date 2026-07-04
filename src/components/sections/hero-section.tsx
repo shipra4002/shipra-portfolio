@@ -116,7 +116,7 @@ export function HeroSection() {
 
         {/* Right: editorial portrait with soft glow + float */}
         <motion.div
-          className="relative order-1 mx-auto w-full max-w-sm md:order-2 md:max-w-none"
+          className="relative order-1 mx-auto w-full max-w-xs md:order-2 md:max-w-sm"
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
