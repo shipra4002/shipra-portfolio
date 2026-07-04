@@ -1,6 +1,6 @@
-import kalavanshCover from "@/assets/kalavansh.png.asset.json";
-import nexoCover from "@/assets/nexo.png.asset.json";
-import smartPosCover from "@/assets/smart-pos.png.asset.json";
+import kalavanshCover from "@/assets/kalavansh.png";
+import nexoCover from "@/assets/nexo.png";
+import smartPosCover from "@/assets/smart-pos.png";
 
 export type WorkCategory = {
   id: string;
