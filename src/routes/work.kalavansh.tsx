@@ -4,10 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
+  Code,
+  Compass,
   ExternalLink,
   Eye,
   FlaskConical,
   Github,
+  LayoutTemplate,
   Lightbulb,
   Play,
   Presentation,
@@ -100,15 +103,30 @@ function Hero() {
 
   const meta = [
     { label: "Role", value: "Product Manager" },
-    { label: "Timeline", value: "12 weeks" },
     { label: "Team", value: "CauseCrew \u2022 Team of 3" },
   ];
 
   const contributions = [
-    "Led Product Discovery",
-    "Synthesized User Research into Product Insights",
-    "Designed the MVP Experience",
-    "Built the Functional MVP Website",
+    {
+      title: "Led Product Discovery",
+      description: "Found the gap between artisan identity and buyer trust.",
+      icon: Compass,
+    },
+    {
+      title: "Synthesized User Research into Product Insights",
+      description: "Turned field conversations into decisions we could build around.",
+      icon: Lightbulb,
+    },
+    {
+      title: "Designed the MVP Experience",
+      description: "Shaped the flows, features and feel of the first working product.",
+      icon: LayoutTemplate,
+    },
+    {
+      title: "Built the Functional MVP Website",
+      description: "Shipped a real, clickable product that artisans could actually use.",
+      icon: Code,
+    },
   ];
 
   const links = [
@@ -152,18 +170,40 @@ function Hero() {
               ))}
             </Reveal>
 
-            <Reveal delay={0.15} className="mt-8">
-              <div className="mb-3 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+            <Reveal delay={0.15} className="mt-10">
+              <div className="mb-4 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
                 My Contribution
               </div>
-              <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                {contributions.map((c) => (
-                  <li key={c} className="flex items-start gap-3 text-sm text-foreground">
-                    <span className="mt-2 h-1 w-1 rounded-full bg-terracotta" />
-                    {c}
-                  </li>
+              <motion.div
+                className="grid gap-3 sm:grid-cols-2"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-40px" }}
+              >
+                {contributions.map((c, i) => (
+                  <motion.div
+                    key={c.title}
+                    variants={staggerItem}
+                    className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-5 shadow-soft transition-all duration-300 hover:shadow-lift"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex size-9 items-center justify-center rounded-full bg-foreground/5 text-terracotta transition-colors group-hover:bg-terracotta/10">
+                        <c.icon className="size-4" />
+                      </div>
+                      <span className="font-serif text-xs text-muted-foreground">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className="mt-4 text-sm font-medium leading-snug text-foreground">
+                      {c.title}
+                    </h3>
+                    <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                      {c.description}
+                    </p>
+                  </motion.div>
                 ))}
-              </ul>
+              </motion.div>
             </Reveal>
 
             <Reveal delay={0.18} className="mt-8 flex flex-wrap gap-3">
