@@ -121,53 +121,50 @@ export function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Thin abstract curved line extending outside the card */}
-          <svg
-            aria-hidden
-            className="pointer-events-none absolute -right-10 -top-10 -z-10 h-40 w-40 text-terracotta/40"
-            viewBox="0 0 160 160"
-            fill="none"
-          >
-            <path
-              d="M6 120 C 40 40, 120 10, 154 44"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
-
           {/* Soft shadow beneath the card */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-x-6 bottom-0 -z-10 h-16 translate-y-6 rounded-full bg-black/25 opacity-40 blur-2xl"
           />
 
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[30px] bg-[#F6F0EA] shadow-lift">
-            {/* Subtle radial gradient backdrop */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(60% 55% at 50% 38%, rgba(107,122,104,0.10), transparent 70%)",
-              }}
-            />
-
+          <div
+            className="relative aspect-[4/5] overflow-hidden rounded-[30px] shadow-lift"
+            style={{
+              background:
+                "linear-gradient(160deg, #F7F1EA 0%, #F1E7DB 55%, #E8DAC9 100%)",
+            }}
+          >
             {/* Large soft circle behind the head */}
             <div
               aria-hidden
-              className="pointer-events-none absolute left-1/2 top-[12%] z-0 aspect-square w-[64%] -translate-x-1/2 rounded-full bg-[#EBE1D6]"
+              className="pointer-events-none absolute left-1/2 top-[10%] z-0 aspect-square w-[70%] -translate-x-1/2 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(233,218,201,0.35) 55%, transparent 72%)",
+              }}
+            />
+
+            {/* Dotted grid decoration, top-left */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-5 top-5 z-0 h-16 w-24 opacity-50"
+              style={{
+                backgroundImage:
+                  "radial-gradient(currentColor 1px, transparent 1.4px)",
+                backgroundSize: "11px 11px",
+                color: "rgba(150,120,95,0.55)",
+              }}
             />
 
             {/* Dotted grid decoration, bottom-right */}
             <div
               aria-hidden
-              className="pointer-events-none absolute bottom-5 right-5 h-16 w-16 opacity-40"
+              className="pointer-events-none absolute bottom-6 right-5 z-0 h-16 w-24 opacity-50"
               style={{
                 backgroundImage:
                   "radial-gradient(currentColor 1px, transparent 1.4px)",
-                backgroundSize: "10px 10px",
-                color: "rgba(176,106,76,0.6)",
+                backgroundSize: "11px 11px",
+                color: "rgba(150,120,95,0.55)",
               }}
             />
 
@@ -177,10 +174,31 @@ export function HeroSection() {
               alt="Editorial portrait of Shipra Maurya"
               width={1024}
               height={1280}
-              className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[90%] w-auto max-w-[88%] object-contain object-bottom"
-              animate={reduce ? undefined : { y: [0, -10, 0] }}
+              className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[94%] w-auto max-w-[94%] object-contain object-bottom"
+              animate={reduce ? undefined : { y: [0, -8, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             />
+
+            {/* Thin abstract orbit line wrapping the subject, extends outside */}
+            <svg
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-20 h-full w-full overflow-visible text-terracotta/70"
+              viewBox="0 0 400 500"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              <ellipse
+                cx="205"
+                cy="335"
+                rx="215"
+                ry="70"
+                transform="rotate(-18 205 335)"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
           </div>
         </motion.div>
       </div>
