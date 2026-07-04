@@ -8,7 +8,7 @@ import {
   ExternalLink,
   Github,
   Presentation,
-  Quote,
+  
 } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
