@@ -77,22 +77,25 @@ export function HeroSection() {
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16">
         {/* Left: typography */}
         <div className="order-2 md:order-1">
-          <h1 className="min-h-[8.5rem] font-serif text-[clamp(2rem,5vw,3.6rem)] font-light leading-[1.14] tracking-[-0.015em] text-foreground md:min-h-[13rem]">
-            <span className={isLastLine ? "text-terracotta" : ""}>{displayText}</span>
-            {!showFinal && (
-              <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.14em] animate-pulse bg-sage align-middle" />
-            )}
-          </h1>
+          <div className="space-y-6 md:space-y-8">
+            <h1 className="min-h-[3rem] font-serif text-[clamp(2rem,5vw,3.6rem)] font-light leading-[1.14] tracking-[-0.015em] text-foreground md:min-h-[4rem]">
+              <span className={isLastLine ? "text-terracotta" : ""}>{displayText}</span>
+              {!showFinal && (
+                <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.14em] animate-pulse bg-sage align-middle" />
+              )}
+            </h1>
 
-          <motion.p
-            className="mt-8 max-w-md text-lg leading-relaxed text-muted-foreground"
-            initial={{ opacity: 0, y: 14 }}
-            animate={showFinal ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-            transition={{ duration: 0.9, delay: reduce ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
-          >
-            Building digital experiences that create value, delight users, and give them a reason to
-            return.
-          </motion.p>
+            <motion.p
+              className="max-w-md text-lg leading-relaxed text-muted-foreground"
+              initial={{ opacity: 0, y: 14 }}
+              animate={showFinal ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+              transition={{ duration: 0.9, delay: reduce ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
+            >
+              Building digital experiences that create value, delight users, and give them a reason to
+              return.
+            </motion.p>
+          </div>
+
 
           <motion.div
             initial={{ opacity: 0, y: 14 }}
