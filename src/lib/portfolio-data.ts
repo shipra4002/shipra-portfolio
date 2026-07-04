@@ -10,6 +10,7 @@ export type Project = {
   title: string;
   category: string;
   kicker: string;
+  cover: string;
 };
 
 export const workCategories: WorkCategory[] = [
