@@ -359,7 +359,7 @@ function WatchTheStory() {
         >
           <video
             ref={videoRef}
-            src={kalaVideo.url}
+            src={kalaVideoUrl}
             poster={videoPoster}
             muted={muted}
             playsInline
