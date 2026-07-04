@@ -269,7 +269,7 @@ export function HeroSection() {
               alt="Editorial portrait of Shipra Maurya"
               width={1024}
               height={1280}
-              className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[94%] w-auto max-w-[92%] object-contain object-bottom"
+              className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[92%] w-auto max-w-[94%] object-contain object-bottom sm:h-[93%] md:h-[94%]"
               initial={{ opacity: 0, y: 24 }}
               animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
               transition={{
