@@ -84,7 +84,91 @@ function Section({ children, className = "", id }: { children: React.ReactNode; 
   );
 }
 
-/* ─────────────────────────────────── Hero ─────────────────────────────────── */
+
+/* ────────────────────────────── Page Navigation ────────────────────────────── */
+
+function PageNav() {
+  const [active, setActive] = useState("");
+  const sections = [
+    { id: "watch", label: "Story" },
+    { id: "thinking", label: "Thinking" },
+    { id: "experience", label: "Experience" },
+    { id: "validation", label: "Validation" },
+    { id: "looking-back", label: "Reflection" },
+  ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
+    );
+
+    sections.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  return (
+    <>
+      {/* Desktop — floating side rail */}
+      <nav
+        aria-label="Case study sections"
+        className="fixed right-6 top-1/2 z-50 hidden -translate-y-1/2 flex-col gap-4 lg:flex"
+      >
+        {sections.map((s) => (
+          <a
+            key={s.id}
+            href={`#${s.id}`}
+            onClick={(e) => handleClick(e, s.id)}
+            className={`group relative flex items-center justify-end gap-3 text-sm transition-colors ${
+              active === s.id ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <span className="opacity-0 transition-opacity duration-200 group-hover:opacity-100">{s.label}</span>
+            <span
+              className={`block h-2 w-2 rounded-full transition-all duration-300 ${
+                active === s.id ? "scale-125 bg-gold" : "bg-border group-hover:bg-terracotta"
+              }`}
+            />
+          </a>
+        ))}
+      </nav>
+
+      {/* Mobile — sticky bottom bar */}
+      <nav
+        aria-label="Case study sections"
+        className="fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full border border-border bg-background/90 px-2 py-2 shadow-lift backdrop-blur-md lg:hidden"
+      >
+        {sections.map((s) => (
+          <a
+            key={s.id}
+            href={`#${s.id}`}
+            onClick={(e) => handleClick(e, s.id)}
+            className={`rounded-full px-3 py-1.5 text-xs transition-colors ${
+              active === s.id ? "bg-gold text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {s.label}
+          </a>
+        ))}
+      </nav>
+    </>
+  );
+}
+
 
 function Hero() {
   const reduce = useReducedMotion();
@@ -659,6 +743,7 @@ function LookingBack() {
 function KalaVanshCaseStudy() {
   return (
     <div className="min-h-screen bg-background">
+      <PageNav />
       <Hero />
       <WatchTheStory />
       <BehindTheThinking />
