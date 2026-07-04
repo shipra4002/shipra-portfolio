@@ -142,7 +142,7 @@ export function HeroSection() {
             className="pointer-events-none absolute inset-x-6 bottom-0 -z-10 h-16 translate-y-6 rounded-full bg-black/25 opacity-40 blur-2xl"
           />
 
-          <div className="relative overflow-hidden rounded-[30px] bg-[#F6F0EA] shadow-lift">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[30px] bg-[#F6F0EA] shadow-lift">
             {/* Subtle radial gradient backdrop */}
             <div
               aria-hidden
@@ -156,7 +156,7 @@ export function HeroSection() {
             {/* Large soft circle behind the head */}
             <div
               aria-hidden
-              className="pointer-events-none absolute left-1/2 top-[14%] -z-0 aspect-square w-[62%] -translate-x-1/2 rounded-full bg-[#EBE1D6]"
+              className="pointer-events-none absolute left-1/2 top-[12%] z-0 aspect-square w-[64%] -translate-x-1/2 rounded-full bg-[#EBE1D6]"
             />
 
             {/* Dotted grid decoration, bottom-right */}
@@ -177,7 +177,7 @@ export function HeroSection() {
               alt="Editorial portrait of Shipra Maurya"
               width={1024}
               height={1280}
-              className="relative z-10 mx-auto block h-[88%] w-[86%] object-contain px-4 pt-6"
+              className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[90%] w-auto max-w-[88%] object-contain object-bottom"
               animate={reduce ? undefined : { y: [0, -10, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             />
