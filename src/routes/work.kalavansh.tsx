@@ -265,7 +265,7 @@ function WantedToUnderstand() {
             variants={staggerItem}
             className="rounded-[18px] border border-border bg-surface p-7 text-center"
           >
-            <div className="font-serif text-[clamp(2.4rem,6vw,3.4rem)] font-light text-terracotta">
+            <div className="font-serif text-[clamp(1.5rem,3vw,2.1rem)] font-light leading-tight text-terracotta">
               {s.n}
             </div>
             <div className="mt-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">
