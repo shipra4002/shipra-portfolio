@@ -99,9 +99,16 @@ function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 1.12]);
 
   const meta = [
-    { label: "Role", value: "Product Manager · UX Research" },
-    { label: "Duration", value: "12 weeks" },
-    { label: "Team", value: "Cause Crew — 4 members" },
+    { label: "Role", value: "Product Manager" },
+    { label: "Timeline", value: "12 weeks" },
+    { label: "Team", value: "CauseCrew \u2022 Team of 3" },
+  ];
+
+  const contributions = [
+    "Led Product Discovery",
+    "Synthesized User Research into Product Insights",
+    "Designed the MVP Experience",
+    "Built the Functional MVP Website",
   ];
 
   const links = [
@@ -143,6 +150,20 @@ function Hero() {
                   <span className="ml-2 text-sm text-foreground">{m.value}</span>
                 </div>
               ))}
+            </Reveal>
+
+            <Reveal delay={0.15} className="mt-8">
+              <div className="mb-3 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+                My Contribution
+              </div>
+              <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                {contributions.map((c) => (
+                  <li key={c} className="flex items-start gap-3 text-sm text-foreground">
+                    <span className="mt-2 h-1 w-1 rounded-full bg-terracotta" />
+                    {c}
+                  </li>
+                ))}
+              </ul>
             </Reveal>
 
             <Reveal delay={0.18} className="mt-8 flex flex-wrap gap-3">
