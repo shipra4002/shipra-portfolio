@@ -23,7 +23,10 @@ import { SiteFooter } from "@/components/site-footer";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
 import heroImg from "@/assets/kala-hero-weaver.jpg";
 import videoPoster from "@/assets/kala-video-poster.jpg";
-import kalaVideo from "@/assets/kalavansh.mp4.asset.json";
+// Large video (83MB) is hosted on the Lovable CDN via an absolute URL so it
+// loads on any deploy host (Vercel/Netlify/Cloudflare) without living in the repo.
+const kalaVideoUrl =
+  "https://editorial-product-mind.lovable.app/__l5e/assets-v1/e7dac8b6-ed63-4287-9d45-7b41d7051367/kalavansh.mp4";
 import storyImg from "@/assets/kala-batik-woman.jpg";
 import workshopImg from "@/assets/kala-designer.png";
 import profileImg from "@/assets/kala-basket-smile.png";
