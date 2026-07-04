@@ -212,13 +212,10 @@ function Hero() {
   ];
 
   return (
-    <header ref={ref} className="relative px-6 pt-28 pb-16 md:px-10 md:pt-32 md:pb-24">
+    <header ref={ref} className="relative px-6 pt-20 pb-16 md:px-10 md:pt-24 md:pb-24">
       <div className="mx-auto max-w-6xl">
-        <Reveal>
-          <BackLink />
-        </Reveal>
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-14">
 
-        <div className="mt-8 grid grid-cols-1 items-center gap-10 md:mt-10 md:grid-cols-12 md:gap-14">
           <div className="md:col-span-6">
             <Reveal delay={0.05}>
               <span className="text-xs uppercase tracking-[0.24em] text-terracotta">Product Design & Strategy</span>
