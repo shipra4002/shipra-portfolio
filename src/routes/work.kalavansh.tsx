@@ -99,9 +99,16 @@ function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 1.12]);
 
   const meta = [
-    { label: "Role", value: "Product Manager · UX Research" },
-    { label: "Duration", value: "12 weeks" },
-    { label: "Team", value: "Cause Crew — 4 members" },
+    { label: "Role", value: "Product Manager" },
+    { label: "Timeline", value: "12 weeks" },
+    { label: "Team", value: "CauseCrew \u2022 Team of 3" },
+  ];
+
+  const contributions = [
+    "Led Product Discovery",
+    "Synthesized User Research into Product Insights",
+    "Designed the MVP Experience",
+    "Built the Functional MVP Website",
   ];
 
   const links = [
