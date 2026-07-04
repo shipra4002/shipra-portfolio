@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight } from "lucide-react";
-import portraitAsset from "@/assets/hero-portrait.png.asset.json";
+import portrait from "@/assets/hero-portrait.png";
 
 const LINES = [
   "People don't remember products.",
