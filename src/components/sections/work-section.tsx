@@ -15,7 +15,7 @@ function ProjectCard({ project }: { project: Project }) {
         {/* Cover image */}
         <div className="relative aspect-[16/10] w-full overflow-hidden">
           <div
-            className="absolute inset-0 scale-100 transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+            className="absolute inset-0 scale-100 bg-cover bg-center transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
             style={{ backgroundImage: project.cover }}
           />
           <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_20%_0%,rgba(255,255,255,0.14),transparent_55%)]" />

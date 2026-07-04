@@ -1,3 +1,7 @@
+import kalavanshCover from "@/assets/kalavansh.png.asset.json";
+import nexoCover from "@/assets/nexo.png.asset.json";
+import smartPosCover from "@/assets/smart-pos.png.asset.json";
+
 export type WorkCategory = {
   id: string;
   label: string;
@@ -24,21 +28,21 @@ export const workCategories: WorkCategory[] = [
         title: "Kalavansh",
         category: "Project",
         kicker: "Product Design & Strategy",
-        cover: "linear-gradient(135deg, #6b7a68 0%, #3f4a43 100%)",
+        cover: `url(${kalavanshCover.url})`,
       },
       {
         slug: "nexo",
         title: "Nexo",
         category: "Project",
         kicker: "Product Design & Strategy",
-        cover: "linear-gradient(135deg, #b06a4c 0%, #7c4a34 100%)",
+        cover: `url(${nexoCover.url})`,
       },
       {
         slug: "smart-predictive-pos",
         title: "Smart Predictive POS",
         category: "Project",
         kicker: "Product Design & Strategy",
-        cover: "linear-gradient(135deg, #d8b36a 0%, #a17f3c 100%)",
+        cover: `url(${smartPosCover.url})`,
       },
     ],
   },
