@@ -123,50 +123,28 @@ export function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Structural color block: sage, offset up-right */}
+          {/* Bold structural color block: terracotta, offset down-left */}
           <div
             aria-hidden
-            className="absolute -right-7 -top-7 z-0 h-[70%] w-[74%] rounded-2xl bg-sage shadow-soft"
+            className="absolute -bottom-10 -left-10 z-0 h-[82%] w-[86%] rounded-2xl bg-terracotta shadow-lift"
           />
 
-          {/* Structural color block: terracotta, offset down-left */}
+          {/* Bold structural color block: sage, offset up-right */}
           <div
             aria-hidden
-            className="absolute -bottom-9 -left-9 z-0 h-[66%] w-[74%] rounded-2xl bg-terracotta shadow-soft"
+            className="absolute -right-8 -top-8 z-0 h-[76%] w-[86%] rounded-2xl bg-sage shadow-lift"
           />
 
-          {/* Portrait card — clean frame over color blocks */}
-          <div className="relative z-10 overflow-hidden rounded-2xl border-[8px] border-gold shadow-lift">
-            <div
-              className="relative aspect-[4/5] overflow-hidden"
-              style={{
-                background:
-                  "linear-gradient(160deg, #f5ebe0 0%, #e8d8c8 50%, #dec5ae 100%)",
-              }}
-            >
-              {/* Rich ambient color wash */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(50% 45% at 50% 26%, rgba(216,179,106,0.55), transparent 72%), radial-gradient(52% 46% at 20% 88%, rgba(176,106,76,0.42), transparent 76%), radial-gradient(50% 44% at 86% 84%, rgba(107,122,104,0.40), transparent 78%)",
-                }}
-              />
-
-              {/* Warm halo behind the head */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute left-1/2 top-[10%] z-0 aspect-square w-[64%] -translate-x-1/2 rounded-full bg-[#eaddcf]"
-              />
-
+          {/* Portrait card — clean white frame with gold accent */}
+          <div className="relative z-10 overflow-hidden rounded-2xl bg-background shadow-lift">
+            <div className="relative aspect-[4/5] overflow-hidden bg-[#eaddcf]">
               {/* Portrait — dominant element */}
               <motion.img
                 src={portrait}
                 alt="Editorial portrait of Shipra Maurya"
                 width={1024}
                 height={1280}
-                className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[94%] w-auto max-w-[95%] object-contain object-bottom md:h-[95%]"
+                className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[95%] w-auto max-w-[96%] object-contain object-bottom md:h-[96%]"
                 initial={{ opacity: 0, y: 24 }}
                 animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
                 transition={{
@@ -180,10 +158,13 @@ export function HeroSection() {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 z-[15]"
                 style={{
-                  boxShadow: "inset 0 -40px 60px -32px rgba(120,90,70,0.35)",
+                  boxShadow: "inset 0 -44px 64px -34px rgba(100,76,58,0.30)",
                 }}
               />
             </div>
+
+            {/* Minimal gold accent line at bottom */}
+            <div aria-hidden className="h-[6px] w-full bg-gold" />
           </div>
         </motion.div>
       </div>
