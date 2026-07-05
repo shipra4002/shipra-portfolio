@@ -126,7 +126,7 @@ export function HeroSection() {
           {/* Structural color block: sage, offset up-right */}
           <motion.div
             aria-hidden
-            className="absolute -right-6 -top-8 -z-10 h-[110%] w-[78%] rounded-2xl bg-sage shadow-lift"
+            className="absolute -right-10 -top-10 -z-10 h-[75%] w-[82%] rounded-2xl bg-sage shadow-lift"
             initial={{ opacity: 0, x: 20, y: -20 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -135,11 +135,12 @@ export function HeroSection() {
           {/* Structural color block: terracotta, offset down-left */}
           <motion.div
             aria-hidden
-            className="absolute -bottom-8 -left-8 -z-10 h-[70%] w-full rounded-2xl bg-terracotta shadow-lift"
+            className="absolute -bottom-12 -left-12 -z-10 h-[72%] w-[82%] rounded-2xl bg-terracotta shadow-lift"
             initial={{ opacity: 0, x: -20, y: 20 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
           />
+
 
           {/* Floating gold ring outline */}
           <motion.div
