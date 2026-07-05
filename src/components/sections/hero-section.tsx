@@ -163,7 +163,7 @@ export function HeroSection() {
           />
 
           {/* Portrait card — frosted glass over color blocks, thick gold frame */}
-          <div className="relative rounded-2xl border-[10px] border-gold bg-white/30 p-3 shadow-lift backdrop-blur-xl">
+          <div className="relative z-10 rounded-2xl border-[10px] border-gold bg-white/30 p-3 shadow-lift backdrop-blur-xl">
             <div
               className="relative aspect-[4/5] overflow-hidden rounded-xl"
               style={{
