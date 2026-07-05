@@ -116,7 +116,7 @@ export function HeroSection() {
 
         </div>
 
-        {/* Right: colorful architectural color-block portrait composition */}
+        {/* Right: minimal premium portrait composition */}
         <motion.div
           className="relative isolate order-1 mx-auto w-full max-w-sm md:order-2 md:max-w-md"
           initial={{ opacity: 0, scale: 0.98 }}
@@ -126,39 +126,26 @@ export function HeroSection() {
           {/* Structural color block: sage, offset up-right */}
           <div
             aria-hidden
-            className="absolute -right-10 -top-10 z-0 h-[75%] w-[82%] rounded-2xl bg-sage shadow-lift"
+            className="absolute -right-8 -top-8 z-0 h-[72%] w-[78%] rounded-2xl bg-sage/90 shadow-soft"
           />
 
           {/* Structural color block: terracotta, offset down-left */}
           <div
             aria-hidden
-            className="absolute -bottom-12 -left-12 z-0 h-[72%] w-[82%] rounded-2xl bg-terracotta shadow-lift"
+            className="absolute -bottom-10 -left-10 z-0 h-[68%] w-[78%] rounded-2xl bg-terracotta/90 shadow-soft"
           />
 
-
-
-          {/* Floating gold ring outline */}
+          {/* Subtle gold ring outline */}
           <motion.div
             aria-hidden
-            className="pointer-events-none absolute -bottom-10 -left-14 z-20 hidden aspect-square w-32 rounded-full border-[14px] border-gold/80 sm:block"
+            className="pointer-events-none absolute -bottom-6 -left-10 z-20 hidden aspect-square w-24 rounded-full border-[3px] border-gold/60 sm:block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
           />
 
-          {/* Sage dot-matrix grid, top-right */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -right-5 top-2 z-20 hidden h-16 w-16 sm:block"
-            style={{
-              backgroundImage: "radial-gradient(currentColor 2px, transparent 2.4px)",
-              backgroundSize: "13px 13px",
-              color: "var(--sage)",
-            }}
-          />
-
-          {/* Portrait card — frosted glass over color blocks, thick gold frame */}
-          <div className="relative z-10 rounded-2xl border-[10px] border-gold bg-white/30 p-3 shadow-lift backdrop-blur-xl">
+          {/* Portrait card — frosted glass over color blocks */}
+          <div className="relative z-10 rounded-2xl border-[6px] border-gold/80 bg-white/20 p-2 shadow-lift backdrop-blur-xl">
             <div
               className="relative aspect-[4/5] overflow-hidden rounded-xl"
               style={{
@@ -166,20 +153,20 @@ export function HeroSection() {
                   "linear-gradient(155deg, #F3E7D6 0%, #EAD9C6 45%, #E4CDBE 100%)",
               }}
             >
-              {/* Colorful layered gradient backdrop */}
+              {/* Soft warm backdrop wash */}
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(60% 55% at 50% 30%, rgba(216,179,106,0.42), transparent 70%), radial-gradient(58% 52% at 20% 84%, rgba(176,106,76,0.34), transparent 72%), radial-gradient(55% 48% at 84% 80%, rgba(107,122,104,0.34), transparent 74%)",
+                    "radial-gradient(50% 48% at 50% 28%, rgba(216,179,106,0.32), transparent 72%), radial-gradient(50% 44% at 22% 86%, rgba(176,106,76,0.26), transparent 74%), radial-gradient(50% 42% at 84% 82%, rgba(107,122,104,0.26), transparent 76%)",
                 }}
               />
 
               {/* Warm glow behind the head */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute left-1/2 top-[9%] z-0 aspect-square w-[68%] -translate-x-1/2 rounded-full bg-[#EBE1D6] blur-[1px]"
+                className="pointer-events-none absolute left-1/2 top-[9%] z-0 aspect-square w-[66%] -translate-x-1/2 rounded-full bg-[#EBE1D6] blur-[1px]"
               />
 
               {/* Portrait — dominant element */}
@@ -197,33 +184,14 @@ export function HeroSection() {
                 }}
               />
 
-              {/* Gold accent corner block, bottom-right inside */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute bottom-0 right-0 z-[12] h-10 w-28 bg-gold/90"
-              />
-
               {/* Soft vignette for depth */}
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 z-[15]"
                 style={{
-                  boxShadow: "inset 0 -40px 60px -30px rgba(138,106,82,0.35)",
+                  boxShadow: "inset 0 -36px 56px -28px rgba(138,106,82,0.30)",
                 }}
               />
-            </div>
-
-            {/* Frosted glass info bar */}
-            <div className="mt-3 flex items-center justify-between rounded-xl border border-white/50 bg-white/40 px-4 py-3 backdrop-blur-md">
-              <div>
-                <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-sage">
-                  Product Manager
-                </span>
-                <span className="font-serif text-lg italic text-terracotta">Shipra Maurya</span>
-              </div>
-              <span className="flex size-9 items-center justify-center rounded-full border border-gold">
-                <span className="size-2 rounded-full bg-gold" />
-              </span>
             </div>
           </div>
         </motion.div>
