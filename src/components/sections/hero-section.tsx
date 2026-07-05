@@ -98,19 +98,21 @@ export function HeroSection() {
 
 
           <motion.div
-            className="mt-8"
+            className="mt-8 flex items-center gap-6"
             initial={{ opacity: 0, y: 14 }}
             animate={showFinal ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
             transition={{ duration: 0.9, delay: reduce ? 0.1 : 0.75, ease: [0.22, 1, 0.36, 1] }}
           >
             <a
               href="#work"
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm text-background transition-all duration-300 hover:gap-3"
+              className="group inline-flex items-center gap-2 rounded-full bg-terracotta px-6 py-3.5 text-sm text-background shadow-soft transition-all duration-300 hover:gap-3 hover:bg-sage"
             >
               See How I Think
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
+            <span className="hidden h-[2px] w-24 bg-gold md:block" />
           </motion.div>
+
 
         </div>
 
