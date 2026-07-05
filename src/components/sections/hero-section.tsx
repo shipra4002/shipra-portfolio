@@ -135,16 +135,16 @@ export function HeroSection() {
             className="absolute -right-8 -top-8 z-0 h-[76%] w-[86%] rounded-2xl bg-sage shadow-lift"
           />
 
-          {/* Portrait card — clean white frame with gold accent */}
+          {/* Portrait card — clean white frame with sage backdrop */}
           <div className="relative z-10 overflow-hidden rounded-2xl bg-background shadow-lift">
-            <div className="relative aspect-[4/5] overflow-hidden bg-[#eaddcf]">
+            <div className="relative aspect-[4/5] overflow-hidden bg-sage">
               {/* Portrait — dominant element */}
               <motion.img
                 src={portrait}
                 alt="Editorial portrait of Shipra Maurya"
                 width={1024}
                 height={1280}
-                className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[95%] w-auto max-w-[96%] object-contain object-bottom md:h-[96%]"
+                className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[95%] w-auto max-w-[96%] object-contain object-bottom drop-shadow-lg md:h-[96%]"
                 initial={{ opacity: 0, y: 24 }}
                 animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
                 transition={{
@@ -158,7 +158,7 @@ export function HeroSection() {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 z-[15]"
                 style={{
-                  boxShadow: "inset 0 -44px 64px -34px rgba(100,76,58,0.30)",
+                  boxShadow: "inset 0 -44px 64px -34px rgba(40,45,35,0.35)",
                 }}
               />
             </div>
