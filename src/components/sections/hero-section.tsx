@@ -114,178 +114,119 @@ export function HeroSection() {
 
         </div>
 
-        {/* Right: premium layered editorial portrait composition */}
+        {/* Right: colorful architectural color-block portrait composition */}
         <motion.div
-          className="relative order-1 mx-auto w-full max-w-md md:order-2 md:max-w-lg"
+          className="relative order-1 mx-auto w-full max-w-sm md:order-2 md:max-w-md"
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Ambient warm glow bleeding outside the card */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -inset-8 -z-20"
-            style={{
-              background:
-                "radial-gradient(50% 45% at 55% 40%, rgba(216,179,106,0.22), transparent 72%)",
-            }}
-          />
-
-          {/* Oversized soft circle extending beyond the frame */}
+          {/* Structural color block: sage, offset up-right */}
           <motion.div
             aria-hidden
-            className="pointer-events-none absolute -right-8 top-2 -z-10 aspect-square w-[70%] rounded-full bg-[#EBE1D6]/70 blur-[2px]"
+            className="absolute -right-6 -top-8 -z-10 h-[110%] w-[78%] rounded-2xl bg-sage shadow-lift"
+            initial={{ opacity: 0, x: 20, y: -20 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          />
+
+          {/* Structural color block: terracotta, offset down-left */}
+          <motion.div
+            aria-hidden
+            className="absolute -bottom-8 -left-8 -z-10 h-[70%] w-full rounded-2xl bg-terracotta shadow-lift"
+            initial={{ opacity: 0, x: -20, y: 20 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          />
+
+          {/* Floating gold ring outline */}
+          <motion.div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-10 -left-14 z-20 hidden aspect-square w-32 rounded-full border-[14px] border-gold/80 sm:block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.4, delay: 0.2 }}
+            transition={{ duration: 1, delay: 0.6 }}
           />
 
-          {/* Thin abstract curved line extending outside the card */}
-          <svg
-            aria-hidden
-            className="pointer-events-none absolute -left-12 top-8 -z-10 h-48 w-48 text-terracotta/30"
-            viewBox="0 0 160 160"
-            fill="none"
-          >
-            <path
-              d="M6 120 C 40 40, 120 10, 154 44"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
-
-          {/* Floating PM card: mini kanban — outside, top-left */}
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute -left-6 top-16 z-20 hidden w-32 rounded-xl border border-border/60 bg-card/70 p-2.5 shadow-soft backdrop-blur-sm sm:block"
-            initial={{ opacity: 0, y: 14 }}
-            animate={reduce ? { opacity: 1 } : { opacity: 1, y: [0, -6, 0] }}
-            transition={{ opacity: { duration: 0.9, delay: 0.6 }, y: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
-          >
-            <div className="mb-1.5 h-1.5 w-10 rounded-full bg-sage/40" />
-            <div className="grid grid-cols-3 gap-1">
-              <div className="space-y-1">
-                <div className="h-3 rounded bg-muted-foreground/15" />
-                <div className="h-3 rounded bg-muted-foreground/10" />
-              </div>
-              <div className="space-y-1">
-                <div className="h-3 rounded bg-terracotta/20" />
-              </div>
-              <div className="space-y-1">
-                <div className="h-3 rounded bg-muted-foreground/10" />
-                <div className="h-3 rounded bg-muted-foreground/15" />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Floating PM card: mini analytics — outside, bottom-right */}
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute -right-6 bottom-14 z-20 hidden w-32 rounded-xl border border-border/60 bg-card/70 p-2.5 shadow-soft backdrop-blur-sm sm:block"
-            initial={{ opacity: 0, y: 14 }}
-            animate={reduce ? { opacity: 1 } : { opacity: 1, y: [0, 6, 0] }}
-            transition={{ opacity: { duration: 0.9, delay: 0.8 }, y: { duration: 7, repeat: Infinity, ease: "easeInOut" } }}
-          >
-            <div className="mb-1.5 h-1.5 w-8 rounded-full bg-terracotta/40" />
-            <div className="flex h-10 items-end gap-1">
-              <div className="w-full rounded-t bg-sage/25" style={{ height: "40%" }} />
-              <div className="w-full rounded-t bg-sage/35" style={{ height: "65%" }} />
-              <div className="w-full rounded-t bg-terracotta/30" style={{ height: "50%" }} />
-              <div className="w-full rounded-t bg-sage/45" style={{ height: "85%" }} />
-              <div className="w-full rounded-t bg-sage/30" style={{ height: "70%" }} />
-            </div>
-          </motion.div>
-
-          {/* Soft layered shadow beneath the card */}
+          {/* Sage dot-matrix grid, top-right */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-8 bottom-0 -z-10 h-20 translate-y-7 rounded-full bg-[#8a6a52]/25 opacity-50 blur-2xl"
-          />
-
-          <div
-            className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-border/50 shadow-lift"
+            className="pointer-events-none absolute -right-5 top-2 z-20 hidden h-16 w-16 sm:block"
             style={{
-              background:
-                "linear-gradient(155deg, #F3E7D6 0%, #EAD9C6 42%, #E4CDBE 100%)",
+              backgroundImage: "radial-gradient(currentColor 2px, transparent 2.4px)",
+              backgroundSize: "13px 13px",
+              color: "var(--sage)",
             }}
-          >
-            {/* Colorful layered gradient backdrop */}
+          />
+
+          {/* Portrait card — frosted glass over color blocks, thick gold frame */}
+          <div className="relative rounded-2xl border-[10px] border-gold bg-white/30 p-3 shadow-lift backdrop-blur-xl">
             <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0"
+              className="relative aspect-[4/5] overflow-hidden rounded-xl"
               style={{
                 background:
-                  "radial-gradient(60% 55% at 50% 32%, rgba(216,179,106,0.32), transparent 70%), radial-gradient(55% 50% at 22% 82%, rgba(176,106,76,0.22), transparent 72%), radial-gradient(50% 45% at 82% 78%, rgba(107,122,104,0.20), transparent 74%)",
+                  "linear-gradient(155deg, #F3E7D6 0%, #EAD9C6 45%, #E4CDBE 100%)",
               }}
-            />
-
-            {/* Warm beige glow behind the head */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-1/2 top-[10%] z-0 aspect-square w-[68%] -translate-x-1/2 rounded-full bg-[#EBE1D6] blur-[1px]"
-            />
-
-            {/* Translucent rounded panel, upper-left inside */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-4 top-5 z-0 h-24 w-20 rounded-2xl bg-white/30 backdrop-blur-[1px]"
-            />
-
-            {/* Faint wireframe / user-journey outline, low opacity */}
-            <svg
-              aria-hidden
-              className="pointer-events-none absolute inset-0 z-0 h-full w-full text-terracotta/10"
-              viewBox="0 0 320 400"
-              fill="none"
             >
-              <circle cx="52" cy="300" r="10" stroke="currentColor" strokeWidth="1.5" />
-              <circle cx="150" cy="330" r="10" stroke="currentColor" strokeWidth="1.5" />
-              <circle cx="255" cy="290" r="10" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M62 300 H140" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-              <path d="M160 330 H245" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-            </svg>
+              {/* Colorful layered gradient backdrop */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(60% 55% at 50% 30%, rgba(216,179,106,0.42), transparent 70%), radial-gradient(58% 52% at 20% 84%, rgba(176,106,76,0.34), transparent 72%), radial-gradient(55% 48% at 84% 80%, rgba(107,122,104,0.34), transparent 74%)",
+                }}
+              />
 
-            {/* Dotted grid decoration, bottom-right */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute bottom-6 right-6 z-0 h-20 w-20 opacity-30"
-              style={{
-                backgroundImage: "radial-gradient(currentColor 1px, transparent 1.4px)",
-                backgroundSize: "11px 11px",
-                color: "rgba(176,106,76,0.6)",
-              }}
-            />
+              {/* Warm glow behind the head */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute left-1/2 top-[9%] z-0 aspect-square w-[68%] -translate-x-1/2 rounded-full bg-[#EBE1D6] blur-[1px]"
+              />
 
-            {/* Small geometric accent */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute right-6 top-6 z-0 h-8 w-8 rotate-12 rounded-md border border-terracotta/25"
-            />
+              {/* Portrait — dominant element */}
+              <motion.img
+                src={portrait}
+                alt="Editorial portrait of Shipra Maurya"
+                width={1024}
+                height={1280}
+                className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[93%] w-auto max-w-[94%] object-contain object-bottom md:h-[94%]"
+                initial={{ opacity: 0, y: 24 }}
+                animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
+                transition={{
+                  opacity: { duration: 1, delay: 0.3 },
+                  y: reduce ? undefined : { duration: 7, repeat: Infinity, ease: "easeInOut" },
+                }}
+              />
 
-            {/* Portrait — dominant element */}
-            <motion.img
-              src={portrait}
-              alt="Editorial portrait of Shipra Maurya"
-              width={1024}
-              height={1280}
-              className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[92%] w-auto max-w-[94%] object-contain object-bottom sm:h-[93%] md:h-[94%]"
-              initial={{ opacity: 0, y: 24 }}
-              animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
-              transition={{
-                opacity: { duration: 1, delay: 0.3 },
-                y: reduce ? undefined : { duration: 7, repeat: Infinity, ease: "easeInOut" },
-              }}
-            />
+              {/* Gold accent corner block, bottom-right inside */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute bottom-0 right-0 z-[12] h-10 w-28 bg-gold/90"
+              />
 
-            {/* Soft vignette for depth */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 z-[15]"
-              style={{
-                boxShadow: "inset 0 -40px 60px -30px rgba(138,106,82,0.25)",
-              }}
-            />
+              {/* Soft vignette for depth */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-[15]"
+                style={{
+                  boxShadow: "inset 0 -40px 60px -30px rgba(138,106,82,0.35)",
+                }}
+              />
+            </div>
+
+            {/* Frosted glass info bar */}
+            <div className="mt-3 flex items-center justify-between rounded-xl border border-white/50 bg-white/40 px-4 py-3 backdrop-blur-md">
+              <div>
+                <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-sage">
+                  Product Manager
+                </span>
+                <span className="font-serif text-lg italic text-terracotta">Shipra Maurya</span>
+              </div>
+              <span className="flex size-9 items-center justify-center rounded-full border border-gold">
+                <span className="size-2 rounded-full bg-gold" />
+              </span>
+            </div>
           </div>
         </motion.div>
       </div>
