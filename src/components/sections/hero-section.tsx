@@ -126,47 +126,38 @@ export function HeroSection() {
           {/* Structural color block: sage, offset up-right */}
           <div
             aria-hidden
-            className="absolute -right-8 -top-8 z-0 h-[72%] w-[78%] rounded-2xl bg-sage/90 shadow-soft"
+            className="absolute -right-7 -top-7 z-0 h-[70%] w-[74%] rounded-2xl bg-sage shadow-soft"
           />
 
           {/* Structural color block: terracotta, offset down-left */}
           <div
             aria-hidden
-            className="absolute -bottom-10 -left-10 z-0 h-[68%] w-[78%] rounded-2xl bg-terracotta/90 shadow-soft"
+            className="absolute -bottom-9 -left-9 z-0 h-[66%] w-[74%] rounded-2xl bg-terracotta shadow-soft"
           />
 
-          {/* Subtle gold ring outline */}
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute -bottom-6 -left-10 z-20 hidden aspect-square w-24 rounded-full border-[3px] border-gold/60 sm:block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-          />
-
-          {/* Portrait card — frosted glass over color blocks */}
-          <div className="relative z-10 rounded-2xl border-[6px] border-gold/80 bg-white/20 p-2 shadow-lift backdrop-blur-xl">
+          {/* Portrait card — clean frame over color blocks */}
+          <div className="relative z-10 overflow-hidden rounded-2xl border-[8px] border-gold shadow-lift">
             <div
-              className="relative aspect-[4/5] overflow-hidden rounded-xl"
+              className="relative aspect-[4/5] overflow-hidden"
               style={{
                 background:
-                  "linear-gradient(155deg, #F3E7D6 0%, #EAD9C6 45%, #E4CDBE 100%)",
+                  "linear-gradient(160deg, #f5ebe0 0%, #e8d8c8 50%, #dec5ae 100%)",
               }}
             >
-              {/* Soft warm backdrop wash */}
+              {/* Rich ambient color wash */}
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(50% 48% at 50% 28%, rgba(216,179,106,0.32), transparent 72%), radial-gradient(50% 44% at 22% 86%, rgba(176,106,76,0.26), transparent 74%), radial-gradient(50% 42% at 84% 82%, rgba(107,122,104,0.26), transparent 76%)",
+                    "radial-gradient(50% 45% at 50% 26%, rgba(216,179,106,0.55), transparent 72%), radial-gradient(52% 46% at 20% 88%, rgba(176,106,76,0.42), transparent 76%), radial-gradient(50% 44% at 86% 84%, rgba(107,122,104,0.40), transparent 78%)",
                 }}
               />
 
-              {/* Warm glow behind the head */}
+              {/* Warm halo behind the head */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute left-1/2 top-[9%] z-0 aspect-square w-[66%] -translate-x-1/2 rounded-full bg-[#EBE1D6] blur-[1px]"
+                className="pointer-events-none absolute left-1/2 top-[10%] z-0 aspect-square w-[64%] -translate-x-1/2 rounded-full bg-[#eaddcf]"
               />
 
               {/* Portrait — dominant element */}
@@ -175,7 +166,7 @@ export function HeroSection() {
                 alt="Editorial portrait of Shipra Maurya"
                 width={1024}
                 height={1280}
-                className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[93%] w-auto max-w-[94%] object-contain object-bottom md:h-[94%]"
+                className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[94%] w-auto max-w-[95%] object-contain object-bottom md:h-[95%]"
                 initial={{ opacity: 0, y: 24 }}
                 animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
                 transition={{
@@ -189,7 +180,7 @@ export function HeroSection() {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 z-[15]"
                 style={{
-                  boxShadow: "inset 0 -36px 56px -28px rgba(138,106,82,0.30)",
+                  boxShadow: "inset 0 -40px 60px -32px rgba(120,90,70,0.35)",
                 }}
               />
             </div>
