@@ -4,10 +4,14 @@ const EDUCATION = [
   {
     degree: "Technology MBA",
     institution: "Institute of Product Leadership × CMR University",
+    period: "2025 — Present",
+    detail: "",
   },
   {
     degree: "Bachelor of Science in Information Technology",
-    institution: "",
+    institution: "UPG College, Mumbai",
+    period: "2022 — 2025",
+    detail: "Graduated with a CGPA of 8.97",
   },
 ];
 
