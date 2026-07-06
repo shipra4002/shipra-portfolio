@@ -122,10 +122,10 @@ export function HeroSection() {
   return (
     <section className="px-3 pt-20 md:px-6 md:pt-24">
       <div
-        className="relative mx-auto flex min-h-[calc(100svh-6rem)] w-full max-w-[1400px] items-center overflow-hidden rounded-[36px] px-6 py-16 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px] md:px-14 md:py-20"
+        className="relative mx-auto flex min-h-[calc(100svh-6rem)] w-full max-w-[1400px] items-center overflow-hidden rounded-[36px] border border-gold/10 px-6 py-16 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px] md:px-14 md:py-20"
         style={{
           background:
-            "radial-gradient(120% 120% at 80% 10%, #F6B94E 0%, #F2A93B 42%, #E89B2C 100%)",
+            "radial-gradient(80% 55% at 92% 12%, rgba(246,185,78,0.12) 0%, rgba(246,185,78,0.04) 30%, transparent 65%)",
         }}
       >
         {/* Soft ambient light */}
@@ -134,7 +134,7 @@ export function HeroSection() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(60% 50% at 20% 20%, rgba(255,255,255,0.28), transparent 70%)",
+              "radial-gradient(60% 50% at 20% 20%, rgba(246,185,78,0.10), transparent 70%)",
           }}
         />
         {/* Dotted grid accents */}
@@ -142,7 +142,7 @@ export function HeroSection() {
           aria-hidden
           className="pointer-events-none absolute left-8 top-8 h-24 w-24 opacity-30"
           style={{
-            backgroundImage: "radial-gradient(rgba(80,45,10,0.6) 1px, transparent 1.4px)",
+            backgroundImage: "radial-gradient(rgba(248,234,210,0.25) 1px, transparent 1.4px)",
             backgroundSize: "12px 12px",
           }}
         />
@@ -150,25 +150,25 @@ export function HeroSection() {
           aria-hidden
           className="pointer-events-none absolute bottom-10 right-1/2 h-24 w-24 opacity-25"
           style={{
-            backgroundImage: "radial-gradient(rgba(80,45,10,0.6) 1px, transparent 1.4px)",
+            backgroundImage: "radial-gradient(rgba(248,234,210,0.25) 1px, transparent 1.4px)",
             backgroundSize: "12px 12px",
           }}
         />
 
         <div className="relative z-10 grid w-full grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-6">
           {/* Left: typography */}
-          <div className="relative order-2 md:order-1">
+          <div className="relative order-2 md:order-1 md:pl-12">
 
             <div className="relative z-10 space-y-6 md:space-y-8">
-              <h1 className="min-h-[3.5rem] font-serif text-[clamp(2rem,4.6vw,3.6rem)] font-light leading-[1.14] tracking-[-0.015em] text-[#2b1a08] md:min-h-[4.5rem]">
-                <span className={isLastLine ? "text-[#5a2f0c]" : ""}>{displayText}</span>
+              <h1 className="min-h-[3.5rem] font-serif text-[clamp(2rem,4.6vw,3.6rem)] font-light leading-[1.14] tracking-[-0.015em] text-[#f8ead2] md:min-h-[4.5rem]">
+                <span className={isLastLine ? "text-[#d8b36a]" : ""}>{displayText}</span>
                 {!showFinal && (
-                  <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.14em] animate-pulse bg-[#5a2f0c] align-middle" />
+                  <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.14em] animate-pulse bg-gold align-middle" />
                 )}
               </h1>
 
               <motion.p
-                className="max-w-md text-lg leading-relaxed text-[#4a3316]"
+                className="max-w-md text-lg leading-relaxed text-[#d9c6a8]"
                 initial={{ opacity: 0, y: 14 }}
                 animate={showFinal ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
                 transition={{ duration: 0.9, delay: reduce ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
@@ -184,7 +184,7 @@ export function HeroSection() {
               >
                 <a
                   href="#work"
-                  className="group inline-flex items-center gap-2 rounded-full bg-[#2b1a08] px-6 py-3.5 text-sm text-[#f8ead2] transition-all duration-300 hover:gap-3 hover:bg-[#3a2410]"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#f8ead2] px-6 py-3.5 text-sm text-[#2b1a08] transition-all duration-300 hover:gap-3 hover:bg-white"
                 >
                   See How I Think
                   <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -195,7 +195,7 @@ export function HeroSection() {
 
           {/* Right: portrait overlapping bottom + identity circles */}
           <motion.div
-            className="relative order-1 mx-auto h-[62vh] max-h-[620px] w-full max-w-md md:order-2 md:h-[76vh]"
+            className="relative order-1 mx-auto h-[75vh] max-h-[760px] w-full max-w-xl md:order-2 md:h-[90vh]"
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
@@ -203,7 +203,7 @@ export function HeroSection() {
             {/* Warm halo behind head */}
             <div
               aria-hidden
-              className="pointer-events-none absolute left-1/2 top-[8%] -z-0 aspect-square w-[78%] -translate-x-1/2 rounded-full bg-[#FCE0A8]/60 blur-[2px]"
+              className="pointer-events-none absolute left-1/2 top-[8%] -z-0 aspect-square w-[72%] -translate-x-1/2 rounded-full bg-[#FCE0A8]/30 blur-[2px]"
             />
 
             {/* Identity circles */}
@@ -211,7 +211,7 @@ export function HeroSection() {
               <IdentityCircle key={c.label} {...c} reduce={!!reduce} />
             ))}
 
-            {/* Portrait — raised up toward the identity circles */}
+            {/* Portrait — static, larger, raised toward the identity circles */}
             <motion.img
               src={portrait}
               alt="Portrait of Shipra Maurya"
@@ -219,10 +219,10 @@ export function HeroSection() {
               height={1280}
               className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-full w-auto max-w-[100%] object-contain object-top"
               initial={{ opacity: 0, y: 24 }}
-              animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
                 opacity: { duration: 1, delay: 0.3 },
-                y: reduce ? undefined : { duration: 7, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
               }}
             />
           </motion.div>
