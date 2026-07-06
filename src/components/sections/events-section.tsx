@@ -1,16 +1,10 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
-import awsSummit from "@/assets/event-aws-summit.jpg";
 import skillathon from "@/assets/event-skillathon.jpg";
 import competition from "@/assets/event-competition.jpg";
 
 const EVENTS = [
-  {
-    image: awsSummit,
-    title: "AWS Summit",
-    subtitle: "Learning the cloud from the people who build it.",
-  },
   {
     image: skillathon,
     title: "Skillathon",
@@ -36,7 +30,7 @@ export function EventsSection() {
         </Reveal>
 
         <motion.div
-          className="mt-16 grid gap-8 md:grid-cols-3"
+          className="mx-auto mt-16 grid max-w-4xl gap-8 md:grid-cols-2"
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
