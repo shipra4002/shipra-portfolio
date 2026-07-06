@@ -134,7 +134,7 @@ export function HeroSection() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(60% 50% at 20% 20%, rgba(255,255,255,0.28), transparent 70%)",
+              "radial-gradient(60% 50% at 20% 20%, rgba(255,255,255,0.14), transparent 70%)",
           }}
         />
         {/* Dotted grid accents */}
