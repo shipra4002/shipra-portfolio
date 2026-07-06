@@ -210,9 +210,13 @@ function Hero() {
   ];
 
   const links = [
-    { label: "Prototype", icon: ExternalLink, href: "https://kala-legacy-journeys.lovable.app" },
-    { label: "GitHub Repository", icon: Github, href: "https://github.com/shipra4002" },
-    { label: "Presentation Deck", icon: Presentation, href: deckAsset.url },
+    { label: "Live Prototype", icon: ExternalLink, href: "https://kalavansh.vercel.app/" },
+    { label: "GitHub Repository", icon: Github, href: "https://github.com/shipra4002/Kalavansh" },
+    {
+      label: "Case Study Deck",
+      icon: Presentation,
+      href: "https://drive.google.com/file/d/1V_gGsx5h82ICskS8iFDktf72HLOdNFQV/view?usp=drive_link",
+    },
   ];
 
   return (
