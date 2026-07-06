@@ -39,7 +39,7 @@ export function EventsSection() {
           {EVENTS.map((event) => (
             <motion.article key={event.title} variants={staggerItem} className="group cursor-pointer">
               <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-shadow duration-500 group-hover:shadow-lift">
-                <div class="aspect-[16/10] overflow-hidden">
+                <div className="aspect-[16/10] overflow-hidden">
                   <img
                     src={event.image}
                     alt={event.title}
