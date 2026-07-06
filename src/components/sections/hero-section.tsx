@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion, useMotionValue, useSpring } from "motion/react";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Target, Bot, Heart, Lightbulb, Rocket } from "lucide-react";
 import portrait from "@/assets/hero-portrait.png";
 
@@ -58,45 +58,8 @@ function useTypewriter(lines: string[], enabled: boolean) {
   return { text, index, done };
 }
 
-// Editorial floating notes on the left
-const NOTES = [
-  {
-    icon: "🧠",
-    title: "User Empathy",
-    body: "Understanding people before building products.",
-    className: "left-0 top-[8%] w-56 -rotate-2",
-    depth: 26,
-    float: 8,
-    delay: 0.5,
-  },
-  {
-    icon: "🎯",
-    title: "Product Strategy",
-    body: "Finding the right problem before the right solution.",
-    className: "-left-2 bottom-[6%] w-60 rotate-1",
-    depth: 40,
-    float: 11,
-    delay: 0.75,
-  },
-  {
-    icon: "✨",
-    title: "Delight",
-    body: "Small moments create memorable experiences.",
-    className: "left-[24%] bottom-[18%] w-52 -rotate-1",
-    depth: 32,
-    float: 9,
-    delay: 1,
-  },
-  {
-    icon: "🤖",
-    title: "AI Product Management",
-    body: "Exploring how AI creates better experiences.",
-    className: "left-[26%] top-[4%] w-56 rotate-2",
-    depth: 18,
-    float: 7,
-    delay: 1.2,
-  },
-];
+
+
 
 // Identity circles on the right
 const CIRCLES = [
@@ -155,32 +118,10 @@ export function HeroSection() {
   const displayText = reduce ? LINES[LINES.length - 1] : text;
   const isLastLine = reduce || index === LINES.length - 1;
 
-  // Subtle mouse parallax
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 60, damping: 20 });
-  const sy = useSpring(my, { stiffness: 60, damping: 20 });
-
-  useEffect(() => {
-    if (reduce) return;
-    const el = containerRef.current;
-    if (!el) return;
-    const onMove = (e: MouseEvent) => {
-      const r = el.getBoundingClientRect();
-      const nx = (e.clientX - r.left) / r.width - 0.5;
-      const ny = (e.clientY - r.top) / r.height - 0.5;
-      mx.set(nx * 22);
-      my.set(ny * 22);
-    };
-    el.addEventListener("mousemove", onMove);
-    return () => el.removeEventListener("mousemove", onMove);
-  }, [reduce, mx, my]);
 
   return (
     <section className="px-3 pt-20 md:px-6 md:pt-24">
       <div
-        ref={containerRef}
         className="relative mx-auto flex min-h-[calc(100svh-6rem)] w-full max-w-[1400px] items-center overflow-hidden rounded-[36px] px-6 py-16 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px] md:px-14 md:py-20"
         style={{
           background:
@@ -214,49 +155,10 @@ export function HeroSection() {
           }}
         />
 
-        {/* Thin hand-drawn connecting lines behind notes */}
-        <svg
-          aria-hidden
-          className="pointer-events-none absolute left-0 top-0 z-0 hidden h-full w-1/2 text-[#7a4a1c]/25 lg:block"
-          viewBox="0 0 500 700"
-          fill="none"
-          preserveAspectRatio="none"
-        >
-          <path d="M120 130 C 200 200, 120 300, 220 340" stroke="currentColor" strokeWidth="1.5" strokeDasharray="5 6" strokeLinecap="round" />
-          <path d="M180 380 C 130 460, 90 470, 70 540" stroke="currentColor" strokeWidth="1.5" strokeDasharray="5 6" strokeLinecap="round" />
-          <path d="M40 560 l 10 -6 m -10 6 l 4 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
-
         <div className="relative z-10 grid w-full grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-6">
-          {/* Left: typography + floating notes */}
+          {/* Left: typography */}
           <div className="relative order-2 md:order-1">
-            {/* Floating editorial notes (desktop only) */}
-            <motion.div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 -left-4 -top-16 hidden h-[130%] w-[130%] lg:block"
-              style={reduce ? undefined : { x: sx, y: sy }}
-            >
-              {NOTES.map((n) => (
-                <motion.div
-                  key={n.title}
-                  className={`absolute rounded-2xl border border-[#2b2b2b]/10 bg-white/40 p-3.5 backdrop-blur-sm shadow-[0_12px_30px_-16px_rgba(60,35,5,0.5)] ${n.className}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={reduce ? { opacity: 0.95 } : { opacity: 0.95, y: [0, -n.float, 0] }}
-                  transition={{
-                    opacity: { duration: 0.8, delay: n.delay },
-                    y: { duration: 6 + n.float * 0.2, repeat: Infinity, ease: "easeInOut" },
-                  }}
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">{n.icon}</span>
-                    <span className="font-serif text-sm font-medium text-[#2b1a08]">{n.title}</span>
-                  </div>
-                  <p className="mt-1 text-xs leading-snug text-[#4a3316]">{n.body}</p>
-                </motion.div>
-              ))}
-            </motion.div>
 
-            {/* Parallax layer for notes via spring */}
             <div className="relative z-10 space-y-6 md:space-y-8">
               <h1 className="min-h-[3.5rem] font-serif text-[clamp(2rem,4.6vw,3.6rem)] font-light leading-[1.14] tracking-[-0.015em] text-[#2b1a08] md:min-h-[4.5rem]">
                 <span className={isLastLine ? "text-[#5a2f0c]" : ""}>{displayText}</span>
@@ -309,13 +211,13 @@ export function HeroSection() {
               <IdentityCircle key={c.label} {...c} reduce={!!reduce} />
             ))}
 
-            {/* Portrait — overlaps bottom edge of hero card */}
+            {/* Portrait — raised up toward the identity circles */}
             <motion.img
               src={portrait}
               alt="Portrait of Shipra Maurya"
               width={1024}
               height={1280}
-              className="absolute inset-x-0 bottom-[-16rem] z-10 mx-auto block h-[calc(100%+16rem)] w-auto max-w-[100%] object-contain object-bottom md:bottom-[-20rem] md:h-[calc(100%+20rem)]"
+              className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-full w-auto max-w-[100%] object-contain object-top"
               initial={{ opacity: 0, y: 24 }}
               animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
               transition={{
