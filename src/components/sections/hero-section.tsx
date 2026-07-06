@@ -125,7 +125,7 @@ export function HeroSection() {
         className="relative mx-auto flex min-h-[calc(100svh-6rem)] w-full max-w-[1400px] items-center overflow-hidden rounded-[36px] border border-gold/10 px-6 py-16 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px] md:px-14 md:py-20"
         style={{
           background:
-            "radial-gradient(80% 60% at 90% 15%, rgba(246,185,78,0.20) 0%, rgba(246,185,78,0.06) 35%, transparent 70%)",
+            "radial-gradient(80% 55% at 92% 12%, rgba(246,185,78,0.12) 0%, rgba(246,185,78,0.04) 30%, transparent 65%)",
         }}
       >
         {/* Soft ambient light */}
