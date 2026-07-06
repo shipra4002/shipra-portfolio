@@ -142,7 +142,7 @@ export function HeroSection() {
           aria-hidden
           className="pointer-events-none absolute left-8 top-8 h-24 w-24 opacity-30"
           style={{
-            backgroundImage: "radial-gradient(rgba(80,45,10,0.6) 1px, transparent 1.4px)",
+            backgroundImage: "radial-gradient(rgba(248,234,210,0.25) 1px, transparent 1.4px)",
             backgroundSize: "12px 12px",
           }}
         />
@@ -150,7 +150,7 @@ export function HeroSection() {
           aria-hidden
           className="pointer-events-none absolute bottom-10 right-1/2 h-24 w-24 opacity-25"
           style={{
-            backgroundImage: "radial-gradient(rgba(80,45,10,0.6) 1px, transparent 1.4px)",
+            backgroundImage: "radial-gradient(rgba(248,234,210,0.25) 1px, transparent 1.4px)",
             backgroundSize: "12px 12px",
           }}
         />
