@@ -695,7 +695,12 @@ function NextProject() {
   return (
     <section className="px-6 pb-28 pt-4 md:px-10">
       <div className="mx-auto max-w-6xl">
-        <Reveal>
+        <Reveal className="mb-8 flex items-center justify-between gap-4">
+          <BackLink />
+          <span className="text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
+            Continue the journey
+          </span>
+        </Reveal>
           <Link
             to="/work/$slug"
             params={{ slug: "nexo" }}
