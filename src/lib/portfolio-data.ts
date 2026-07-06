@@ -2,6 +2,8 @@ import kalavanshCover from "@/assets/kalavansh.png";
 import nexoCover from "@/assets/nexo.png";
 import smartPosCover from "@/assets/smart-pos.png";
 import notionCover from "@/assets/notion-cover.png.asset.json";
+import tajCover from "@/assets/taj-cover.png.asset.json";
+import atherCover from "@/assets/ather-cover.png.asset.json";
 
 export type WorkCategory = {
   id: string;
@@ -35,7 +37,7 @@ export const workCategories: WorkCategory[] = [
         slug: "nexo",
         title: "Nexo",
         category: "Project",
-        kicker: "Product Design & Strategy",
+        kicker: "Technical Product Design & building",
         cover: `url(${nexoCover})`,
       },
       {
@@ -71,21 +73,14 @@ export const workCategories: WorkCategory[] = [
         title: "Taj Hotels",
         category: "Strategy Breakdown",
         kicker: "Brand & Strategy",
-        cover: "linear-gradient(135deg, #b06a4c 0%, #3f4a43 100%)",
+        cover: `url(${tajCover.url})`,
       },
       {
         slug: "ather",
         title: "Ather",
         category: "Strategy Breakdown",
         kicker: "Brand & Strategy",
-        cover: "linear-gradient(135deg, #6b7a68 0%, #d8b36a 100%)",
-      },
-      {
-        slug: "nestle",
-        title: "Nestlé",
-        category: "Strategy Breakdown",
-        kicker: "Brand & Strategy",
-        cover: "linear-gradient(135deg, #3f4a43 0%, #b06a4c 100%)",
+        cover: `url(${atherCover.url})`,
       },
     ],
   },

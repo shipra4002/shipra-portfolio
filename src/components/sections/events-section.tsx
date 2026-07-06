@@ -18,7 +18,7 @@ const EVENTS = [
   },
   {
     image: competition,
-    title: "Competition",
+    title: "Cause 2026",
     subtitle: "Testing ideas against the very best.",
   },
 ];
