@@ -43,7 +43,7 @@ export function WorkSection() {
       <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[36px] bg-[#4A5B4E] text-[#F3F0E8] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px]">
         <div className="relative mx-auto max-w-6xl px-6 py-24 md:px-14 md:py-32">
         <Reveal className="max-w-3xl">
-          <span className="text-xs uppercase tracking-[0.28em] text-terracotta">Selected Work</span>
+          <span className="text-xs uppercase tracking-[0.28em] text-gold">Selected Work</span>
           <h2 className="mt-7 whitespace-nowrap font-serif text-[clamp(2.6rem,7vw,5rem)] font-light leading-[1.05] tracking-[-0.02em]">
             Building. Investigating. Strategizing.
           </h2>
