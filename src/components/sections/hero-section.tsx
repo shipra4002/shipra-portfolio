@@ -211,13 +211,13 @@ export function HeroSection() {
               <IdentityCircle key={c.label} {...c} reduce={!!reduce} />
             ))}
 
-            {/* Portrait — overlaps bottom edge of hero card */}
+            {/* Portrait — raised up toward the identity circles */}
             <motion.img
               src={portrait}
               alt="Portrait of Shipra Maurya"
               width={1024}
               height={1280}
-              className="absolute inset-x-0 bottom-[-16rem] z-10 mx-auto block h-[calc(100%+16rem)] w-auto max-w-[100%] object-contain object-bottom md:bottom-[-20rem] md:h-[calc(100%+20rem)]"
+              className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-full w-auto max-w-[100%] object-contain object-top"
               initial={{ opacity: 0, y: 24 }}
               animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
               transition={{
