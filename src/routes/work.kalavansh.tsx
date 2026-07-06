@@ -740,11 +740,49 @@ function LookingBack() {
   );
 }
 
+/* ────────────────────────────── Next Project ────────────────────────────── */
+
+function NextProject() {
+  return (
+    <section className="px-6 pb-28 pt-4 md:px-10">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <Link
+            to="/work/$slug"
+            params={{ slug: "nexo" }}
+            className="group relative block overflow-hidden rounded-[28px] border border-border shadow-lift transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5"
+          >
+            <div
+              className="absolute inset-0 scale-100 bg-cover bg-center transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+              style={{ backgroundImage: `url(${nexoCover})` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/20" />
+
+            <div className="relative flex min-h-[420px] flex-col justify-end p-8 md:p-14">
+              <span className="text-xs uppercase tracking-[0.28em] text-white/70">Next Project</span>
+              <h3 className="mt-4 font-serif text-[clamp(2.4rem,6vw,4.5rem)] font-light leading-[0.98] tracking-[-0.02em] text-white">
+                Nexo
+              </h3>
+              <p className="mt-4 max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
+                Designing a social travel experience that turns journeys into shared memories.
+              </p>
+              <span className="mt-8 inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-white">
+                Explore Project
+                <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </span>
+            </div>
+          </Link>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ────────────────────────────── Page ────────────────────────────── */
 
 function KalaVanshCaseStudy() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="kala-theme min-h-screen bg-background">
       <PageNav />
       <Hero />
       <WatchTheStory />
@@ -752,6 +790,7 @@ function KalaVanshCaseStudy() {
       <InsightToExperience />
       <Validation />
       <LookingBack />
+      <NextProject />
       <SiteFooter />
     </div>
   );
