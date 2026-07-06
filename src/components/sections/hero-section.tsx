@@ -184,7 +184,7 @@ export function HeroSection() {
               >
                 <a
                   href="#work"
-                  className="group inline-flex items-center gap-2 rounded-full bg-[#2b1a08] px-6 py-3.5 text-sm text-[#f8ead2] transition-all duration-300 hover:gap-3 hover:bg-[#3a2410]"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#f8ead2] px-6 py-3.5 text-sm text-[#2b1a08] transition-all duration-300 hover:gap-3 hover:bg-white"
                 >
                   See How I Think
                   <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
