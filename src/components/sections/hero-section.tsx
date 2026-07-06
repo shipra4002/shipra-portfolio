@@ -118,32 +118,10 @@ export function HeroSection() {
   const displayText = reduce ? LINES[LINES.length - 1] : text;
   const isLastLine = reduce || index === LINES.length - 1;
 
-  // Subtle mouse parallax
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 60, damping: 20 });
-  const sy = useSpring(my, { stiffness: 60, damping: 20 });
-
-  useEffect(() => {
-    if (reduce) return;
-    const el = containerRef.current;
-    if (!el) return;
-    const onMove = (e: MouseEvent) => {
-      const r = el.getBoundingClientRect();
-      const nx = (e.clientX - r.left) / r.width - 0.5;
-      const ny = (e.clientY - r.top) / r.height - 0.5;
-      mx.set(nx * 22);
-      my.set(ny * 22);
-    };
-    el.addEventListener("mousemove", onMove);
-    return () => el.removeEventListener("mousemove", onMove);
-  }, [reduce, mx, my]);
 
   return (
     <section className="px-3 pt-20 md:px-6 md:pt-24">
       <div
-        ref={containerRef}
         className="relative mx-auto flex min-h-[calc(100svh-6rem)] w-full max-w-[1400px] items-center overflow-hidden rounded-[36px] px-6 py-16 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px] md:px-14 md:py-20"
         style={{
           background:
