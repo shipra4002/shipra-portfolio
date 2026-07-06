@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion, useMotionValue, useSpring } from "motion/react";
+import { ArrowRight, Target, Bot, Heart, Lightbulb, Rocket } from "lucide-react";
 import portrait from "@/assets/hero-portrait.png";
 
 const LINES = [
@@ -12,13 +12,9 @@ const LINES = [
 
 const TYPE_SPEED = 55;
 const DELETE_SPEED = 28;
-const HOLD = 1500;
-const HOLD_LAST = 100000; // effectively keep the last line forever
+const HOLD = 1400;
+const HOLD_LAST = 100000;
 
-/**
- * Cinematic typewriter: types one line, holds, deletes, then the next.
- * The final line ("Hi, I'm Shipra.") types once and stays.
- */
 function useTypewriter(lines: string[], enabled: boolean) {
   const [index, setIndex] = useState(0);
   const [text, setText] = useState("");
@@ -30,7 +26,6 @@ function useTypewriter(lines: string[], enabled: boolean) {
     const isLast = index === lines.length - 1;
     const full = lines[index];
 
-    // Finished the last line: stop entirely.
     if (isLast && text === full && !deleting) {
       setDone(true);
       return;
@@ -63,207 +58,264 @@ function useTypewriter(lines: string[], enabled: boolean) {
   return { text, index, done };
 }
 
+// Editorial floating notes on the left
+const NOTES = [
+  {
+    icon: "🧠",
+    title: "User Empathy",
+    body: "Understanding people before building products.",
+    className: "left-0 top-[8%] w-56 -rotate-2",
+    depth: 26,
+    float: 8,
+    delay: 0.5,
+  },
+  {
+    icon: "🎯",
+    title: "Product Strategy",
+    body: "Finding the right problem before the right solution.",
+    className: "-left-2 bottom-[6%] w-60 rotate-1",
+    depth: 40,
+    float: 11,
+    delay: 0.75,
+  },
+  {
+    icon: "✨",
+    title: "Delight",
+    body: "Small moments create memorable experiences.",
+    className: "left-[24%] bottom-[18%] w-52 -rotate-1",
+    depth: 32,
+    float: 9,
+    delay: 1,
+  },
+  {
+    icon: "🤖",
+    title: "AI Product Management",
+    body: "Exploring how AI creates better experiences.",
+    className: "left-[26%] top-[4%] w-56 rotate-2",
+    depth: 18,
+    float: 7,
+    delay: 1.2,
+  },
+];
+
+// Identity circles on the right
+const CIRCLES = [
+  { icon: Target, label: "Product Thinking", className: "right-[2%] top-[6%]", float: 10, delay: 0.6 },
+  { icon: Bot, label: "AI Product Management", className: "right-[30%] top-[2%]", float: 8, delay: 0.8 },
+  { icon: Heart, label: "User Empathy", className: "right-[1%] top-[42%]", float: 12, delay: 1 },
+  { icon: Lightbulb, label: "Curiosity", className: "right-[6%] bottom-[20%]", float: 9, delay: 1.15 },
+  { icon: Rocket, label: "Builder", className: "right-[34%] bottom-[10%]", float: 11, delay: 1.3 },
+];
+
+function IdentityCircle({
+  icon: Icon,
+  label,
+  className,
+  float,
+  delay,
+  reduce,
+}: {
+  icon: typeof Target;
+  label: string;
+  className: string;
+  float: number;
+  delay: number;
+  reduce: boolean;
+}) {
+  return (
+    <motion.div
+      className={`group pointer-events-auto absolute z-30 flex items-center gap-2 ${className}`}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={
+        reduce
+          ? { opacity: 1, scale: 1 }
+          : { opacity: 1, scale: 1, y: [0, -float, 0] }
+      }
+      transition={{
+        opacity: { duration: 0.7, delay },
+        scale: { duration: 0.7, delay },
+        y: { duration: 6 + float * 0.2, repeat: Infinity, ease: "easeInOut" },
+      }}
+    >
+      <div className="flex size-12 items-center justify-center rounded-full border border-[#2b2b2b]/15 bg-white/45 backdrop-blur-sm shadow-[0_8px_24px_-12px_rgba(43,30,10,0.5)] transition-colors duration-300 group-hover:bg-white/75 md:size-14">
+        <Icon className="size-5 text-[#7a4a1c] md:size-6" strokeWidth={1.6} />
+      </div>
+      <span className="pointer-events-none max-w-0 overflow-hidden whitespace-nowrap rounded-full bg-[#2b1a08]/85 px-0 py-1 text-xs text-[#f8ead2] opacity-0 transition-all duration-300 group-hover:max-w-[180px] group-hover:px-3 group-hover:opacity-100">
+        {label}
+      </span>
+    </motion.div>
+  );
+}
+
 export function HeroSection() {
   const reduce = useReducedMotion();
   const { text, index, done } = useTypewriter(LINES, !reduce);
 
-  // With reduced motion, show the final line immediately and reveal everything.
   const showFinal = reduce || done;
   const displayText = reduce ? LINES[LINES.length - 1] : text;
   const isLastLine = reduce || index === LINES.length - 1;
 
-  return (
-    <section className="relative flex min-h-svh items-center px-6 pt-28 md:px-10 md:pt-24">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16">
-        {/* Left: typography */}
-        <div className="order-2 md:order-1">
-          <div className="space-y-6 md:space-y-8">
-            <h1 className="min-h-[3rem] font-serif text-[clamp(2rem,5vw,3.6rem)] font-light leading-[1.14] tracking-[-0.015em] text-foreground md:min-h-[4rem]">
-              <span className={isLastLine ? "text-terracotta" : ""}>{displayText}</span>
-              {!showFinal && (
-                <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.14em] animate-pulse bg-sage align-middle" />
-              )}
-            </h1>
+  // Subtle mouse parallax
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const sx = useSpring(mx, { stiffness: 60, damping: 20 });
+  const sy = useSpring(my, { stiffness: 60, damping: 20 });
 
-            <motion.p
-              className="max-w-md text-lg leading-relaxed text-muted-foreground"
-              initial={{ opacity: 0, y: 14 }}
-              animate={showFinal ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-              transition={{ duration: 0.9, delay: reduce ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
+  useEffect(() => {
+    if (reduce) return;
+    const el = containerRef.current;
+    if (!el) return;
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5;
+      const ny = (e.clientY - r.top) / r.height - 0.5;
+      mx.set(nx * 22);
+      my.set(ny * 22);
+    };
+    el.addEventListener("mousemove", onMove);
+    return () => el.removeEventListener("mousemove", onMove);
+  }, [reduce, mx, my]);
+
+  return (
+    <section className="px-3 pt-20 md:px-6 md:pt-24">
+      <div
+        ref={containerRef}
+        className="relative mx-auto flex min-h-[calc(100svh-6rem)] w-full max-w-[1400px] items-center overflow-hidden rounded-[36px] px-6 py-16 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px] md:px-14 md:py-20"
+        style={{
+          background:
+            "radial-gradient(120% 120% at 80% 10%, #F6B94E 0%, #F2A93B 42%, #E89B2C 100%)",
+        }}
+      >
+        {/* Soft ambient light */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(60% 50% at 20% 20%, rgba(255,255,255,0.28), transparent 70%)",
+          }}
+        />
+        {/* Dotted grid accents */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-8 top-8 h-24 w-24 opacity-30"
+          style={{
+            backgroundImage: "radial-gradient(rgba(80,45,10,0.6) 1px, transparent 1.4px)",
+            backgroundSize: "12px 12px",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute bottom-10 right-1/2 h-24 w-24 opacity-25"
+          style={{
+            backgroundImage: "radial-gradient(rgba(80,45,10,0.6) 1px, transparent 1.4px)",
+            backgroundSize: "12px 12px",
+          }}
+        />
+
+        {/* Thin hand-drawn connecting lines behind notes */}
+        <svg
+          aria-hidden
+          className="pointer-events-none absolute left-0 top-0 z-0 hidden h-full w-1/2 text-[#7a4a1c]/25 lg:block"
+          viewBox="0 0 500 700"
+          fill="none"
+          preserveAspectRatio="none"
+        >
+          <path d="M120 130 C 200 200, 120 300, 220 340" stroke="currentColor" strokeWidth="1.5" strokeDasharray="5 6" strokeLinecap="round" />
+          <path d="M180 380 C 130 460, 90 470, 70 540" stroke="currentColor" strokeWidth="1.5" strokeDasharray="5 6" strokeLinecap="round" />
+          <path d="M40 560 l 10 -6 m -10 6 l 4 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+
+        <div className="relative z-10 grid w-full grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-6">
+          {/* Left: typography + floating notes */}
+          <div className="relative order-2 md:order-1">
+            {/* Floating editorial notes (desktop only) */}
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 -left-4 -top-16 hidden h-[130%] w-[130%] lg:block"
+              style={reduce ? undefined : { x: sx, y: sy }}
             >
-              Building digital experiences that create value, delight users, and give them a reason to
-              return.
-            </motion.p>
+              {NOTES.map((n) => (
+                <motion.div
+                  key={n.title}
+                  className={`absolute rounded-2xl border border-[#2b2b2b]/10 bg-white/40 p-3.5 backdrop-blur-sm shadow-[0_12px_30px_-16px_rgba(60,35,5,0.5)] ${n.className}`}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={reduce ? { opacity: 0.95 } : { opacity: 0.95, y: [0, -n.float, 0] }}
+                  transition={{
+                    opacity: { duration: 0.8, delay: n.delay },
+                    y: { duration: 6 + n.float * 0.2, repeat: Infinity, ease: "easeInOut" },
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">{n.icon}</span>
+                    <span className="font-serif text-sm font-medium text-[#2b1a08]">{n.title}</span>
+                  </div>
+                  <p className="mt-1 text-xs leading-snug text-[#4a3316]">{n.body}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Parallax layer for notes via spring */}
+            <div className="relative z-10 space-y-6 md:space-y-8">
+              <h1 className="min-h-[3.5rem] font-serif text-[clamp(2rem,4.6vw,3.6rem)] font-light leading-[1.14] tracking-[-0.015em] text-[#2b1a08] md:min-h-[4.5rem]">
+                <span className={isLastLine ? "text-[#5a2f0c]" : ""}>{displayText}</span>
+                {!showFinal && (
+                  <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.14em] animate-pulse bg-[#5a2f0c] align-middle" />
+                )}
+              </h1>
+
+              <motion.p
+                className="max-w-md text-lg leading-relaxed text-[#4a3316]"
+                initial={{ opacity: 0, y: 14 }}
+                animate={showFinal ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+                transition={{ duration: 0.9, delay: reduce ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                Building digital experiences that create value, delight users, and give them a reason
+                to return.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={showFinal ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+                transition={{ duration: 0.9, delay: reduce ? 0.1 : 0.9, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <a
+                  href="#work"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#2b1a08] px-6 py-3.5 text-sm text-[#f8ead2] transition-all duration-300 hover:gap-3 hover:bg-[#3a2410]"
+                >
+                  See How I Think
+                  <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                </a>
+              </motion.div>
+            </div>
           </div>
 
-
+          {/* Right: portrait overlapping bottom + identity circles */}
           <motion.div
-            className="mt-8"
-            initial={{ opacity: 0, y: 14 }}
-            animate={showFinal ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-            transition={{ duration: 0.9, delay: reduce ? 0.1 : 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="relative order-1 mx-auto h-[62vh] max-h-[620px] w-full max-w-md md:order-2 md:h-[76vh]"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <a
-              href="#work"
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm text-background transition-all duration-300 hover:gap-3"
-            >
-              See How I Think
-              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </a>
-          </motion.div>
-
-        </div>
-
-        {/* Right: premium layered editorial portrait composition */}
-        <motion.div
-          className="relative order-1 mx-auto w-full max-w-md md:order-2 md:max-w-lg"
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {/* Ambient warm glow bleeding outside the card */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -inset-8 -z-20"
-            style={{
-              background:
-                "radial-gradient(50% 45% at 55% 40%, rgba(216,179,106,0.22), transparent 72%)",
-            }}
-          />
-
-          {/* Oversized soft circle extending beyond the frame */}
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute -right-8 top-2 -z-10 aspect-square w-[70%] rounded-full bg-[#EBE1D6]/70 blur-[2px]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.4, delay: 0.2 }}
-          />
-
-          {/* Thin abstract curved line extending outside the card */}
-          <svg
-            aria-hidden
-            className="pointer-events-none absolute -left-12 top-8 -z-10 h-48 w-48 text-terracotta/30"
-            viewBox="0 0 160 160"
-            fill="none"
-          >
-            <path
-              d="M6 120 C 40 40, 120 10, 154 44"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
-
-          {/* Floating PM card: mini kanban — outside, top-left */}
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute -left-6 top-16 z-20 hidden w-32 rounded-xl border border-border/60 bg-card/70 p-2.5 shadow-soft backdrop-blur-sm sm:block"
-            initial={{ opacity: 0, y: 14 }}
-            animate={reduce ? { opacity: 1 } : { opacity: 1, y: [0, -6, 0] }}
-            transition={{ opacity: { duration: 0.9, delay: 0.6 }, y: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
-          >
-            <div className="mb-1.5 h-1.5 w-10 rounded-full bg-sage/40" />
-            <div className="grid grid-cols-3 gap-1">
-              <div className="space-y-1">
-                <div className="h-3 rounded bg-muted-foreground/15" />
-                <div className="h-3 rounded bg-muted-foreground/10" />
-              </div>
-              <div className="space-y-1">
-                <div className="h-3 rounded bg-terracotta/20" />
-              </div>
-              <div className="space-y-1">
-                <div className="h-3 rounded bg-muted-foreground/10" />
-                <div className="h-3 rounded bg-muted-foreground/15" />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Floating PM card: mini analytics — outside, bottom-right */}
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute -right-6 bottom-14 z-20 hidden w-32 rounded-xl border border-border/60 bg-card/70 p-2.5 shadow-soft backdrop-blur-sm sm:block"
-            initial={{ opacity: 0, y: 14 }}
-            animate={reduce ? { opacity: 1 } : { opacity: 1, y: [0, 6, 0] }}
-            transition={{ opacity: { duration: 0.9, delay: 0.8 }, y: { duration: 7, repeat: Infinity, ease: "easeInOut" } }}
-          >
-            <div className="mb-1.5 h-1.5 w-8 rounded-full bg-terracotta/40" />
-            <div className="flex h-10 items-end gap-1">
-              <div className="w-full rounded-t bg-sage/25" style={{ height: "40%" }} />
-              <div className="w-full rounded-t bg-sage/35" style={{ height: "65%" }} />
-              <div className="w-full rounded-t bg-terracotta/30" style={{ height: "50%" }} />
-              <div className="w-full rounded-t bg-sage/45" style={{ height: "85%" }} />
-              <div className="w-full rounded-t bg-sage/30" style={{ height: "70%" }} />
-            </div>
-          </motion.div>
-
-          {/* Soft layered shadow beneath the card */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-8 bottom-0 -z-10 h-20 translate-y-7 rounded-full bg-[#8a6a52]/25 opacity-50 blur-2xl"
-          />
-
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-border/50 bg-[#F6F0EA] shadow-lift">
-            {/* Subtle radial gradient backdrop */}
+            {/* Warm halo behind head */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(58% 52% at 50% 34%, rgba(216,179,106,0.16), transparent 72%)",
-              }}
+              className="pointer-events-none absolute left-1/2 top-[8%] -z-0 aspect-square w-[78%] -translate-x-1/2 rounded-full bg-[#FCE0A8]/60 blur-[2px]"
             />
 
-            {/* Warm beige glow behind the head */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-1/2 top-[10%] z-0 aspect-square w-[68%] -translate-x-1/2 rounded-full bg-[#EBE1D6] blur-[1px]"
-            />
+            {/* Identity circles */}
+            {CIRCLES.map((c) => (
+              <IdentityCircle key={c.label} {...c} reduce={!!reduce} />
+            ))}
 
-            {/* Translucent rounded panel, upper-left inside */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-4 top-5 z-0 h-24 w-20 rounded-2xl bg-white/30 backdrop-blur-[1px]"
-            />
-
-            {/* Faint wireframe / user-journey outline, low opacity */}
-            <svg
-              aria-hidden
-              className="pointer-events-none absolute inset-0 z-0 h-full w-full text-terracotta/10"
-              viewBox="0 0 320 400"
-              fill="none"
-            >
-              <circle cx="52" cy="300" r="10" stroke="currentColor" strokeWidth="1.5" />
-              <circle cx="150" cy="330" r="10" stroke="currentColor" strokeWidth="1.5" />
-              <circle cx="255" cy="290" r="10" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M62 300 H140" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-              <path d="M160 330 H245" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-            </svg>
-
-            {/* Dotted grid decoration, bottom-right */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute bottom-6 right-6 z-0 h-20 w-20 opacity-30"
-              style={{
-                backgroundImage: "radial-gradient(currentColor 1px, transparent 1.4px)",
-                backgroundSize: "11px 11px",
-                color: "rgba(176,106,76,0.6)",
-              }}
-            />
-
-            {/* Small geometric accent */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute right-6 top-6 z-0 h-8 w-8 rotate-12 rounded-md border border-terracotta/25"
-            />
-
-            {/* Portrait — dominant element */}
+            {/* Portrait — overlaps bottom edge of hero card */}
             <motion.img
               src={portrait}
-              alt="Editorial portrait of Shipra Maurya"
+              alt="Portrait of Shipra Maurya"
               width={1024}
               height={1280}
-              className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-[94%] w-auto max-w-[92%] object-contain object-bottom"
+              className="absolute inset-x-0 bottom-[-16rem] z-10 mx-auto block h-[calc(100%+16rem)] w-auto max-w-[100%] object-contain object-bottom md:bottom-[-20rem] md:h-[calc(100%+20rem)]"
               initial={{ opacity: 0, y: 24 }}
               animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
               transition={{
@@ -271,17 +323,8 @@ export function HeroSection() {
                 y: reduce ? undefined : { duration: 7, repeat: Infinity, ease: "easeInOut" },
               }}
             />
-
-            {/* Soft vignette for depth */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 z-[15]"
-              style={{
-                boxShadow: "inset 0 -40px 60px -30px rgba(138,106,82,0.25)",
-              }}
-            />
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

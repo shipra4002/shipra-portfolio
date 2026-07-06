@@ -25,13 +25,13 @@ export function SiteNav() {
       <nav
         className={`flex w-full max-w-3xl items-center justify-between rounded-full border px-5 py-2.5 transition-all duration-500 md:px-6 md:py-3 ${
           scrolled
-            ? "border-border/70 bg-background/80 shadow-soft backdrop-blur-md"
-            : "border-border/40 bg-background/60 shadow-sm backdrop-blur-sm"
+            ? "border-white/50 bg-white/70 shadow-soft backdrop-blur-md"
+            : "border-white/40 bg-white/40 shadow-sm backdrop-blur-md"
         }`}
       >
         <Link
           to="/"
-          className="font-serif text-lg tracking-tight text-foreground"
+          className="font-serif text-lg tracking-tight text-[#2b1a08]"
           onClick={() => setOpen(false)}
         >
           Shipra Maurya
@@ -42,14 +42,14 @@ export function SiteNav() {
             <a
               key={l.href}
               href={l.href}
-              className="nav-underline text-sm text-foreground/80 transition-colors hover:text-foreground"
+              className="nav-underline text-sm text-[#2b1a08]/80 transition-colors hover:text-[#2b1a08]"
             >
               {l.label}
             </a>
           ))}
           <a
             href="/resume.pdf"
-            className="rounded-full border border-border px-4 py-2 text-sm text-foreground transition-all duration-300 hover:border-sage hover:bg-surface"
+            className="rounded-full border border-[#2b1a08]/30 px-4 py-2 text-sm text-[#2b1a08] transition-all duration-300 hover:border-[#2b1a08]/60 hover:bg-white/40"
           >
             Resume
           </a>
@@ -59,7 +59,7 @@ export function SiteNav() {
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
-          className="text-foreground md:hidden"
+          className="text-[#2b1a08] md:hidden"
         >
           {open ? <X className="size-6" /> : <Menu className="size-6" />}
         </button>
@@ -72,7 +72,7 @@ export function SiteNav() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute left-4 right-4 top-full mt-2 overflow-hidden rounded-2xl border border-border/70 bg-background/95 shadow-lift backdrop-blur-md md:hidden"
+            className="absolute left-4 right-4 top-full mt-2 overflow-hidden rounded-2xl border border-white/60 bg-white/90 shadow-lift backdrop-blur-md md:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
               {NAV_LINKS.map((l) => (
@@ -80,7 +80,7 @@ export function SiteNav() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="py-3 text-base text-foreground/90"
+                  className="py-3 text-base text-[#2b1a08]/90"
                 >
                   {l.label}
                 </a>
@@ -88,7 +88,7 @@ export function SiteNav() {
               <a
                 href="/resume.pdf"
                 onClick={() => setOpen(false)}
-                className="mt-2 w-fit rounded-full border border-border px-4 py-2 text-sm"
+                className="mt-2 w-fit rounded-full border border-[#2b1a08]/30 px-4 py-2 text-sm text-[#2b1a08]"
               >
                 Resume
               </a>

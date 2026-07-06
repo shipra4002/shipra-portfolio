@@ -25,10 +25,11 @@ const EVENTS = [
 
 export function EventsSection() {
   return (
-    <section id="events" className="scroll-mt-24 bg-surface px-6 py-24 md:px-10 md:py-36">
-      <div className="mx-auto max-w-6xl">
+    <section id="events" className="scroll-mt-24 px-3 md:px-6">
+      <div className="mx-auto max-w-[1400px] overflow-hidden rounded-[36px] bg-[#A9604A] text-[#F7EDE6] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px]">
+      <div className="mx-auto max-w-6xl px-6 py-24 md:px-14 md:py-32">
         <Reveal className="max-w-2xl">
-          <span className="text-xs uppercase tracking-[0.2em] text-sage">Events &amp; Competitions</span>
+          <span className="text-xs uppercase tracking-[0.2em] text-[#F5D9C9]">Events &amp; Competitions</span>
           <h2 className="mt-5 font-serif text-[clamp(1.9rem,4vw,3rem)] font-light leading-[1.15] tracking-[-0.01em]">
             Beyond The Classroom.
           </h2>
@@ -57,8 +58,8 @@ export function EventsSection() {
               </div>
               <div className="px-1 pt-6">
                 <h3 className="font-serif text-2xl font-normal tracking-tight">{event.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{event.subtitle}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm text-foreground transition-colors duration-300 group-hover:text-terracotta">
+                <p className="mt-2 text-sm leading-relaxed text-white/70">{event.subtitle}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm text-white transition-colors duration-300 group-hover:text-[#F5D9C9]">
                   Learn More
                   <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
@@ -66,6 +67,7 @@ export function EventsSection() {
             </motion.article>
           ))}
         </motion.div>
+      </div>
       </div>
     </section>
   );

@@ -13,10 +13,11 @@ const EDUCATION = [
 
 export function EducationSection() {
   return (
-    <section id="education" className="scroll-mt-24 px-6 py-24 md:px-10 md:py-36">
-      <div className="mx-auto max-w-3xl">
+    <section id="education" className="scroll-mt-24 px-3 md:px-6">
+      <div className="mx-auto max-w-[1400px] overflow-hidden rounded-[36px] bg-[#D8C5A5] text-[#2b2b2b] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px]">
+      <div className="mx-auto max-w-3xl px-6 py-24 md:px-14 md:py-32">
         <Reveal>
-          <span className="text-xs uppercase tracking-[0.2em] text-sage">Education</span>
+          <span className="text-xs uppercase tracking-[0.2em] text-[#7a4a1c]">Education</span>
           <h2 className="mt-5 font-serif text-[clamp(1.9rem,4vw,3rem)] font-light leading-[1.15] tracking-[-0.01em]">
             Where it began.
           </h2>
@@ -39,6 +40,7 @@ export function EducationSection() {
             ))}
           </ol>
         </div>
+      </div>
       </div>
     </section>
   );
