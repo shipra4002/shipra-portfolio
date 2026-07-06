@@ -678,13 +678,6 @@ function LookingBack() {
         ))}
       </motion.div>
 
-      <div className="mt-20 flex flex-col items-start justify-between gap-6 border-t border-border pt-12 md:flex-row md:items-center">
-        <BackLink />
-        <a href="/#contact" className="group inline-flex items-center gap-2 font-serif text-lg text-foreground">
-          <span className="link-underline">Let&apos;s build something with meaning</span>
-          <ArrowRight className="size-5 text-terracotta transition-transform duration-300 group-hover:translate-x-1" />
-        </a>
-      </div>
     </Section>
   );
 }
