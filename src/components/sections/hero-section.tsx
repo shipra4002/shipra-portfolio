@@ -122,10 +122,10 @@ export function HeroSection() {
   return (
     <section className="px-3 pt-20 md:px-6 md:pt-24">
       <div
-        className="relative mx-auto flex min-h-[calc(100svh-6rem)] w-full max-w-[1400px] items-center overflow-hidden rounded-[36px] border border-gold/12 px-6 py-16 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px] md:px-14 md:py-20"
+        className="relative mx-auto flex min-h-[calc(100svh-6rem)] w-full max-w-[1400px] items-center overflow-hidden rounded-[36px] border border-gold/10 px-6 py-16 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px] md:px-14 md:py-20"
         style={{
           background:
-            "radial-gradient(120% 120% at 80% 10%, rgba(246,185,78,0.14) 0%, rgba(242,169,59,0.07) 50%, rgba(232,155,44,0.03) 100%)",
+            "radial-gradient(80% 60% at 90% 15%, rgba(246,185,78,0.20) 0%, rgba(246,185,78,0.06) 35%, transparent 70%)",
         }}
       >
         {/* Soft ambient light */}
