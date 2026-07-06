@@ -48,7 +48,9 @@ export function SiteNav() {
             </a>
           ))}
           <a
-            href="/resume.pdf"
+            href="https://docs.google.com/document/d/1WyNg90Z8qjsN2FwYduXCVBi78s7wAEZvGhEPF8bGN5c/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full border border-[#2b1a08]/30 px-4 py-2 text-sm text-[#2b1a08] transition-all duration-300 hover:border-[#2b1a08]/60 hover:bg-white/40"
           >
             Resume
@@ -86,7 +88,9 @@ export function SiteNav() {
                 </a>
               ))}
               <a
-                href="/resume.pdf"
+                href="https://docs.google.com/document/d/1WyNg90Z8qjsN2FwYduXCVBi78s7wAEZvGhEPF8bGN5c/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 className="mt-2 w-fit rounded-full border border-[#2b1a08]/30 px-4 py-2 text-sm text-[#2b1a08]"
               >
