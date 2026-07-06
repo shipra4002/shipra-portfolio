@@ -65,7 +65,7 @@ function BackLink() {
       className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
     >
       <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-      Back to work
+      Back to Selected Work
     </Link>
   );
 }
