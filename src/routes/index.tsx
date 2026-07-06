@@ -15,7 +15,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       <SiteNav />
-      <main>
+      <main className="space-y-4 pb-4 md:space-y-6 md:pb-6">
         <HeroSection />
         <WorkSection />
         <EventsSection />
