@@ -32,7 +32,6 @@ import workshopImg from "@/assets/kala-designer.png";
 import profileImg from "@/assets/kala-basket-smile.png";
 import qrPoster from "@/assets/kala-qr-poster.png";
 import nexoCover from "@/assets/nexo.png";
-import deckAsset from "@/assets/kalavansh-deck.pdf.asset.json";
 
 export const Route = createFileRoute("/work/kalavansh")({
   head: () => ({
@@ -65,7 +64,7 @@ function BackLink() {
       className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
     >
       <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-      Back to Selected Work
+      Back to Work
     </Link>
   );
 }
@@ -93,81 +92,27 @@ function Section({ children, className = "", id }: { children: React.ReactNode; 
 /* ────────────────────────────── Page Navigation ────────────────────────────── */
 
 function PageNav() {
-  const [active, setActive] = useState("");
-  const sections = [
-    { id: "watch", label: "Story" },
-    { id: "thinking", label: "Thinking" },
-    { id: "experience", label: "Experience" },
-    { id: "validation", label: "Validation" },
-    { id: "looking-back", label: "Reflection" },
-  ];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
-    );
-
-    sections.forEach((s) => {
-      const el = document.getElementById(s.id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 md:px-10">
         <BackLink />
 
-        <nav aria-label="Case study sections" className="hidden items-center gap-1 md:flex">
-          {sections.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              onClick={(e) => handleClick(e, s.id)}
-              className={`rounded-full px-3 py-1.5 text-sm transition-colors ${
-                active === s.id
-                  ? "bg-gold text-primary-foreground"
-                  : "text-muted-foreground hover:bg-surface hover:text-foreground"
-              }`}
-            >
-              {s.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Mobile — compact scrollable top nav */}
-        <nav
-          aria-label="Case study sections"
-          className="flex max-w-[55%] items-center gap-1 overflow-x-auto py-1 md:hidden"
+        <Link
+          to="/work/$slug"
+          params={{ slug: "nexo" }}
+          className="group flex items-center gap-3 text-right"
         >
-          {sections.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              onClick={(e) => handleClick(e, s.id)}
-              className={`shrink-0 rounded-full px-2.5 py-1 text-xs transition-colors ${
-                active === s.id
-                  ? "bg-gold text-primary-foreground"
-                  : "text-muted-foreground hover:bg-surface hover:text-foreground"
-              }`}
-            >
-              {s.label}
-            </a>
-          ))}
-        </nav>
+          <span className="hidden max-w-[15rem] flex-col items-end sm:flex">
+            <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+              Next Project
+            </span>
+            <span className="font-serif text-sm text-foreground">Nexo</span>
+          </span>
+          <span className="flex items-center gap-1.5 text-sm text-foreground sm:hidden">
+            Nexo
+          </span>
+          <ArrowRight className="size-4 text-terracotta transition-transform duration-300 group-hover:translate-x-1" />
+        </Link>
       </div>
     </header>
   );
@@ -211,9 +156,13 @@ function Hero() {
   ];
 
   const links = [
-    { label: "Prototype", icon: ExternalLink, href: "https://kala-legacy-journeys.lovable.app" },
-    { label: "GitHub Repository", icon: Github, href: "https://github.com/shipra4002" },
-    { label: "Presentation Deck", icon: Presentation, href: deckAsset.url },
+    { label: "Live Prototype", icon: ExternalLink, href: "https://kalavansh.vercel.app/" },
+    { label: "GitHub Repository", icon: Github, href: "https://github.com/shipra4002/Kalavansh" },
+    {
+      label: "Case Study Deck",
+      icon: Presentation,
+      href: "https://drive.google.com/file/d/1V_gGsx5h82ICskS8iFDktf72HLOdNFQV/view?usp=drive_link",
+    },
   ];
 
   return (
@@ -746,6 +695,12 @@ function NextProject() {
   return (
     <section className="px-6 pb-28 pt-4 md:px-10">
       <div className="mx-auto max-w-6xl">
+        <Reveal className="mb-8 flex items-center justify-between gap-4">
+          <BackLink />
+          <span className="text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
+            Continue the journey
+          </span>
+        </Reveal>
         <Reveal>
           <Link
             to="/work/$slug"
