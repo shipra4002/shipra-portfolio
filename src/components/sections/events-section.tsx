@@ -1,17 +1,17 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
-import skillathon from "@/assets/event-skillathon.jpg";
-import competition from "@/assets/event-competition.jpg";
+import skillathon from "@/assets/skillathon-cover.jpg.asset.json";
+import competition from "@/assets/cause-2026.jpg.asset.json";
 
 const EVENTS = [
   {
-    image: skillathon,
+    image: skillathon.url,
     title: "Skillathon",
     subtitle: "Building fast, together, under pressure.",
   },
   {
-    image: competition,
+    image: competition.url,
     title: "Cause 2026",
     subtitle: "Testing ideas against the very best.",
   },
