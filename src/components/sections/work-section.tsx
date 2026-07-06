@@ -67,6 +67,19 @@ export function WorkSection() {
                 {category.projects.map((project) => (
                   <ProjectCard key={project.slug} project={project} />
                 ))}
+                {(category.id === "investigations" || category.id === "strategy-breakdowns") && (
+                  <motion.article variants={staggerItem} className="h-full">
+                    <div className="group flex h-full min-h-[240px] flex-col items-center justify-center overflow-hidden rounded-[18px] border border-dashed border-gold/40 bg-white/[0.03] p-8 text-center transition-colors duration-500 hover:border-gold/70">
+                      <span className="font-serif text-3xl leading-none text-gold/80">✦</span>
+                      <h4 className="mt-4 font-serif text-2xl font-normal leading-tight tracking-tight text-[#F3F0E8]">
+                        More coming soon
+                      </h4>
+                      <p className="mt-3 max-w-[16rem] text-sm leading-relaxed text-white/55">
+                        New teardowns in the making — pieces I'm currently pulling apart.
+                      </p>
+                    </div>
+                  </motion.article>
+                )}
               </motion.div>
             </div>
           ))}
