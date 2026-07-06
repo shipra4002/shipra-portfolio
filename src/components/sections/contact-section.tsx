@@ -29,7 +29,7 @@ export function ContactSection() {
                   key={link.label}
                   href={link.href}
                   target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={link.label}
                   className="group flex size-12 items-center justify-center rounded-full border border-white/15 text-[#F3F0E8] transition-all duration-300 hover:border-white/40 hover:bg-white/5"
                 >
