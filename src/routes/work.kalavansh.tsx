@@ -701,6 +701,7 @@ function NextProject() {
             Continue the journey
           </span>
         </Reveal>
+        <Reveal>
           <Link
             to="/work/$slug"
             params={{ slug: "nexo" }}
