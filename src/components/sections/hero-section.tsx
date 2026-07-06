@@ -168,7 +168,7 @@ export function HeroSection() {
               </h1>
 
               <motion.p
-                className="max-w-md text-lg leading-relaxed text-[#4a3316]"
+                className="max-w-md text-lg leading-relaxed text-[#d9c6a8]"
                 initial={{ opacity: 0, y: 14 }}
                 animate={showFinal ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
                 transition={{ duration: 0.9, delay: reduce ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
