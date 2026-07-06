@@ -231,16 +231,15 @@ export function HeroSection() {
           {/* Left: typography + floating notes */}
           <div className="relative order-2 md:order-1">
             {/* Floating editorial notes (desktop only) */}
-            <div aria-hidden className="pointer-events-none absolute inset-0 -left-4 -top-16 hidden h-[130%] w-[130%] lg:block">
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 -left-4 -top-16 hidden h-[130%] w-[130%] lg:block"
+              style={reduce ? undefined : { x: sx, y: sy }}
+            >
               {NOTES.map((n) => (
                 <motion.div
                   key={n.title}
                   className={`absolute rounded-2xl border border-[#2b2b2b]/10 bg-white/40 p-3.5 backdrop-blur-sm shadow-[0_12px_30px_-16px_rgba(60,35,5,0.5)] ${n.className}`}
-                  style={{
-                    x: reduce ? 0 : (sx as unknown as number),
-                    y: reduce ? 0 : (sy as unknown as number),
-                    translateX: undefined,
-                  }}
                   initial={{ opacity: 0, y: 16 }}
                   animate={reduce ? { opacity: 0.95 } : { opacity: 0.95, y: [0, -n.float, 0] }}
                   transition={{
@@ -255,7 +254,7 @@ export function HeroSection() {
                   <p className="mt-1 text-xs leading-snug text-[#4a3316]">{n.body}</p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Parallax layer for notes via spring */}
             <div className="relative z-10 space-y-6 md:space-y-8">
