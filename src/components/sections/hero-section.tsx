@@ -211,7 +211,7 @@ export function HeroSection() {
               <IdentityCircle key={c.label} {...c} reduce={!!reduce} />
             ))}
 
-            {/* Portrait — raised up toward the identity circles */}
+            {/* Portrait — static, larger, raised toward the identity circles */}
             <motion.img
               src={portrait}
               alt="Portrait of Shipra Maurya"
@@ -219,10 +219,10 @@ export function HeroSection() {
               height={1280}
               className="absolute inset-x-0 bottom-0 z-10 mx-auto block h-full w-auto max-w-[100%] object-contain object-top"
               initial={{ opacity: 0, y: 24 }}
-              animate={reduce ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, -8, 0] }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
                 opacity: { duration: 1, delay: 0.3 },
-                y: reduce ? undefined : { duration: 7, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
               }}
             />
           </motion.div>
