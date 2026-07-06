@@ -203,7 +203,7 @@ export function HeroSection() {
             {/* Warm halo behind head */}
             <div
               aria-hidden
-              className="pointer-events-none absolute left-1/2 top-[8%] -z-0 aspect-square w-[78%] -translate-x-1/2 rounded-full bg-[#FCE0A8]/40 blur-[2px]"
+              className="pointer-events-none absolute left-1/2 top-[8%] -z-0 aspect-square w-[78%] -translate-x-1/2 rounded-full bg-[#FCE0A8]/35 blur-[2px]"
             />
 
             {/* Identity circles */}
