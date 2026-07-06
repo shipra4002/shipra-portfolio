@@ -58,8 +58,8 @@ export function EventsSection() {
               </div>
               <div className="px-1 pt-6">
                 <h3 className="font-serif text-2xl font-normal tracking-tight">{event.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{event.subtitle}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm text-foreground transition-colors duration-300 group-hover:text-terracotta">
+                <p className="mt-2 text-sm leading-relaxed text-white/70">{event.subtitle}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm text-white transition-colors duration-300 group-hover:text-[#F5D9C9]">
                   Learn More
                   <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
@@ -67,6 +67,7 @@ export function EventsSection() {
             </motion.article>
           ))}
         </motion.div>
+      </div>
       </div>
     </section>
   );
