@@ -31,6 +31,8 @@ import storyImg from "@/assets/kala-batik-woman.jpg";
 import workshopImg from "@/assets/kala-designer.png";
 import profileImg from "@/assets/kala-basket-smile.png";
 import qrPoster from "@/assets/kala-qr-poster.png";
+import nexoCover from "@/assets/nexo.png";
+import deckAsset from "@/assets/kalavansh-deck.pdf.asset.json";
 
 export const Route = createFileRoute("/work/kalavansh")({
   head: () => ({
