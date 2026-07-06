@@ -1,17 +1,17 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
-import skillathon from "@/assets/event-skillathon.jpg";
-import competition from "@/assets/event-competition.jpg";
+import skillathon from "@/assets/skillathon-cover.jpg.asset.json";
+import competition from "@/assets/cause-2026.jpg.asset.json";
 
 const EVENTS = [
   {
-    image: skillathon,
+    image: skillathon.url,
     title: "Skillathon",
     subtitle: "Building fast, together, under pressure.",
   },
   {
-    image: competition,
+    image: competition.url,
     title: "Cause 2026",
     subtitle: "Testing ideas against the very best.",
   },
@@ -39,13 +39,13 @@ export function EventsSection() {
           {EVENTS.map((event) => (
             <motion.article key={event.title} variants={staggerItem} className="group cursor-pointer">
               <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-shadow duration-500 group-hover:shadow-lift">
-                <div className="aspect-[4/5] overflow-hidden">
+                <div className="aspect-[16/10] overflow-hidden">
                   <img
                     src={event.image}
                     alt={event.title}
                     loading="lazy"
-                    width={1024}
-                    height={1280}
+                    width={1280}
+                    height={800}
                     className="size-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                   />
                 </div>

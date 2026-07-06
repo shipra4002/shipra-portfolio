@@ -14,7 +14,7 @@ const EDUCATION = [
 export function EducationSection() {
   return (
     <section id="education" className="scroll-mt-24 px-3 md:px-6">
-      <div className="mx-auto max-w-[1400px] overflow-hidden rounded-[36px] bg-[#D8C5A5] text-[#2b2b2b] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px]">
+      <div className="mx-auto max-w-[1400px] overflow-hidden rounded-[36px] bg-[#ECE3D2] text-[#2b2b2b] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:rounded-[48px]">
       <div className="mx-auto max-w-3xl px-6 py-24 md:px-14 md:py-32">
         <Reveal>
           <span className="text-xs uppercase tracking-[0.2em] text-[#7a4a1c]">Education</span>
