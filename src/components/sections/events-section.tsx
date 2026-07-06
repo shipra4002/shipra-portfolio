@@ -39,13 +39,13 @@ export function EventsSection() {
           {EVENTS.map((event) => (
             <motion.article key={event.title} variants={staggerItem} className="group cursor-pointer">
               <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-shadow duration-500 group-hover:shadow-lift">
-                <div className="aspect-[4/5] overflow-hidden">
+                <div class="aspect-[16/10] overflow-hidden">
                   <img
                     src={event.image}
                     alt={event.title}
                     loading="lazy"
-                    width={1024}
-                    height={1280}
+                    width={1280}
+                    height={800}
                     className="size-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                   />
                 </div>
