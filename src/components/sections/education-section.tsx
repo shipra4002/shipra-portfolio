@@ -41,6 +41,7 @@ export function EducationSection() {
           </ol>
         </div>
       </div>
+      </div>
     </section>
   );
 }
