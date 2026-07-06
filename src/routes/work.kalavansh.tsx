@@ -174,6 +174,18 @@ function PageNav() {
             </a>
           ))}
         </nav>
+
+        <Link
+          to="/work/$slug"
+          params={{ slug: NEXT_PROJECT.slug }}
+          className="group hidden flex-col items-end text-right md:flex"
+        >
+          <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors group-hover:text-terracotta">
+            Next Project
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </span>
+          <span className="mt-0.5 font-serif text-base font-normal text-foreground">{NEXT_PROJECT.title}</span>
+        </Link>
       </div>
     </header>
   );
