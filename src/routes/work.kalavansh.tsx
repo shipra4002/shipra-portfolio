@@ -212,8 +212,8 @@ function Hero() {
 
   const links = [
     { label: "Prototype", icon: ExternalLink, href: "https://kala-legacy-journeys.lovable.app" },
-    { label: "Presentation Deck", icon: Presentation, href: "#" },
-    { label: "GitHub Repository", icon: Github, href: "#" },
+    { label: "GitHub Repository", icon: Github, href: "https://github.com/shipra4002" },
+    { label: "Presentation Deck", icon: Presentation, href: deckAsset.url },
   ];
 
   return (
