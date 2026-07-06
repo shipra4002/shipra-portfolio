@@ -72,7 +72,7 @@ export function SiteNav() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute left-4 right-4 top-full mt-2 overflow-hidden rounded-2xl border border-border/70 bg-background/95 shadow-lift backdrop-blur-md md:hidden"
+            className="absolute left-4 right-4 top-full mt-2 overflow-hidden rounded-2xl border border-white/60 bg-white/90 shadow-lift backdrop-blur-md md:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
               {NAV_LINKS.map((l) => (
@@ -80,7 +80,7 @@ export function SiteNav() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="py-3 text-base text-foreground/90"
+                  className="py-3 text-base text-[#2b1a08]/90"
                 >
                   {l.label}
                 </a>
@@ -88,7 +88,7 @@ export function SiteNav() {
               <a
                 href="/resume.pdf"
                 onClick={() => setOpen(false)}
-                className="mt-2 w-fit rounded-full border border-border px-4 py-2 text-sm"
+                className="mt-2 w-fit rounded-full border border-[#2b1a08]/30 px-4 py-2 text-sm text-[#2b1a08]"
               >
                 Resume
               </a>
