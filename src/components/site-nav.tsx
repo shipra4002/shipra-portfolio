@@ -21,14 +21,14 @@ export function SiteNav() {
   }, []);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "border-b border-border/70 bg-background/80 backdrop-blur-md"
-          : "border-b border-transparent bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6 md:px-10">
+    <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4 md:top-5">
+      <nav
+        className={`flex w-full max-w-3xl items-center justify-between rounded-full border px-5 py-2.5 transition-all duration-500 md:px-6 md:py-3 ${
+          scrolled
+            ? "border-border/70 bg-background/80 shadow-soft backdrop-blur-md"
+            : "border-border/40 bg-background/60 shadow-sm backdrop-blur-sm"
+        }`}
+      >
         <Link
           to="/"
           className="font-serif text-lg tracking-tight text-foreground"
@@ -37,7 +37,7 @@ export function SiteNav() {
           Shipra Maurya
         </Link>
 
-        <div className="hidden items-center gap-9 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {NAV_LINKS.map((l) => (
             <a
               key={l.href}
@@ -68,13 +68,13 @@ export function SiteNav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-border/70 bg-background/95 backdrop-blur-md md:hidden"
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute left-4 right-4 top-full mt-2 overflow-hidden rounded-2xl border border-border/70 bg-background/95 shadow-lift backdrop-blur-md md:hidden"
           >
-            <div className="flex flex-col gap-1 px-6 py-4">
+            <div className="flex flex-col gap-1 px-5 py-4">
               {NAV_LINKS.map((l) => (
                 <a
                   key={l.href}
