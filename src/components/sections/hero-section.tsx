@@ -195,7 +195,7 @@ export function HeroSection() {
 
           {/* Right: portrait overlapping bottom + identity circles */}
           <motion.div
-            className="relative order-1 mx-auto h-[70vh] max-h-[720px] w-full max-w-lg md:order-2 md:h-[86vh]"
+            className="relative order-1 mx-auto h-[75vh] max-h-[760px] w-full max-w-xl md:order-2 md:h-[90vh]"
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
