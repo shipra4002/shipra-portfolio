@@ -82,7 +82,7 @@ const NOTES = [
     icon: "✨",
     title: "Delight",
     body: "Small moments create memorable experiences.",
-    className: "left-2 bottom-[16%] w-52 -rotate-1",
+    className: "left-[24%] bottom-[18%] w-52 -rotate-1",
     depth: 32,
     float: 9,
     delay: 1,
