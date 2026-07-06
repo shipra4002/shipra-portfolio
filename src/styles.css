@@ -160,3 +160,70 @@
     transform-origin: left;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+ * KalaVansh gallery theme — a warm, handcrafted identity scoped to
+ * the KalaVansh case study page. Overrides the semantic tokens so the
+ * same utility classes render in an earthy, exhibition-catalogue palette,
+ * layered over a subtle handmade-paper texture.
+ * ───────────────────────────────────────────────────────────── */
+.kala-theme {
+  --background: #f0e6d6;
+  --foreground: #3a2c1f;
+  --surface: #e7d9c3;
+
+  --card: #fbf5ea;
+  --card-foreground: #3a2c1f;
+  --popover: #fbf5ea;
+  --popover-foreground: #3a2c1f;
+
+  --primary: #a8542f;
+  --primary-foreground: #fbf5ea;
+  --secondary: #e7d9c3;
+  --secondary-foreground: #3a2c1f;
+  --muted: #e7d9c3;
+  --muted-foreground: #8a7355;
+  --accent: #e7d9c3;
+  --accent-foreground: #3a2c1f;
+
+  --sage: #7c855c;
+  --terracotta: #b0572f;
+  --gold: #bd8b3c;
+
+  --border: #d8c6ab;
+  --input: #d8c6ab;
+  --ring: #b0572f;
+
+  color: var(--foreground);
+  background-color: var(--background);
+  position: relative;
+}
+
+/* Handmade paper grain + soft craft-inspired wash */
+.kala-theme::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(176, 87, 47, 0.06), transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(124, 133, 92, 0.07), transparent 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+.kala-theme > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Organic hand-drawn divider between chapters */
+@utility kala-divider {
+  height: 2.5rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 340px 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='40' viewBox='0 0 340 40'%3E%3Cpath d='M10 20 C 60 6, 110 34, 170 20 S 280 6, 330 20' fill='none' stroke='%23b0572f' stroke-width='1.5' stroke-linecap='round' opacity='0.6'/%3E%3Ccircle cx='170' cy='20' r='3' fill='%23bd8b3c'/%3E%3C/svg%3E");
+}
