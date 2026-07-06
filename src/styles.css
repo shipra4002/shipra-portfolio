@@ -35,10 +35,6 @@
   --color-sage: var(--sage);
   --color-terracotta: var(--terracotta);
   --color-gold: var(--gold);
-  --color-work-gold-start: var(--work-gold-start);
-  --color-work-gold-mid: var(--work-gold-mid);
-  --color-work-gold-end: var(--work-gold-end);
-  --color-work-gold-ink: var(--work-gold-ink);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -76,11 +72,6 @@
   --sage: #6b7a68;
   --terracotta: #b06a4c;
   --gold: #d8b36a;
-
-  --work-gold-start: #e8b964;
-  --work-gold-mid: #c9923d;
-  --work-gold-end: #7a5c1a;
-  --work-gold-ink: #2b1a08;
 
   --destructive: #b0503c;
   --destructive-foreground: #f8f6f2;

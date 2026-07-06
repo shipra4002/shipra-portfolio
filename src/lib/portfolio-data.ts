@@ -1,9 +1,6 @@
 import kalavanshCover from "@/assets/kalavansh.png";
 import nexoCover from "@/assets/nexo.png";
 import smartPosCover from "@/assets/smart-pos.png";
-import notionCoverAsset from "@/assets/notion-cover.png.asset.json";
-
-const notionCover = (notionCoverAsset as { url: string }).url;
 
 export type WorkCategory = {
   id: string;
@@ -59,7 +56,7 @@ export const workCategories: WorkCategory[] = [
         title: "Notion",
         category: "Investigation",
         kicker: "Product Teardown",
-        cover: `url(${notionCover})`,
+        cover: "linear-gradient(135deg, #7c7669 0%, #2b2b2b 100%)",
       },
     ],
   },
