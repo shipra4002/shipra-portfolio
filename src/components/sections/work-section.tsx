@@ -72,6 +72,7 @@ export function WorkSection() {
           ))}
         </div>
       </div>
+      </div>
     </section>
   );
 }
