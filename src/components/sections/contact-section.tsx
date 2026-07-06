@@ -3,7 +3,7 @@ import { Mail, Linkedin, Github, Phone } from "lucide-react";
 
 const LINKS = [
   { label: "Email", href: "mailto:shipra.maurya@alumni.ipl.university", icon: Mail },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/shipra-maurya11", icon: Linkedin },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/shipra-maurya11/", icon: Linkedin },
   { label: "GitHub", href: "https://github.com/shipra4002", icon: Github },
   { label: "Phone", href: "tel:9867086507", icon: Phone },
 ];
