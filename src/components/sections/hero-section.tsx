@@ -58,45 +58,8 @@ function useTypewriter(lines: string[], enabled: boolean) {
   return { text, index, done };
 }
 
-// Editorial floating notes on the left
-const NOTES = [
-  {
-    icon: "🧠",
-    title: "User Empathy",
-    body: "Understanding people before building products.",
-    className: "left-0 top-[8%] w-56 -rotate-2",
-    depth: 26,
-    float: 8,
-    delay: 0.5,
-  },
-  {
-    icon: "🎯",
-    title: "Product Strategy",
-    body: "Finding the right problem before the right solution.",
-    className: "-left-2 bottom-[6%] w-60 rotate-1",
-    depth: 40,
-    float: 11,
-    delay: 0.75,
-  },
-  {
-    icon: "✨",
-    title: "Delight",
-    body: "Small moments create memorable experiences.",
-    className: "left-[24%] bottom-[18%] w-52 -rotate-1",
-    depth: 32,
-    float: 9,
-    delay: 1,
-  },
-  {
-    icon: "🤖",
-    title: "AI Product Management",
-    body: "Exploring how AI creates better experiences.",
-    className: "left-[26%] top-[4%] w-56 rotate-2",
-    depth: 18,
-    float: 7,
-    delay: 1.2,
-  },
-];
+
+
 
 // Identity circles on the right
 const CIRCLES = [
