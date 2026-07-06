@@ -31,6 +31,14 @@ import storyImg from "@/assets/kala-batik-woman.jpg";
 import workshopImg from "@/assets/kala-designer.png";
 import profileImg from "@/assets/kala-basket-smile.png";
 import qrPoster from "@/assets/kala-qr-poster.png";
+import nexoCover from "@/assets/nexo.png";
+
+const NEXT_PROJECT = {
+  slug: "nexo",
+  title: "Nexo",
+  description: "Designing a social travel experience that turns journeys into shared memories.",
+  cover: nexoCover,
+};
 
 export const Route = createFileRoute("/work/kalavansh")({
   head: () => ({
@@ -166,6 +174,21 @@ function PageNav() {
             </a>
           ))}
         </nav>
+
+        <Link
+          to="/work/$slug"
+          params={{ slug: NEXT_PROJECT.slug }}
+          className="group hidden flex-col items-end text-right md:flex"
+        >
+          <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors group-hover:text-terracotta">
+            Next Project
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </span>
+          <span className="mt-0.5 font-serif text-base font-normal text-foreground">{NEXT_PROJECT.title}</span>
+          <span className="mt-0.5 hidden max-w-[15rem] text-xs leading-snug text-muted-foreground lg:block">
+            {NEXT_PROJECT.description}
+          </span>
+        </Link>
       </div>
     </header>
   );
@@ -209,9 +232,13 @@ function Hero() {
   ];
 
   const links = [
-    { label: "Prototype", icon: ExternalLink, href: "https://kala-legacy-journeys.lovable.app" },
-    { label: "Presentation Deck", icon: Presentation, href: "#" },
-    { label: "GitHub Repository", icon: Github, href: "#" },
+    { label: "Live Prototype", icon: ExternalLink, href: "https://kalavansh.vercel.app/" },
+    { label: "GitHub Repository", icon: Github, href: "https://github.com/shipra4002/Kalavansh" },
+    {
+      label: "Case Study Deck",
+      icon: Presentation,
+      href: "https://drive.google.com/file/d/1V_gGsx5h82ICskS8iFDktf72HLOdNFQV/view?usp=drive_link",
+    },
   ];
 
   return (
@@ -261,8 +288,8 @@ function Hero() {
                 <a
                   key={l.label}
                   href={l.href}
-                  target={l.href.startsWith("http") ? "_blank" : undefined}
-                  rel={l.href.startsWith("http") ? "noreferrer" : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 px-5 py-2.5 text-sm text-foreground transition-all duration-300 hover:translate-y-[-2px] hover:border-terracotta hover:bg-terracotta hover:text-primary-foreground hover:shadow-md hover:gap-3"
                 >
                   <l.icon className="size-4" />
@@ -738,7 +765,59 @@ function LookingBack() {
   );
 }
 
-/* ────────────────────────────── Page ────────────────────────────── */
+/* ────────────────────────── Next Project Navigation ────────────────────────── */
+
+function NextProjectNav() {
+  return (
+    <section className="border-t border-border bg-background px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+          <Link
+            to="/"
+            hash="work"
+            className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-1" />
+            Back to Work
+          </Link>
+          <span className="text-[0.65rem] uppercase tracking-[0.24em] text-muted-foreground md:text-right">
+            Continue the journey
+          </span>
+        </div>
+
+        <Reveal className="mt-8">
+          <Link
+            to="/work/$slug"
+            params={{ slug: NEXT_PROJECT.slug }}
+            className="group grid overflow-hidden rounded-[28px] border border-border bg-surface shadow-soft transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:shadow-lift md:grid-cols-[1.1fr_1fr]"
+          >
+            <div className="order-2 flex flex-col justify-center p-10 md:order-1 md:p-14">
+              <span className="text-[0.65rem] uppercase tracking-[0.24em] text-terracotta">Next Project</span>
+              <h2 className="mt-5 font-serif text-[clamp(2.4rem,6vw,4rem)] font-light leading-[0.98] tracking-[-0.02em]">
+                {NEXT_PROJECT.title}
+              </h2>
+              <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
+                {NEXT_PROJECT.description}
+              </p>
+              <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors group-hover:text-terracotta">
+                View case study
+                <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </span>
+            </div>
+            <div className="order-1 overflow-hidden md:order-2">
+              <img
+                src={NEXT_PROJECT.cover}
+                alt="Nexo — a social travel experience"
+                loading="lazy"
+                className="aspect-[4/3] size-full object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] md:aspect-auto"
+              />
+            </div>
+          </Link>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
 function KalaVanshCaseStudy() {
   return (
@@ -750,6 +829,7 @@ function KalaVanshCaseStudy() {
       <InsightToExperience />
       <Validation />
       <LookingBack />
+      <NextProjectNav />
       <SiteFooter />
     </div>
   );
