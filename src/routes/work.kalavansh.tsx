@@ -690,8 +690,9 @@ function NextProject() {
       <div className="mx-auto max-w-6xl">
         <Reveal className="mb-8 flex items-center justify-between gap-4">
           <BackLink />
-          <span className="text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-            Continue the journey
+          <span className="inline-flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
+            Next Project: Nexo
+            <ArrowRight className="size-4 text-muted-foreground" />
           </span>
         </Reveal>
         <Reveal>
