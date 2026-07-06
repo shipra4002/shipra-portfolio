@@ -92,81 +92,27 @@ function Section({ children, className = "", id }: { children: React.ReactNode; 
 /* ────────────────────────────── Page Navigation ────────────────────────────── */
 
 function PageNav() {
-  const [active, setActive] = useState("");
-  const sections = [
-    { id: "watch", label: "Story" },
-    { id: "thinking", label: "Thinking" },
-    { id: "experience", label: "Experience" },
-    { id: "validation", label: "Validation" },
-    { id: "looking-back", label: "Reflection" },
-  ];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
-    );
-
-    sections.forEach((s) => {
-      const el = document.getElementById(s.id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 md:px-10">
         <BackLink />
 
-        <nav aria-label="Case study sections" className="hidden items-center gap-1 md:flex">
-          {sections.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              onClick={(e) => handleClick(e, s.id)}
-              className={`rounded-full px-3 py-1.5 text-sm transition-colors ${
-                active === s.id
-                  ? "bg-gold text-primary-foreground"
-                  : "text-muted-foreground hover:bg-surface hover:text-foreground"
-              }`}
-            >
-              {s.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Mobile — compact scrollable top nav */}
-        <nav
-          aria-label="Case study sections"
-          className="flex max-w-[55%] items-center gap-1 overflow-x-auto py-1 md:hidden"
+        <Link
+          to="/work/$slug"
+          params={{ slug: "nexo" }}
+          className="group flex items-center gap-3 text-right"
         >
-          {sections.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              onClick={(e) => handleClick(e, s.id)}
-              className={`shrink-0 rounded-full px-2.5 py-1 text-xs transition-colors ${
-                active === s.id
-                  ? "bg-gold text-primary-foreground"
-                  : "text-muted-foreground hover:bg-surface hover:text-foreground"
-              }`}
-            >
-              {s.label}
-            </a>
-          ))}
-        </nav>
+          <span className="hidden max-w-[15rem] flex-col items-end sm:flex">
+            <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+              Next Project
+            </span>
+            <span className="font-serif text-sm text-foreground">Nexo</span>
+          </span>
+          <span className="flex items-center gap-1.5 text-sm text-foreground sm:hidden">
+            Nexo
+          </span>
+          <ArrowRight className="size-4 text-terracotta transition-transform duration-300 group-hover:translate-x-1" />
+        </Link>
       </div>
     </header>
   );
