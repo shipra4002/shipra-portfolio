@@ -73,7 +73,7 @@ const NOTES = [
     icon: "🎯",
     title: "Product Strategy",
     body: "Finding the right problem before the right solution.",
-    className: "left-[18%] top-[38%] w-60 rotate-1",
+    className: "-left-2 bottom-[6%] w-60 rotate-1",
     depth: 40,
     float: 11,
     delay: 0.75,
