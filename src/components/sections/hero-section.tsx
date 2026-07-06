@@ -214,49 +214,10 @@ export function HeroSection() {
           }}
         />
 
-        {/* Thin hand-drawn connecting lines behind notes */}
-        <svg
-          aria-hidden
-          className="pointer-events-none absolute left-0 top-0 z-0 hidden h-full w-1/2 text-[#7a4a1c]/25 lg:block"
-          viewBox="0 0 500 700"
-          fill="none"
-          preserveAspectRatio="none"
-        >
-          <path d="M120 130 C 200 200, 120 300, 220 340" stroke="currentColor" strokeWidth="1.5" strokeDasharray="5 6" strokeLinecap="round" />
-          <path d="M180 380 C 130 460, 90 470, 70 540" stroke="currentColor" strokeWidth="1.5" strokeDasharray="5 6" strokeLinecap="round" />
-          <path d="M40 560 l 10 -6 m -10 6 l 4 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
-
         <div className="relative z-10 grid w-full grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-6">
-          {/* Left: typography + floating notes */}
+          {/* Left: typography */}
           <div className="relative order-2 md:order-1">
-            {/* Floating editorial notes (desktop only) */}
-            <motion.div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 -left-4 -top-16 hidden h-[130%] w-[130%] lg:block"
-              style={reduce ? undefined : { x: sx, y: sy }}
-            >
-              {NOTES.map((n) => (
-                <motion.div
-                  key={n.title}
-                  className={`absolute rounded-2xl border border-[#2b2b2b]/10 bg-white/40 p-3.5 backdrop-blur-sm shadow-[0_12px_30px_-16px_rgba(60,35,5,0.5)] ${n.className}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={reduce ? { opacity: 0.95 } : { opacity: 0.95, y: [0, -n.float, 0] }}
-                  transition={{
-                    opacity: { duration: 0.8, delay: n.delay },
-                    y: { duration: 6 + n.float * 0.2, repeat: Infinity, ease: "easeInOut" },
-                  }}
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">{n.icon}</span>
-                    <span className="font-serif text-sm font-medium text-[#2b1a08]">{n.title}</span>
-                  </div>
-                  <p className="mt-1 text-xs leading-snug text-[#4a3316]">{n.body}</p>
-                </motion.div>
-              ))}
-            </motion.div>
 
-            {/* Parallax layer for notes via spring */}
             <div className="relative z-10 space-y-6 md:space-y-8">
               <h1 className="min-h-[3.5rem] font-serif text-[clamp(2rem,4.6vw,3.6rem)] font-light leading-[1.14] tracking-[-0.015em] text-[#2b1a08] md:min-h-[4.5rem]">
                 <span className={isLastLine ? "text-[#5a2f0c]" : ""}>{displayText}</span>
