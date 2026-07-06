@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion, useMotionValue, useSpring } from "motion/react";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Target, Bot, Heart, Lightbulb, Rocket } from "lucide-react";
 import portrait from "@/assets/hero-portrait.png";
 
