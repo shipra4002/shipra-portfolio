@@ -29,14 +29,15 @@ export function ContactSection() {
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                className="group inline-flex items-center gap-1 text-lg text-foreground"
+                className="group inline-flex items-center gap-1 text-lg text-[#F3F0E8]"
               >
                 <span className="link-underline">{link.label}</span>
-                <ArrowUpRight className="size-4 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight className="size-4 text-white/50 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
             ))}
           </div>
         </Reveal>
+      </div>
       </div>
     </section>
   );
