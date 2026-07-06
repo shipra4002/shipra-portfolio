@@ -185,6 +185,9 @@ function PageNav() {
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
           </span>
           <span className="mt-0.5 font-serif text-base font-normal text-foreground">{NEXT_PROJECT.title}</span>
+          <span className="mt-0.5 hidden max-w-[15rem] text-xs leading-snug text-muted-foreground lg:block">
+            {NEXT_PROJECT.description}
+          </span>
         </Link>
       </div>
     </header>
