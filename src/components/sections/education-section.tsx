@@ -32,12 +32,20 @@ export function EducationSection() {
             {EDUCATION.map((item, i) => (
               <Reveal as="li" key={item.degree} delay={i * 0.08} className="relative pb-12 pl-8 last:pb-0">
                 <span className="absolute -left-[5px] top-2 size-[9px] rounded-full bg-sage" />
-                <h3 className="font-serif text-xl font-normal tracking-tight md:text-2xl">
+                {item.period && (
+                  <span className="text-xs uppercase tracking-[0.2em] text-[#7a4a1c]">{item.period}</span>
+                )}
+                <h3 className="mt-2 font-serif text-xl font-normal tracking-tight md:text-2xl">
                   {item.degree}
                 </h3>
                 {item.institution && (
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     {item.institution}
+                  </p>
+                )}
+                {item.detail && (
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                    {item.detail}
                   </p>
                 )}
               </Reveal>
