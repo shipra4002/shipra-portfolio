@@ -170,8 +170,8 @@ export function HeroSection() {
       const r = el.getBoundingClientRect();
       const nx = (e.clientX - r.left) / r.width - 0.5;
       const ny = (e.clientY - r.top) / r.height - 0.5;
-      mx.set(nx);
-      my.set(ny);
+      mx.set(nx * 22);
+      my.set(ny * 22);
     };
     el.addEventListener("mousemove", onMove);
     return () => el.removeEventListener("mousemove", onMove);
