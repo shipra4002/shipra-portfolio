@@ -765,7 +765,59 @@ function LookingBack() {
   );
 }
 
-/* ────────────────────────────── Page ────────────────────────────── */
+/* ────────────────────────── Next Project Navigation ────────────────────────── */
+
+function NextProjectNav() {
+  return (
+    <section className="border-t border-border bg-background px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+          <Link
+            to="/"
+            hash="work"
+            className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-1" />
+            Back to Work
+          </Link>
+          <span className="text-[0.65rem] uppercase tracking-[0.24em] text-muted-foreground md:text-right">
+            Continue the journey
+          </span>
+        </div>
+
+        <Reveal className="mt-8">
+          <Link
+            to="/work/$slug"
+            params={{ slug: NEXT_PROJECT.slug }}
+            className="group grid overflow-hidden rounded-[28px] border border-border bg-surface shadow-soft transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:shadow-lift md:grid-cols-[1.1fr_1fr]"
+          >
+            <div className="order-2 flex flex-col justify-center p-10 md:order-1 md:p-14">
+              <span className="text-[0.65rem] uppercase tracking-[0.24em] text-terracotta">Next Project</span>
+              <h2 className="mt-5 font-serif text-[clamp(2.4rem,6vw,4rem)] font-light leading-[0.98] tracking-[-0.02em]">
+                {NEXT_PROJECT.title}
+              </h2>
+              <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
+                {NEXT_PROJECT.description}
+              </p>
+              <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors group-hover:text-terracotta">
+                View case study
+                <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </span>
+            </div>
+            <div className="order-1 overflow-hidden md:order-2">
+              <img
+                src={NEXT_PROJECT.cover}
+                alt="Nexo — a social travel experience"
+                loading="lazy"
+                className="aspect-[4/3] size-full object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] md:aspect-auto"
+              />
+            </div>
+          </Link>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
 function KalaVanshCaseStudy() {
   return (
