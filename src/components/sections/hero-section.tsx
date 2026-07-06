@@ -160,10 +160,10 @@ export function HeroSection() {
           <div className="relative order-2 md:order-1 md:pl-12">
 
             <div className="relative z-10 space-y-6 md:space-y-8">
-              <h1 className="min-h-[3.5rem] font-serif text-[clamp(2rem,4.6vw,3.6rem)] font-light leading-[1.14] tracking-[-0.015em] text-[#2b1a08] md:min-h-[4.5rem]">
-                <span className={isLastLine ? "text-[#5a2f0c]" : ""}>{displayText}</span>
+              <h1 className="min-h-[3.5rem] font-serif text-[clamp(2rem,4.6vw,3.6rem)] font-light leading-[1.14] tracking-[-0.015em] text-[#f8ead2] md:min-h-[4.5rem]">
+                <span className={isLastLine ? "text-[#d8b36a]" : ""}>{displayText}</span>
                 {!showFinal && (
-                  <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.14em] animate-pulse bg-[#5a2f0c] align-middle" />
+                  <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.14em] animate-pulse bg-gold align-middle" />
                 )}
               </h1>
 
