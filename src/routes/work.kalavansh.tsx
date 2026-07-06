@@ -829,6 +829,7 @@ function KalaVanshCaseStudy() {
       <InsightToExperience />
       <Validation />
       <LookingBack />
+      <NextProjectNav />
       <SiteFooter />
     </div>
   );
