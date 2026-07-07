@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WorkSmartPredictivePosRouteImport } from './routes/work.smart-predictive-pos'
 import { Route as WorkKalavanshRouteImport } from './routes/work.kalavansh'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 
@@ -22,6 +23,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkSmartPredictivePosRoute = WorkSmartPredictivePosRouteImport.update({
+  id: '/work/smart-predictive-pos',
+  path: '/work/smart-predictive-pos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkKalavanshRoute = WorkKalavanshRouteImport.update({
@@ -40,12 +46,14 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work/$slug': typeof WorkSlugRoute
   '/work/kalavansh': typeof WorkKalavanshRoute
+  '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work/$slug': typeof WorkSlugRoute
   '/work/kalavansh': typeof WorkKalavanshRoute
+  '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,30 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work/$slug': typeof WorkSlugRoute
   '/work/kalavansh': typeof WorkKalavanshRoute
+  '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sitemap.xml' | '/work/$slug' | '/work/kalavansh'
+  fullPaths:
+    | '/'
+    | '/sitemap.xml'
+    | '/work/$slug'
+    | '/work/kalavansh'
+    | '/work/smart-predictive-pos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml' | '/work/$slug' | '/work/kalavansh'
-  id: '__root__' | '/' | '/sitemap.xml' | '/work/$slug' | '/work/kalavansh'
+  to:
+    | '/'
+    | '/sitemap.xml'
+    | '/work/$slug'
+    | '/work/kalavansh'
+    | '/work/smart-predictive-pos'
+  id:
+    | '__root__'
+    | '/'
+    | '/sitemap.xml'
+    | '/work/$slug'
+    | '/work/kalavansh'
+    | '/work/smart-predictive-pos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +92,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WorkSlugRoute: typeof WorkSlugRoute
   WorkKalavanshRoute: typeof WorkKalavanshRoute
+  WorkSmartPredictivePosRoute: typeof WorkSmartPredictivePosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -83,6 +109,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/smart-predictive-pos': {
+      id: '/work/smart-predictive-pos'
+      path: '/work/smart-predictive-pos'
+      fullPath: '/work/smart-predictive-pos'
+      preLoaderRoute: typeof WorkSmartPredictivePosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work/kalavansh': {
@@ -107,6 +140,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   WorkSlugRoute: WorkSlugRoute,
   WorkKalavanshRoute: WorkKalavanshRoute,
+  WorkSmartPredictivePosRoute: WorkSmartPredictivePosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
