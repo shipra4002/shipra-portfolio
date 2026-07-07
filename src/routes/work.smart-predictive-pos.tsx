@@ -1098,7 +1098,7 @@ function SmartPosCaseStudy() {
   return (
     <div style={theme} className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased">
       <PageNav />
-      <Hero />
+      <Hero onZoom={onZoom} />>
       <Opportunity />
       <Approach onZoom={onZoom} />
       <Understanding onZoom={onZoom} />
