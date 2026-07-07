@@ -230,14 +230,14 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="overflow-hidden rounded-[1.75rem] border border-border shadow-lift">
+            <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.75rem] border border-border bg-surface p-8 shadow-lift md:p-12">
               <motion.img
-                src={heroImg}
-                alt="A silk-saree weaver at her loom, surrounded by threads of colour"
-                width={1600}
-                height={1200}
+                src={kalavanshLogo.url}
+                alt="KalaVansh logo"
+                width={507}
+                height={542}
                 style={{ y, scale }}
-                className="aspect-[4/3] size-full object-cover"
+                className="h-full w-full object-contain"
               />
             </div>
           </motion.div>
