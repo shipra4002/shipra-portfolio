@@ -22,7 +22,6 @@ import {
   Clock,
   Plus,
   Minus,
-  ChevronDown,
   X,
   ListChecks,
 } from "lucide-react";
