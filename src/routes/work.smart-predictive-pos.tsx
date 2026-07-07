@@ -1117,6 +1117,29 @@ function SmartPosCaseStudy() {
       <AnimatePresence>
         {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
       </AnimatePresence>
+
+      <AtAGlance
+        project="Smart Predictive POS"
+        rows={[
+          { k: "Challenge", v: "Restaurants run on guesswork — stockouts, waste and slow manual ordering." },
+          { k: "Users", v: "Cashiers, kitchen staff and managers across the service flow." },
+          { k: "Solution", v: "A predictive POS that forecasts demand and automates reordering." },
+          { k: "AI Features", v: "Demand forecasting, auto-purchase orders and a Power BI intelligence layer." },
+          { k: "Business Impact", v: "Less waste, fewer stockouts and faster, data-driven operations." },
+        ]}
+        palette={{
+          cardBg: "linear-gradient(180deg, rgba(20,24,33,0.92), rgba(15,18,26,0.92))",
+          border: "rgba(230,201,135,0.22)",
+          title: "#e6c987",
+          label: "#9aa3b5",
+          value: "#f4f1e8",
+          chipBg: "rgba(94,240,138,0.14)",
+          chipFg: "#7ef0a2",
+          btnBg: "#e6c987",
+          btnFg: "#141821",
+          shadow: "0 30px 60px -24px rgba(0,0,0,0.7)",
+        }}
+      />
     </div>
   );
 }
