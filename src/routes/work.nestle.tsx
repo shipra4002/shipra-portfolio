@@ -308,33 +308,8 @@ function Tabs({ tabs }: { tabs: { label: string; content: ReactNode }[] }) {
   );
 }
 
-/* ----------------------------- Accordion --------------------------------- */
-function AccordionItem({ title, children, defaultOpen }: { title: string; children: ReactNode; defaultOpen?: boolean }) {
-  const [open, setOpen] = useState(!!defaultOpen);
-  return (
-    <div className="rounded-2xl border" style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(255,255,255,0.04)" }}>
-      <button onClick={() => setOpen((o) => !o)} className="flex w-full items-center justify-between gap-4 p-6 text-left">
-        <span className="text-lg font-semibold text-white">{title}</span>
-        <ChevronDown className="size-5 shrink-0 text-white/60 transition-transform" style={{ transform: open ? "rotate(180deg)" : "none" }} />
-      </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="px-6 pb-6">{children}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
+/* ----------------------------- Expandable card --------------------------- */
 
-function ExpandCard({ icon: Icon, title, accent, summary, detail }: { icon: typeof Target; title: string; accent: string; summary: string; detail: string }) {
   const [open, setOpen] = useState(false);
   return (
     <Card className="flex h-full flex-col" style={{ borderColor: accent, borderWidth: 2 }}>
