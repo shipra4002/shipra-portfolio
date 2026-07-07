@@ -68,22 +68,7 @@ const STATS = {
   cramersV: 0.27,
 };
 
-const SECTIONS = [
-  "Question",
-  "Why",
-  "Context",
-  "Dataset",
-  "Method",
-  "Hypothesis",
-  "Explore",
-  "Results",
-  "Insight",
-  "Strength",
-  "Matrix",
-  "Recommendation",
-  "Impact",
-  "Lessons",
-];
+
 
 /* ----------------------------- Hooks ------------------------------------- */
 function useCountUp(target: number, decimals = 0, duration = 1400) {
