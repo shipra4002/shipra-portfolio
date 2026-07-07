@@ -358,61 +358,47 @@ function MiniLine({ points, color }: { points: number[]; color: string }) {
   );
 }
 
-function DashboardHero() {
+function DashboardHero({ onZoom }: { onZoom?: () => void }) {
   return (
-    <div className="rounded-[24px] border border-white/10 bg-[var(--surface)] p-5 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:p-6">
-      {/* top bar */}
-      <div className="mb-5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="flex size-7 items-center justify-center rounded-lg bg-[var(--accent)]/15 text-[var(--accent)]">
-            <LineChart className="size-4" />
-          </span>
-          <span className="text-sm font-medium text-[var(--text)]">Operations Overview</span>
+    <div className="overflow-hidden rounded-[24px] border border-white/10 bg-[var(--surface)] shadow-[0_50px_100px_-45px_rgba(0,0,0,0.9)]">
+      {/* browser-style chrome */}
+      <div className="flex items-center gap-3 border-b border-white/[0.06] bg-[var(--surface2)]/60 px-4 py-3">
+        <div className="flex gap-1.5">
+          <span className="size-2.5 rounded-full bg-white/15" />
+          <span className="size-2.5 rounded-full bg-white/15" />
+          <span className="size-2.5 rounded-full bg-white/15" />
         </div>
-        <span className="rounded-full bg-[var(--surface2)] px-3 py-1 text-[0.65rem] uppercase tracking-[0.15em] text-[var(--muted)]">
+        <div className="flex items-center gap-2">
+          <span className="flex size-5 items-center justify-center rounded-md bg-[var(--accent)]/15 text-[var(--accent)]">
+            <LineChart className="size-3" />
+          </span>
+          <span className="text-xs font-medium text-[var(--muted)]">Restaurant Operations · Daily Snapshot</span>
+        </div>
+        <span className="ml-auto rounded-full bg-[var(--accent)]/15 px-2.5 py-0.5 text-[0.6rem] uppercase tracking-[0.15em] text-[var(--accent)]">
           Live
         </span>
       </div>
-
-      {/* kpi row */}
-      <div className="grid grid-cols-3 gap-3">
-        {[
-          { label: "Waste ↓", value: "34%", tint: "var(--accent)" },
-          { label: "Turnover ↑", value: "+22%", tint: "var(--accent2)" },
-          { label: "Accuracy", value: "98%", tint: "var(--highlight)" },
-        ].map((k) => (
-          <div key={k.label} className="rounded-xl border border-white/[0.06] bg-[var(--surface2)] p-3">
-            <div className="text-[0.6rem] uppercase tracking-[0.15em] text-[var(--muted)]">{k.label}</div>
-            <div className="mt-1 text-xl font-semibold" style={{ color: k.tint }}>
-              {k.value}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* charts */}
-      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-5">
-        <div className="rounded-xl border border-white/[0.06] bg-[var(--surface2)] p-4 sm:col-span-3">
-          <div className="mb-3 flex items-center justify-between">
-            <span className="text-xs text-[var(--muted)]">Predicted rush hours</span>
-            <span className="text-[0.6rem] text-[var(--accent)]">demand curve</span>
-          </div>
-          <MiniLine points={[20, 30, 28, 55, 80, 62, 90, 70, 45]} color="var(--accent)" />
-        </div>
-        <div className="rounded-xl border border-white/[0.06] bg-[var(--surface2)] p-4 sm:col-span-2">
-          <div className="mb-3 text-xs text-[var(--muted)]">Inventory burn</div>
-          <MiniBars values={[40, 65, 50, 80, 35, 70]} color="var(--accent2)" />
-        </div>
-      </div>
-
-      <div className="mt-3 rounded-xl border border-[var(--highlight)]/20 bg-[var(--highlight)]/[0.06] p-3">
-        <span className="text-xs text-[var(--highlight)]">
-          ⚡ Recommendation · Add 1 kitchen staff before 7 PM rush · reorder Salmon (2 left)
-        </span>
-      </div>
+      <button
+        type="button"
+        onClick={onZoom}
+        className="group relative block w-full overflow-hidden bg-[#0a0d12]"
+        aria-label="Expand operations dashboard"
+      >
+        <img
+          src={HERO_DASHBOARD_IMG}
+          alt="Smart Predictive POS operations dashboard"
+          className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+        />
+        {onZoom && (
+          <span className="absolute right-3 top-3 flex size-9 items-center justify-center rounded-full bg-black/50 text-white opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
+            <Maximize2 className="size-4" />
+          </span>
+        )}
+      </button>
     </div>
   );
 }
+
 
 function Hero() {
   const meta = [
