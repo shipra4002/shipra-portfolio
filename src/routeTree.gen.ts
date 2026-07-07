@@ -14,6 +14,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorkSmartPredictivePosRouteImport } from './routes/work.smart-predictive-pos'
 import { Route as WorkNexoRouteImport } from './routes/work.nexo'
 import { Route as WorkNestleRouteImport } from './routes/work.nestle'
+import { Route as WorkNestleRouteImport } from './routes/work.nestle'
 import { Route as WorkKalavanshRouteImport } from './routes/work.kalavansh'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 
@@ -42,6 +43,11 @@ const WorkNestleRoute = WorkNestleRouteImport.update({
   path: '/work/nestle',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkNestleRoute = WorkNestleRouteImport.update({
+  id: '/work/nestle',
+  path: '/work/nestle',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkKalavanshRoute = WorkKalavanshRouteImport.update({
   id: '/work/kalavansh',
   path: '/work/kalavansh',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/work/kalavansh': typeof WorkKalavanshRoute
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
+  '/work/nestle': typeof WorkNestleRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/work/kalavansh': typeof WorkKalavanshRoute
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
+  '/work/nestle': typeof WorkNestleRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/work/kalavansh': typeof WorkKalavanshRoute
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
+  '/work/nestle': typeof WorkNestleRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/work/kalavansh'
     | '/work/nestle'
     | '/work/nexo'
+    | '/work/nestle'
     | '/work/smart-predictive-pos'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/work/kalavansh'
     | '/work/nestle'
     | '/work/nexo'
+    | '/work/nestle'
     | '/work/smart-predictive-pos'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/work/kalavansh'
     | '/work/nestle'
     | '/work/nexo'
+    | '/work/nestle'
     | '/work/smart-predictive-pos'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   WorkKalavanshRoute: typeof WorkKalavanshRoute
   WorkNestleRoute: typeof WorkNestleRoute
   WorkNexoRoute: typeof WorkNexoRoute
+  WorkNestleRoute: typeof WorkNestleRoute
   WorkSmartPredictivePosRoute: typeof WorkSmartPredictivePosRoute
 }
 
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkNestleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/nestle': {
+      id: '/work/nestle'
+      path: '/work/nestle'
+      fullPath: '/work/nestle'
+      preLoaderRoute: typeof WorkNestleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work/kalavansh': {
       id: '/work/kalavansh'
       path: '/work/kalavansh'
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   WorkKalavanshRoute: WorkKalavanshRoute,
   WorkNestleRoute: WorkNestleRoute,
   WorkNexoRoute: WorkNexoRoute,
+  WorkNestleRoute: WorkNestleRoute,
   WorkSmartPredictivePosRoute: WorkSmartPredictivePosRoute,
 }
 export const routeTree = rootRouteImport
