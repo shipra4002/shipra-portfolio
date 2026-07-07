@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
-import heroImg from "@/assets/kala-hero-weaver.jpg";
+import kalavanshLogo from "@/assets/kalavansh-logo.png.asset.json";
 import videoPoster from "@/assets/kala-video-poster.jpg";
 // Large video (83MB) is hosted on the Lovable CDN via an absolute URL so it
 // loads on any deploy host (Vercel/Netlify/Cloudflare) without living in the repo.
@@ -94,25 +94,26 @@ function Section({ children, className = "", id }: { children: React.ReactNode; 
 function PageNav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 md:px-10">
-        <BackLink />
+      <div className="mx-auto flex max-w-6xl items-center px-6 py-4 md:px-10">
+        <div className="flex-1">
+          <BackLink />
+        </div>
 
-        <Link
-          to="/work/$slug"
-          params={{ slug: "nexo" }}
-          className="group flex items-center gap-3 text-right"
-        >
-          <span className="hidden max-w-[15rem] flex-col items-end sm:flex">
-            <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
-              Next Project
-            </span>
-            <span className="font-serif text-sm text-foreground">Nexo</span>
-          </span>
-          <span className="flex items-center gap-1.5 text-sm text-foreground sm:hidden">
-            Nexo
-          </span>
-          <ArrowRight className="size-4 text-terracotta transition-transform duration-300 group-hover:translate-x-1" />
-        </Link>
+        <span className="hidden md:inline-block text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
+          Project
+        </span>
+
+        <div className="flex flex-1 justify-end">
+          <Link
+            to="/work/$slug"
+            params={{ slug: "nexo" }}
+            className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
+          >
+            <span className="hidden sm:inline">Next Project</span>
+            <span className="sm:hidden">Next</span>
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </header>
   );
