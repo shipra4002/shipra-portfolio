@@ -31,7 +31,7 @@ import storyImg from "@/assets/kala-batik-woman.jpg";
 import workshopImg from "@/assets/kala-designer.png";
 import profileImg from "@/assets/kala-basket-smile.png";
 import qrPoster from "@/assets/kala-qr-poster.png";
-import nexoCover from "@/assets/nexo.png";
+
 
 export const Route = createFileRoute("/work/kalavansh")({
   head: () => ({
@@ -635,27 +635,33 @@ function Validation() {
 /* ────────────────────────────── Looking Back ────────────────────────────── */
 
 function LookingBack() {
-  const reflections = [
+  const lessons = [
     {
-      t: "Validate earlier",
-      d: "I'd test the riskiest assumption—repeat engagement—before polishing the product.",
+      n: "01",
+      t: "Validate Before You Build",
+      d: "Test the riskiest assumptions first. Users return when the need is real, not when the deck is polished.",
     },
     {
-      t: "Ship a smaller MVP",
-      d: "One craft cluster, one story format—prove the loop before scaling the surface area.",
+      n: "02",
+      t: "Simplicity Scales Faster",
+      d: "Every feature adds friction. The moments that mattered most came from removing what was unnecessary.",
     },
     {
-      t: "Design onboarding for makers",
-      d: "The artisan's first upload matters more than the buyer's first scan. I'd design that path first.",
+      n: "03",
+      t: "Great Products Start With Trust",
+      d: "For artisans, trust lived in small details—clear provenance, honest language, and promises kept.",
     },
   ];
 
   return (
     <Section id="looking-back" className="bg-surface">
-      <Reveal className="mb-14 md:mb-20">
+      <Reveal className="mb-16 md:mb-24">
         <h2 className="font-serif text-[clamp(2.2rem,6vw,4.5rem)] font-light leading-[1.02] tracking-[-0.02em]">
-          If I built KalaVansh again…
+          What KalaVansh Taught Me
         </h2>
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+          Beyond features and flows, the project shaped how I think about building products—rooted in curiosity, restraint, and respect for the people behind the screen.
+        </p>
       </Reveal>
 
       <motion.div
@@ -665,67 +671,58 @@ function LookingBack() {
         whileInView="show"
         viewport={{ once: true, margin: "-60px" }}
       >
-        {reflections.map((r, i) => (
+        {lessons.map((l) => (
           <motion.div
-            key={i}
+            key={l.n}
             variants={staggerItem}
             className="rounded-[22px] border border-border bg-background p-8 shadow-soft md:p-10"
           >
-            <span className="font-serif text-sm text-gold">{String(i + 1).padStart(2, "0")}</span>
-            <h3 className="mt-4 font-serif text-2xl font-light leading-snug">{r.t}</h3>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{r.d}</p>
+            <span className="font-serif text-sm text-gold">{l.n}</span>
+            <h3 className="mt-4 font-serif text-2xl font-light leading-snug">{l.t}</h3>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{l.d}</p>
           </motion.div>
         ))}
       </motion.div>
-
     </Section>
   );
 }
+
 
 /* ────────────────────────────── Next Project ────────────────────────────── */
 
 function NextProject() {
   return (
-    <section className="px-6 pb-28 pt-4 md:px-10">
+    <section className="px-6 pb-28 md:px-10">
       <div className="mx-auto max-w-6xl">
-        <Reveal className="mb-8 flex items-center justify-between gap-4">
-          <BackLink />
-          <span className="inline-flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
-            Next Project: Nexo
-            <ArrowRight className="size-4 text-muted-foreground" />
-          </span>
-        </Reveal>
+        <div className="h-px bg-border" />
         <Reveal>
-          <Link
-            to="/work/$slug"
-            params={{ slug: "nexo" }}
-            className="group relative block overflow-hidden rounded-[28px] border border-border shadow-lift transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5"
-          >
-            <div
-              className="absolute inset-0 scale-100 bg-cover bg-center transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-              style={{ backgroundImage: `url(${nexoCover})` }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/20" />
-
-            <div className="relative flex min-h-[420px] flex-col justify-end p-8 md:p-14">
-              <span className="text-xs uppercase tracking-[0.28em] text-white/70">Next Project</span>
-              <h3 className="mt-4 font-serif text-[clamp(2.4rem,6vw,4.5rem)] font-light leading-[0.98] tracking-[-0.02em] text-white">
-                Nexo
-              </h3>
-              <p className="mt-4 max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
-                Designing a social travel experience that turns journeys into shared memories.
-              </p>
-              <span className="mt-8 inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-white">
-                Explore Project
-                <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+          <nav className="flex items-center justify-between gap-6 py-10">
+            <Link
+              to="/"
+              hash="work"
+              className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
+            >
+              <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-1" />
+              Back to Work
+            </Link>
+            <Link
+              to="/work/$slug"
+              params={{ slug: "nexo" }}
+              className="group inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
+            >
+              <span className="flex flex-col items-end">
+                <span className="text-[0.65rem] uppercase tracking-[0.22em]">Next Project</span>
+                <span className="font-serif text-lg font-light">Nexo</span>
               </span>
-            </div>
-          </Link>
+              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </nav>
         </Reveal>
       </div>
     </section>
   );
 }
+
 
 /* ────────────────────────────── Page ────────────────────────────── */
 
