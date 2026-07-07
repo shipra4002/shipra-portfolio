@@ -1197,14 +1197,22 @@ function NestleCaseStudy() {
               </Fade>
             ))}
           </div>
-          <div className="mt-12 border-t border-white/10 pt-8">
+          <div className="mt-12 flex items-center justify-between gap-6 border-t border-white/10 pt-8">
             <Link
-              to="/"
-              hash="work"
+              to="/work/$slug"
+              params={{ slug: "nexo" }}
               className="group inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
             >
               <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-              Back to all work
+              NEXO
+            </Link>
+            <Link
+              to="/work/$slug"
+              params={{ slug: "taj-hotels" }}
+              className="group inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
+            >
+              Next Strategy: Taj Hotels
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
