@@ -71,15 +71,6 @@ const STATS = {
   cramersV: 0.27,
 };
 
-const NAV = [
-  { id: "overview", label: "Overview" },
-  { id: "context", label: "Context" },
-  { id: "research", label: "Research" },
-  { id: "dashboard", label: "Dashboard" },
-  { id: "findings", label: "Findings" },
-  { id: "recommendation", label: "Recommendation" },
-  { id: "downloads", label: "Downloads" },
-];
 
 /* ----------------------------- Hooks ------------------------------------- */
 function useCountUp(target: number, decimals = 0, duration = 1400) {
@@ -107,25 +98,8 @@ function useCountUp(target: number, decimals = 0, duration = 1400) {
   return { ref, display: val.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) };
 }
 
-function useScrollSpy(ids: string[]) {
-  const [active, setActive] = useState(ids[0]);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id);
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
-    );
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) obs.observe(el);
-    });
-    return () => obs.disconnect();
-  }, [ids]);
-  return active;
-}
+
+
 
 /* ----------------------------- Primitives -------------------------------- */
 function Block({
@@ -543,49 +517,17 @@ function CramersGauge() {
 }
 
 /* ----------------------------- Navigation -------------------------------- */
-function SideNav({ active }: { active: string }) {
-  return (
-    <nav className="fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 2xl:block">
-      <ul className="space-y-1">
-        {NAV.map((n) => {
-          const on = active === n.id;
-          return (
-            <li key={n.id}>
-              <a
-                href={`#${n.id}`}
-                className="group flex items-center gap-3 py-1.5"
-              >
-                <span
-                  className="h-px transition-all duration-300"
-                  style={{ width: on ? 28 : 14, background: on ? C.red : C.grey, opacity: on ? 1 : 0.4 }}
-                />
-                <span
-                  className="text-xs font-semibold uppercase tracking-[0.14em] transition-colors"
-                  style={{ color: on ? C.ink : C.grey, opacity: on ? 1 : 0.55 }}
-                >
-                  {n.label}
-                </span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  );
-}
-
-function ExecSummary({ active }: { active: string }) {
+function ExecSummary() {
   const [open, setOpen] = useState(false);
   const rows = [
     { k: "Business question", v: "Should Nestlé segment cereal marketing by age?" },
     { k: "Dataset", v: "500 consumers · 4 age groups · 4 products" },
-    { k: "Finding", v: "χ² = 105.09, p < 0.05 · Cramér's V = 0.27 (weak)" },
+    { k: "Method", v: "Chi-Square test of independence + Cramér's V" },
+    { k: "Key finding", v: "χ² = 105.09, p < 0.05 · Cramér's V = 0.27 (weak)" },
     { k: "Recommendation", v: "Run a unified national campaign, not age-specific." },
-    { k: "Business impact", v: "Lower cost · higher ROI · simpler, consistent execution." },
   ];
-  const focus = NAV.find((n) => n.id === active)?.label ?? "Overview";
   return (
-    <div className="fixed bottom-6 right-6 z-40 hidden md:block">
+    <div className="fixed bottom-6 right-4 z-40 md:right-6">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -593,7 +535,7 @@ function ExecSummary({ active }: { active: string }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-3 w-[22rem] rounded-3xl border p-6 shadow-[0_30px_60px_-24px_rgba(14,27,51,0.5)]"
+            className="mb-3 w-[min(22rem,calc(100vw-2rem))] rounded-3xl border p-6 shadow-[0_30px_60px_-24px_rgba(14,27,51,0.5)]"
             style={{ borderColor: C.line, background: C.white }}
           >
             <div className="flex items-center justify-between">
@@ -601,7 +543,7 @@ function ExecSummary({ active }: { active: string }) {
                 Executive summary
               </span>
               <span className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold" style={{ background: C.soft, color: C.grey }}>
-                {focus}
+                Nestlé India
               </span>
             </div>
             <dl className="mt-4 space-y-3">
@@ -657,13 +599,11 @@ function ProgressBar() {
 }
 
 function NestleCaseStudy() {
-  const active = useScrollSpy(NAV.map((n) => n.id));
-
   return (
     <div style={{ background: C.softer, color: C.ink }}>
       <ProgressBar />
-      <SideNav active={active} />
-      <ExecSummary active={active} />
+      <ExecSummary />
+
 
       {/* ---------------- BLOCK 1 · HERO ---------------- */}
       <header id="overview" className="relative min-h-[90vh] w-full overflow-hidden scroll-mt-24">
@@ -748,74 +688,52 @@ function NestleCaseStudy() {
       </header>
 
       {/* ---------------- BLOCK 2 · BUSINESS CONTEXT ---------------- */}
-      <Block
-        id="context"
-        kicker="01 · Business Context"
-        title="From a business problem to a marketing decision."
-        intro="This analysis was driven by a business need — not statistical curiosity. Every step exists to serve the decision at the end."
-      >
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
-          {/* Left — problem, decision, context */}
+      <Block id="context">
+        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* Left — the business question */}
           <Fade>
-            <div className="space-y-6">
-              <div>
-                <SubHead>The problem</SubHead>
-                <p className="text-base leading-relaxed" style={{ color: C.grey }}>
-                  Nestlé India&rsquo;s Breakfast Cereal division is planning a nationwide digital campaign and faces a
-                  strategic choice: run <strong style={{ color: C.ink }}>age-specific messaging</strong> or a single{" "}
-                  <strong style={{ color: C.ink }}>unified campaign</strong> for all age groups. Age-based campaigns may
-                  improve relevance — but they raise cost through multiple creatives and executions.
+            <div>
+              <span className="text-[0.7rem] font-semibold uppercase tracking-[0.28em]" style={{ color: C.red }}>
+                01 · Business Context
+              </span>
+              <h2 className="mt-4 font-serif text-[clamp(2rem,4.6vw,3.2rem)] font-light leading-[1.05] tracking-[-0.02em]">
+                The Business Question
+              </h2>
+              <p className="mt-6 max-w-xl text-base leading-relaxed md:text-lg" style={{ color: C.grey }}>
+                Nestlé India&rsquo;s Breakfast Cereal division is planning a nationwide digital campaign and must choose
+                between <strong style={{ color: C.ink }}>age-specific messaging</strong> or a single{" "}
+                <strong style={{ color: C.ink }}>unified campaign</strong>. Segmentation may lift relevance — but it
+                multiplies creative cost and execution complexity.
+              </p>
+              <div className="mt-8 rounded-3xl px-7 py-8" style={{ background: C.red, color: C.white }}>
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/70">The decision at stake</p>
+                <p className="mt-3 font-serif text-[clamp(1.5rem,3.6vw,2.3rem)] font-light leading-tight">
+                  Is age-based segmentation worth the investment?
                 </p>
-              </div>
-              <div>
-                <SubHead>The decision question</SubHead>
-                <div className="rounded-3xl px-6 py-7 text-center" style={{ background: C.red, color: C.white }}>
-                  <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/70">The decision at stake</p>
-                  <p className="mt-2 font-serif text-[clamp(1.4rem,3.4vw,2.1rem)] font-light">
-                    Is segmentation worth the investment?
-                  </p>
-                </div>
-              </div>
-              <div>
-                <SubHead>Why it matters</SubHead>
-                <p className="text-base leading-relaxed" style={{ color: C.grey }}>
-                  Management needs data-backed evidence to know whether segmentation delivers enough incremental impact to
-                  justify the higher spend. The wrong segmentation quietly drains the marketing budget.
-                </p>
-                <blockquote className="mt-4 flex items-start gap-3 rounded-2xl border-l-2 pl-4" style={{ borderColor: C.red }}>
-                  <p className="font-serif text-lg font-light leading-snug" style={{ color: C.ink }}>
-                    &ldquo;Wrong segmentation leads to poor returns.&rdquo;
-                  </p>
-                </blockquote>
               </div>
             </div>
           </Fade>
 
-          {/* Right — trade-off illustration, cost/roi/complexity, timeline */}
+          {/* Right — supporting illustration + three insight cards */}
           <Fade delay={0.1}>
             <div className="space-y-5">
-              <Card style={{ background: C.soft }}>
-                <div className="flex items-center justify-between gap-4">
-                  <div className="text-center">
-                    <Users className="mx-auto size-8" style={{ color: C.red }} />
-                    <p className="mt-2 text-sm font-semibold">Age Segments</p>
-                  </div>
-                  <GitCompareArrows className="size-7" style={{ color: C.grey }} />
-                  <div className="text-center">
-                    <Wallet className="mx-auto size-8" style={{ color: C.blue }} />
-                    <p className="mt-2 text-sm font-semibold">Campaign Cost</p>
-                  </div>
-                </div>
-                <p className="mt-5 text-center text-sm" style={{ color: C.grey }}>
+              <div className="relative overflow-hidden rounded-3xl border" style={{ borderColor: C.line }}>
+                <img
+                  src={nestleHero}
+                  alt="Nestlé breakfast cereals — the category behind the segmentation decision"
+                  className="h-56 w-full object-cover md:h-64"
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(14,27,51,0) 45%, rgba(14,27,51,0.82) 100%)" }} />
+                <p className="absolute bottom-4 left-5 right-5 text-sm font-medium text-white/90">
                   Relevance vs. cost — the core trade-off management must weigh.
                 </p>
-              </Card>
+              </div>
 
               <div className="grid gap-3 sm:grid-cols-3">
                 {[
                   { icon: Wallet, t: "Campaign Cost", d: "Multiple creatives multiply spend." },
-                  { icon: Layers, t: "Complexity", d: "More variants, harder execution." },
-                  { icon: TrendingUp, t: "Marketing ROI", d: "Every rupee must earn return." },
+                  { icon: Layers, t: "Marketing Complexity", d: "More variants, harder execution." },
+                  { icon: TrendingUp, t: "Business Impact", d: "Every rupee must earn its return." },
                 ].map((x) => (
                   <Card key={x.t} className="h-full p-5">
                     <x.icon className="size-7" style={{ color: C.red }} />
@@ -824,33 +742,12 @@ function NestleCaseStudy() {
                   </Card>
                 ))}
               </div>
-
-              <Card className="p-5">
-                <SubHead>Business context timeline</SubHead>
-                <ol className="relative space-y-4 border-l pl-5" style={{ borderColor: C.line }}>
-                  {[
-                    "Business Problem",
-                    "Data Collection",
-                    "Statistical Validation",
-                    "Business Decision",
-                    "Marketing Recommendation",
-                  ].map((step, i, arr) => (
-                    <li key={step} className="relative">
-                      <span
-                        className="absolute -left-[26px] top-0.5 flex size-4 items-center justify-center rounded-full text-[9px] font-bold text-white"
-                        style={{ background: i === arr.length - 1 ? C.red : C.navy }}
-                      >
-                        {i + 1}
-                      </span>
-                      <p className="text-sm font-semibold" style={{ color: i === arr.length - 1 ? C.red : C.ink }}>{step}</p>
-                    </li>
-                  ))}
-                </ol>
-              </Card>
             </div>
           </Fade>
         </div>
       </Block>
+
+
 
       {/* ---------------- BLOCK 3 · RESEARCH & METHOD ---------------- */}
       <Block
