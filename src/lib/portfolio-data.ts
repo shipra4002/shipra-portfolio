@@ -117,8 +117,7 @@ export const workCategories: WorkCategory[] = [
         title: "Nestlé",
         category: "Strategy Breakdown",
         kicker: "Brand & Strategy",
-        cover:
-          "linear-gradient(135deg, #0a2b6b 0%, #123a8a 45%, #c8102e 100%)",
+        cover: `url(${nestleCover})`,
         theme: {
           bgColor: "#faf5ec",
           bgImage: "radial-gradient(130% 130% at 15% 0%, rgba(10,43,107,0.08), transparent 55%)",
