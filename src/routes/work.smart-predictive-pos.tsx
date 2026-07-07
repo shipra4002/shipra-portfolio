@@ -14,6 +14,7 @@ import {
   Maximize2,
   X,
 } from "lucide-react";
+import { AtAGlance } from "@/components/at-a-glance";
 
 /* Case-study artifacts */
 import loginShot from "@/assets/spos-login-page.png";
@@ -281,12 +282,12 @@ function PageNav() {
       <div className="mx-auto flex max-w-6xl items-center px-6 py-4 md:px-10">
         <div className="flex-1">
           <Link
-            to="/"
-            hash="work"
+            to="/work/$slug"
+            params={{ slug: "kalavansh" }}
             className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-[var(--text)]"
           >
             <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-            Back to Work
+            KalaVansh
           </Link>
         </div>
         <span className="hidden text-[0.65rem] uppercase tracking-[0.28em] text-[var(--muted)] md:inline-block">
@@ -1076,12 +1077,12 @@ function KeyLearnings() {
 
       <div className="mt-20 flex items-center justify-between border-t border-white/[0.06] pt-10">
         <Link
-          to="/"
-          hash="work"
+          to="/work/$slug"
+          params={{ slug: "kalavansh" }}
           className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-[var(--text)]"
         >
           <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-          Back to Work
+          KalaVansh
         </Link>
         <Link
           to="/work/$slug"
@@ -1116,6 +1117,29 @@ function SmartPosCaseStudy() {
       <AnimatePresence>
         {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
       </AnimatePresence>
+
+      <AtAGlance
+        project="Smart Predictive POS"
+        rows={[
+          { k: "Challenge", v: "Restaurants run on guesswork — stockouts, waste and slow manual ordering." },
+          { k: "Users", v: "Cashiers, kitchen staff and managers across the service flow." },
+          { k: "Solution", v: "A predictive POS that forecasts demand and automates reordering." },
+          { k: "AI Features", v: "Demand forecasting, auto-purchase orders and a Power BI intelligence layer." },
+          { k: "Business Impact", v: "Less waste, fewer stockouts and faster, data-driven operations." },
+        ]}
+        palette={{
+          cardBg: "linear-gradient(180deg, rgba(20,24,33,0.92), rgba(15,18,26,0.92))",
+          border: "rgba(230,201,135,0.22)",
+          title: "#e6c987",
+          label: "#9aa3b5",
+          value: "#f4f1e8",
+          chipBg: "rgba(94,240,138,0.14)",
+          chipFg: "#7ef0a2",
+          btnBg: "#e6c987",
+          btnFg: "#141821",
+          shadow: "0 30px 60px -24px rgba(0,0,0,0.7)",
+        }}
+      />
     </div>
   );
 }

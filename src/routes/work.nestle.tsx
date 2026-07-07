@@ -29,6 +29,7 @@ import nestleHero from "@/assets/nestle-hero.jpg";
 import reportPdf from "@/assets/nestle-report.pdf.asset.json";
 import presentationPdf from "@/assets/nestle-presentation.pdf.asset.json";
 import datasetXlsx from "@/assets/nestle-dataset.xlsx.asset.json";
+import { AtAGlance } from "@/components/at-a-glance";
 
 /* ----------------------------- Brand palette ----------------------------- */
 const C = {
@@ -518,54 +519,29 @@ function CramersGauge() {
 
 /* ----------------------------- Navigation -------------------------------- */
 function ExecSummary() {
-  const [open, setOpen] = useState(false);
-  const rows = [
-    { k: "Business question", v: "Should Nestlé segment cereal marketing by age?" },
-    { k: "Dataset", v: "500 consumers · 4 age groups · 4 products" },
-    { k: "Method", v: "Chi-Square test of independence + Cramér's V" },
-    { k: "Key finding", v: "χ² = 105.09, p < 0.05 · Cramér's V = 0.27 (weak)" },
-    { k: "Recommendation", v: "Run a unified national campaign, not age-specific." },
-  ];
   return (
-    <div className="fixed bottom-6 right-4 z-40 md:right-6">
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: 16, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 16, scale: 0.96 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-3 w-[min(22rem,calc(100vw-2rem))] rounded-3xl border p-6 shadow-[0_30px_60px_-24px_rgba(14,27,51,0.5)]"
-            style={{ borderColor: C.line, background: C.white }}
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em]" style={{ color: C.red }}>
-                Executive summary
-              </span>
-              <span className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold" style={{ background: C.soft, color: C.grey }}>
-                Nestlé India
-              </span>
-            </div>
-            <dl className="mt-4 space-y-3">
-              {rows.map((r) => (
-                <div key={r.k}>
-                  <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.16em]" style={{ color: C.grey }}>{r.k}</dt>
-                  <dd className="mt-0.5 text-sm leading-snug" style={{ color: C.ink }}>{r.v}</dd>
-                </div>
-              ))}
-            </dl>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <button
-        onClick={() => setOpen((o) => !o)}
-        className="ml-auto flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5"
-        style={{ background: C.navy }}
-      >
-        {open ? <X className="size-4" /> : <ListChecks className="size-4" />}
-        {open ? "Close" : "Summary"}
-      </button>
-    </div>
+    <AtAGlance
+      project="Nestlé India"
+      rows={[
+        { k: "Business question", v: "Should Nestlé segment cereal marketing by age?" },
+        { k: "Dataset", v: "500 consumers · 4 age groups · 4 products" },
+        { k: "Method", v: "Chi-Square test of independence + Cramér's V" },
+        { k: "Key finding", v: "χ² = 105.09, p < 0.05 · Cramér's V = 0.27 (weak)" },
+        { k: "Recommendation", v: "Run a unified national campaign, not age-specific." },
+      ]}
+      palette={{
+        cardBg: "rgba(255,255,255,0.94)",
+        border: C.line,
+        title: C.red,
+        label: C.grey,
+        value: C.ink,
+        chipBg: C.soft,
+        chipFg: C.grey,
+        btnBg: C.navy,
+        btnFg: "#FFFFFF",
+        shadow: "0 30px 60px -24px rgba(14,27,51,0.5)",
+      }}
+    />
   );
 }
 
@@ -624,12 +600,12 @@ function NestleCaseStudy() {
         <div className="relative mx-auto flex min-h-[90vh] max-w-6xl flex-col justify-center px-5 py-24 md:px-10">
           <Fade>
             <Link
-              to="/"
-              hash="work"
+              to="/work/$slug"
+              params={{ slug: "nexo" }}
               className="group mb-8 inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
             >
               <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-              Back to work
+              NEXO
             </Link>
           </Fade>
           <Fade delay={0.04}>
@@ -1197,14 +1173,22 @@ function NestleCaseStudy() {
               </Fade>
             ))}
           </div>
-          <div className="mt-12 border-t border-white/10 pt-8">
+          <div className="mt-12 flex items-center justify-between gap-6 border-t border-white/10 pt-8">
             <Link
-              to="/"
-              hash="work"
+              to="/work/$slug"
+              params={{ slug: "nexo" }}
               className="group inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
             >
               <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-              Back to all work
+              NEXO
+            </Link>
+            <Link
+              to="/work/$slug"
+              params={{ slug: "taj-hotels" }}
+              className="group inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
+            >
+              Next Strategy: Taj Hotels
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>

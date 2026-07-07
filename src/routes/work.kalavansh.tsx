@@ -20,6 +20,7 @@ import {
   VolumeX,
 } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
+import { AtAGlance } from "@/components/at-a-glance";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
 import kalavanshLogo from "@/assets/kalavansh-logo.png";
 import videoPoster from "@/assets/kala-video-poster.jpg";
@@ -68,7 +69,7 @@ function BackLink() {
       className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
     >
       <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-      Back to Work
+      Back to Projects
     </Link>
   );
 }
@@ -110,7 +111,7 @@ function PageNav() {
         <div className="flex flex-1 justify-end">
           <Link
             to="/work/$slug"
-            params={{ slug: "nexo" }}
+            params={{ slug: "smart-predictive-pos" }}
             className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
           >
             <span className="hidden sm:inline">Next Project</span>
@@ -708,16 +709,16 @@ function NextProject() {
               className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
             >
               <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-1" />
-              Back to Work
+              Back to Projects
             </Link>
             <Link
               to="/work/$slug"
-              params={{ slug: "nexo" }}
+              params={{ slug: "smart-predictive-pos" }}
               className="group inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
             >
               <span className="flex flex-col items-end">
                 <span className="text-[0.65rem] uppercase tracking-[0.22em]">Next Project</span>
-                <span className="font-serif text-lg font-light">Nexo</span>
+                <span className="font-serif text-lg font-light">Smart Predictive POS</span>
               </span>
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
@@ -743,6 +744,28 @@ function KalaVanshCaseStudy() {
       <LookingBack />
       <NextProject />
       <SiteFooter />
+      <AtAGlance
+        project="KalaVansh"
+        rows={[
+          { k: "Problem", v: "India's artisans stay invisible — buyers see products, never the makers." },
+          { k: "Research", v: "Field conversations with weavers, buyers and craft sellers." },
+          { k: "Solution", v: "A storytelling-first marketplace that surfaces the artisan behind each craft." },
+          { k: "Role", v: "Product strategy, research and end-to-end experience design." },
+          { k: "Impact", v: "A validated concept that reframes craft commerce around people." },
+        ]}
+        palette={{
+          cardBg: "linear-gradient(180deg, rgba(255,251,244,0.92), rgba(240,230,214,0.9))",
+          border: "rgba(176,87,47,0.22)",
+          title: "#b0572f",
+          label: "#8a7355",
+          value: "#3a2c1f",
+          chipBg: "rgba(63,59,120,0.12)",
+          chipFg: "#3f3b78",
+          btnBg: "#3a2c1f",
+          btnFg: "#f0e6d6",
+          shadow: "0 30px 60px -24px rgba(58,44,31,0.5)",
+        }}
+      />
     </div>
   );
 }

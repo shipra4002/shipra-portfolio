@@ -43,6 +43,7 @@ import rewardsShot from "@/assets/nexo-rewards.jpg";
 import newJournalShot from "@/assets/nexo-new-journal.jpg";
 import architectureShot from "@/assets/nexo-architecture.jpg";
 import caseStudyDoc from "@/assets/nexo-case-study.docx?url";
+import { AtAGlance } from "@/components/at-a-glance";
 
 const GITHUB_URL = "https://github.com/mahekk-shahh/Nexo";
 const DOC_URL = caseStudyDoc;
@@ -167,19 +168,22 @@ function TopNav() {
     <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-[var(--bg)]/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
         <Link
-          to="/"
-          hash="work"
+          to="/work/$slug"
+          params={{ slug: "smart-predictive-pos" }}
           className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-white"
         >
           <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-          Back to Work
+          <span className="hidden sm:inline">Smart Predictive POS</span>
+          <span className="sm:hidden">Back</span>
         </Link>
-        <span className="text-sm font-medium tracking-[0.35em] text-white/80">NEXO</span>
+        <span className="text-[0.65rem] font-medium uppercase tracking-[0.28em] text-white/70">Project</span>
         <Link
-          to="/work/smart-predictive-pos"
+          to="/work/$slug"
+          params={{ slug: "nestle" }}
           className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-white"
         >
-          Next Project
+          <span className="hidden sm:inline">Next: Strategy — Nestlé</span>
+          <span className="sm:hidden">Next</span>
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </div>
@@ -191,18 +195,19 @@ function BottomNav() {
   return (
     <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-10 md:px-8">
       <Link
-        to="/"
-        hash="work"
+        to="/work/$slug"
+        params={{ slug: "smart-predictive-pos" }}
         className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-white"
       >
         <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-        Back to Work
+        Smart Predictive POS
       </Link>
       <Link
-        to="/work/smart-predictive-pos"
+        to="/work/$slug"
+        params={{ slug: "nestle" }}
         className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-white"
       >
-        Next Project
+        Next: Strategy Breakdown — Nestlé
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
       </Link>
     </div>
@@ -1027,6 +1032,28 @@ function NexoCaseStudy() {
       <div className="border-t border-white/8">
         <BottomNav />
       </div>
+      <AtAGlance
+        project="NEXO"
+        rows={[
+          { k: "Vision", v: "A companion app that keeps solo travelers connected and grounded." },
+          { k: "Target Users", v: "Independent and first-time travelers navigating new places alone." },
+          { k: "Core Features", v: "Travel buddy matching, journaling, chat and rewards." },
+          { k: "Tech Stack", v: "React Native, Node & Express REST services, single codebase." },
+          { k: "My Contribution", v: "Product strategy, research, UX and full-stack build." },
+        ]}
+        palette={{
+          cardBg: "linear-gradient(180deg, rgba(18,36,61,0.85), rgba(12,24,41,0.9))",
+          border: "rgba(127,179,255,0.24)",
+          title: "#7fb3ff",
+          label: "#9db6c9",
+          value: "#eef4f8",
+          chipBg: "rgba(143,211,166,0.16)",
+          chipFg: "#8fd3a6",
+          btnBg: "#7fb3ff",
+          btnFg: "#0a1728",
+          shadow: "0 30px 60px -24px rgba(6,18,36,0.8)",
+        }}
+      />
     </div>
   );
 }
