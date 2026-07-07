@@ -14,6 +14,7 @@ import {
   Maximize2,
   X,
 } from "lucide-react";
+import { AtAGlance } from "@/components/at-a-glance";
 
 /* Case-study artifacts */
 import loginShot from "@/assets/spos-login-page.png";
