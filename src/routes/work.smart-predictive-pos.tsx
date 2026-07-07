@@ -30,7 +30,7 @@ import contextDiagram from "@/assets/spos-context-diagram.jpg.asset.json";
 import excelAnalysis from "@/assets/spos-excel-analysis.png.asset.json";
 import powerbiDashboard from "@/assets/spos-powerbi-dashboard.png.asset.json";
 import heroDashboard from "@/assets/spos-hero-dashboard.png.asset.json";
-import brdPdf from "@/assets/spos-brd.pdf.asset.json";
+import brdPdf from "@/assets/spos-brd-v2.pdf.asset.json";
 
 /* Real artifacts now wired in. */
 const DASHBOARD_IMG = powerbiDashboard.url;
@@ -465,8 +465,7 @@ function Hero({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
             </a>
             <a
               href={BRD_PDF_URL || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
+              download
               className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-[var(--text)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--highlight)] hover:text-[var(--highlight)]"
             >
               <FileText className="size-4" />
