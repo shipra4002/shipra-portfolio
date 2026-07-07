@@ -11,7 +11,7 @@ function ProjectCard({ project }: { project: Project }) {
       <Link
         to="/work/$slug"
         params={{ slug: project.slug }}
-        style={{ ["--pc-accent" as string]: theme.accent }}
+        style={{ "--pc-accent": theme.accent } as React.CSSProperties}
         className="group flex h-full flex-col overflow-hidden rounded-[18px] shadow-[0_1px_2px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.06] transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:shadow-[0_28px_50px_-24px_rgba(0,0,0,0.45)]"
       >
         {/* Cover image */}
