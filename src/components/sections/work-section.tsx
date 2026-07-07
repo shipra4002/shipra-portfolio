@@ -16,13 +16,14 @@ function ProjectCard({ project }: { project: Project }) {
         className="group flex h-full flex-col overflow-hidden rounded-[18px] shadow-[0_1px_2px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.06] transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:shadow-[0_28px_50px_-24px_rgba(0,0,0,0.45)]"
       >
         {/* Cover image */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden">
+        <div className={`relative aspect-[16/10] w-full overflow-hidden ${project.coverFit === "contain" ? "p-6 md:p-8" : ""}`}>
           <div
-            className="absolute inset-0 scale-100 bg-cover bg-center transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+            className={`absolute inset-0 scale-100 transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] ${project.coverFit === "contain" ? "bg-contain bg-center bg-no-repeat" : "bg-cover bg-center"}`}
             style={{ backgroundImage: project.cover }}
           />
           <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_20%_0%,rgba(255,255,255,0.14),transparent_55%)]" />
         </div>
+
 
         {/* Content — themed per project */}
         <div
