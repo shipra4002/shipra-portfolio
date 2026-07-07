@@ -766,23 +766,27 @@ function Understanding({ onZoom }: { onZoom: (src: string, alt: string) => void 
       <SectionLabel index="04" title="Understanding the System" />
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <Reveal>
-          <span className="mb-3 block text-xs uppercase tracking-[0.2em] text-[var(--accent2)]">Context Diagram</span>
-          <ArtifactImage
+          <Figure
             src={CONTEXT_DIAGRAM_IMG}
             alt="Context diagram"
-            label="Context Diagram"
-            onZoom={CONTEXT_DIAGRAM_IMG ? () => onZoom(CONTEXT_DIAGRAM_IMG, "Context diagram") : undefined}
+            title="Context Diagram"
+            caption="Illustrates how customers, kitchen, inventory, suppliers and managers interact with the Smart Predictive POS."
+            tint="var(--accent2)"
+            bg="#f1f4fb"
+            imgClassName="aspect-[4/3]"
+            onZoom={() => onZoom(CONTEXT_DIAGRAM_IMG, "Context diagram")}
           />
         </Reveal>
         <Reveal delay={0.1}>
-          <span className="mb-3 block text-xs uppercase tracking-[0.2em] text-[var(--highlight)]">
-            System Architecture
-          </span>
-          <ArtifactImage
+          <Figure
             src={ARCHITECTURE_IMG}
             alt="System architecture"
-            label="System Architecture"
-            onZoom={ARCHITECTURE_IMG ? () => onZoom(ARCHITECTURE_IMG, "System architecture") : undefined}
+            title="System Architecture"
+            caption="High-level architecture showing how operational data flows through the system."
+            tint="var(--highlight)"
+            bg="#f7f7f5"
+            imgClassName="aspect-[4/3]"
+            onZoom={() => onZoom(ARCHITECTURE_IMG, "System architecture")}
           />
         </Reveal>
       </div>
