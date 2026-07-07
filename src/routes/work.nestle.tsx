@@ -545,7 +545,7 @@ function CramersGauge() {
 /* ----------------------------- Navigation -------------------------------- */
 function SideNav({ active }: { active: string }) {
   return (
-    <nav className="fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 xl:block">
+    <nav className="fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 2xl:block">
       <ul className="space-y-1">
         {NAV.map((n) => {
           const on = active === n.id;
