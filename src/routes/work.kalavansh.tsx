@@ -744,6 +744,28 @@ function KalaVanshCaseStudy() {
       <LookingBack />
       <NextProject />
       <SiteFooter />
+      <AtAGlance
+        project="KalaVansh"
+        rows={[
+          { k: "Problem", v: "India's artisans stay invisible — buyers see products, never the makers." },
+          { k: "Research", v: "Field conversations with weavers, buyers and craft sellers." },
+          { k: "Solution", v: "A storytelling-first marketplace that surfaces the artisan behind each craft." },
+          { k: "Role", v: "Product strategy, research and end-to-end experience design." },
+          { k: "Impact", v: "A validated concept that reframes craft commerce around people." },
+        ]}
+        palette={{
+          cardBg: "linear-gradient(180deg, rgba(255,251,244,0.92), rgba(240,230,214,0.9))",
+          border: "rgba(176,87,47,0.22)",
+          title: "#b0572f",
+          label: "#8a7355",
+          value: "#3a2c1f",
+          chipBg: "rgba(63,59,120,0.12)",
+          chipFg: "#3f3b78",
+          btnBg: "#3a2c1f",
+          btnFg: "#f0e6d6",
+          shadow: "0 30px 60px -24px rgba(58,44,31,0.5)",
+        }}
+      />
     </div>
   );
 }
