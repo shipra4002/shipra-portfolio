@@ -522,12 +522,16 @@ function Opportunity() {
 
 /* ─────────────────────────── S3 · Approach ─────────────────────────── */
 
+type StepFigure = { src: string; alt: string; title: string; caption: string; bg?: string };
+
 type ProcessStep = {
   key: string;
   title: string;
   blurb: string;
-  images: { src: string; alt: string; label: string }[];
+  figures?: StepFigure[];
+  requirements?: { name: string; desc: string }[];
   note?: string;
+  wide?: boolean;
 };
 
 function Approach({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
@@ -535,48 +539,103 @@ function Approach({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
     {
       key: "research",
       title: "Research",
-      blurb: "Operational data pulled apart to find where decisions actually break down.",
-      images: [{ src: SPREADSHEET_IMG, alt: "Research spreadsheet", label: "Spreadsheet — key cells highlighted" }],
-      note: "Cropped extracts with the decision-critical cells highlighted.",
+      blurb: "Restaurant operations data pulled apart to locate where revenue actually leaks.",
+      note: "Industry data pointed to ~15% revenue loss from waste, overstocking and mis-staffing.",
+      figures: [
+        {
+          src: EXCEL_IMG,
+          alt: "Excel analysis of restaurant operations data",
+          title: "Excel Analysis",
+          caption:
+            "Data exploration across turnover, waste % and staffing used to identify inefficiencies and validate the opportunity.",
+          bg: "#ffffff",
+        },
+      ],
     },
     {
       key: "process",
       title: "Business Process Mapping",
-      blurb: "How orders move across customer, cashier, kitchen and manager.",
-      images: [
-        { src: customerFlow.url, alt: "Customer order flow", label: "Customer Flow" },
-        { src: kitchenFlow.url, alt: "Kitchen order flow", label: "Kitchen Flow" },
-        { src: managerFlow.url, alt: "Manager flow", label: "Manager Flow" },
+      blurb: "Mapping the current restaurant workflow against the future predictive one.",
+      wide: true,
+      figures: [
+        {
+          src: AS_IS_IMG,
+          alt: "As-Is process flow",
+          title: "As-Is Process Flow",
+          caption: "Current restaurant workflow before introducing the Smart Predictive POS.",
+          bg: "#f7f7f5",
+        },
+        {
+          src: TO_BE_IMG,
+          alt: "To-Be process flow",
+          title: "To-Be Process Flow",
+          caption: "Future workflow after introducing predictive automation and operational intelligence.",
+          bg: "#f7f7f5",
+        },
       ],
     },
     {
       key: "requirements",
       title: "Requirements",
-      blurb: "Business needs translated into scoped, buildable requirements.",
-      images: [{ src: BRD_PDF_URL, alt: "BRD snippet", label: "BRD — relevant snippets" }],
-      note: "Selected requirement snippets from the Business Requirements Document.",
+      blurb: "Business needs from the BRD translated into scoped, prioritised requirements.",
+      note: "Extracted from the Business Requirements Document — the project's source of truth.",
+      requirements: [
+        { name: "Rush-Hour Prediction", desc: "Forecast peak & low periods from sales data." },
+        { name: "Real-Time Inventory Tracking", desc: "Auto-deduct stock on every order." },
+        { name: "Dynamic Thresholds", desc: "Min / max / reorder levels that adapt to demand." },
+        { name: "Automated Ordering", desc: "Generate supplier POs on threshold breach." },
+        { name: "Management Dashboard", desc: "Live KPIs on sales, waste & turnover." },
+        { name: "Manual Override & Audit", desc: "Manager control over automation, fully logged." },
+      ],
     },
     {
       key: "wireframes",
       title: "Wireframes",
       blurb: "The key screens sketched before a single pixel of polish.",
-      images: [
-        { src: loginShot.url, alt: "Login wireframe", label: "Login" },
-        { src: cashierShot.url, alt: "Cashier wireframe", label: "Cashier" },
-        { src: managerShot.url, alt: "Manager wireframe", label: "Manager" },
+      wide: true,
+      figures: [
+        { src: loginShot.url, alt: "Login wireframe", title: "Login Wireframe", caption: "Authentication experience for restaurant staff.", bg: "#ffffff" },
+        { src: cashierShot.url, alt: "Cashier screen", title: "Cashier Screen", caption: "Fast order entry interface for front-of-house staff.", bg: "#ffffff" },
+        { src: kitchenShot.url, alt: "Kitchen screen", title: "Kitchen Screen", caption: "Real-time order management interface for kitchen operations.", bg: "#ffffff" },
+        { src: managerShot.url, alt: "Manager dashboard wireframe", title: "Manager Dashboard", caption: "Operational insights and decision support for managers.", bg: "#ffffff" },
+        { src: purchaseShot.url, alt: "Auto purchase order screen", title: "Auto Purchase Order", caption: "Automated inventory replenishment based on predictive demand.", bg: "#ffffff" },
       ],
     },
     {
-      key: "solution",
-      title: "Solution",
-      blurb: "The system architecture that ties the pieces together.",
-      images: [{ src: ARCHITECTURE_IMG, alt: "System architecture", label: "System Architecture" }],
+      key: "architecture",
+      title: "Architecture",
+      blurb: "How stakeholders and operational data flow through the system.",
+      wide: true,
+      figures: [
+        {
+          src: CONTEXT_DIAGRAM_IMG,
+          alt: "Context diagram",
+          title: "Context Diagram",
+          caption: "High-level interactions between stakeholders and the Smart Predictive POS.",
+          bg: "#f1f4fb",
+        },
+        {
+          src: ARCHITECTURE_IMG,
+          alt: "System architecture / operational data flow",
+          title: "System Architecture",
+          caption: "High-level architecture showing how operational data flows through the system.",
+          bg: "#f7f7f5",
+        },
+      ],
     },
     {
       key: "dashboard",
       title: "Dashboard",
       blurb: "Where predictions surface as decisions a manager can act on.",
-      images: [{ src: DASHBOARD_IMG, alt: "Manager dashboard", label: "Dashboard Preview" }],
+      figures: [
+        {
+          src: DASHBOARD_IMG,
+          alt: "Power BI operational dashboard",
+          title: "Power BI Dashboard",
+          caption: "Operational dashboard designed to support data-driven decision-making.",
+          bg: "#ffffff",
+        },
+      ],
     },
   ];
 
@@ -613,20 +672,40 @@ function Approach({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
 
       <AnimatePresence>
         {active && (
-          <Modal title={active.title} onClose={() => setActive(null)}>
+          <Modal title={active.title} onClose={() => setActive(null)} wide={active.wide}>
             <p className="text-sm text-[var(--muted)]">{active.blurb}</p>
             {active.note && <p className="mt-1 text-xs text-[var(--muted)]/70">{active.note}</p>}
-            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {active.images.map((img) => (
-                <ArtifactImage
-                  key={img.label}
-                  src={img.src}
-                  alt={img.alt}
-                  label={img.label}
-                  onZoom={img.src ? () => onZoom(img.src, img.alt) : undefined}
-                />
-              ))}
-            </div>
+
+            {active.requirements && (
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {active.requirements.map((r) => (
+                  <div key={r.name} className="rounded-xl border border-white/[0.07] bg-[var(--surface2)] p-4">
+                    <div className="flex items-center gap-2">
+                      <span className="h-3.5 w-1 rounded-full bg-[var(--accent)]" />
+                      <span className="text-sm font-semibold text-[var(--text)]">{r.name}</span>
+                    </div>
+                    <p className="mt-1.5 pl-3 text-xs leading-relaxed text-[var(--muted)]">{r.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {active.figures && (
+              <div className={`mt-6 grid grid-cols-1 gap-4 ${active.figures.length > 1 ? "sm:grid-cols-2" : ""}`}>
+                {active.figures.map((f) => (
+                  <Figure
+                    key={f.title}
+                    src={f.src}
+                    alt={f.alt}
+                    title={f.title}
+                    caption={f.caption}
+                    bg={f.bg}
+                    imgClassName="max-h-[46vh]"
+                    onZoom={() => onZoom(f.src, f.alt)}
+                  />
+                ))}
+              </div>
+            )}
           </Modal>
         )}
       </AnimatePresence>
