@@ -543,49 +543,17 @@ function CramersGauge() {
 }
 
 /* ----------------------------- Navigation -------------------------------- */
-function SideNav({ active }: { active: string }) {
-  return (
-    <nav className="fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 2xl:block">
-      <ul className="space-y-1">
-        {NAV.map((n) => {
-          const on = active === n.id;
-          return (
-            <li key={n.id}>
-              <a
-                href={`#${n.id}`}
-                className="group flex items-center gap-3 py-1.5"
-              >
-                <span
-                  className="h-px transition-all duration-300"
-                  style={{ width: on ? 28 : 14, background: on ? C.red : C.grey, opacity: on ? 1 : 0.4 }}
-                />
-                <span
-                  className="text-xs font-semibold uppercase tracking-[0.14em] transition-colors"
-                  style={{ color: on ? C.ink : C.grey, opacity: on ? 1 : 0.55 }}
-                >
-                  {n.label}
-                </span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  );
-}
-
-function ExecSummary({ active }: { active: string }) {
+function ExecSummary() {
   const [open, setOpen] = useState(false);
   const rows = [
     { k: "Business question", v: "Should Nestlé segment cereal marketing by age?" },
     { k: "Dataset", v: "500 consumers · 4 age groups · 4 products" },
-    { k: "Finding", v: "χ² = 105.09, p < 0.05 · Cramér's V = 0.27 (weak)" },
+    { k: "Method", v: "Chi-Square test of independence + Cramér's V" },
+    { k: "Key finding", v: "χ² = 105.09, p < 0.05 · Cramér's V = 0.27 (weak)" },
     { k: "Recommendation", v: "Run a unified national campaign, not age-specific." },
-    { k: "Business impact", v: "Lower cost · higher ROI · simpler, consistent execution." },
   ];
-  const focus = NAV.find((n) => n.id === active)?.label ?? "Overview";
   return (
-    <div className="fixed bottom-6 right-6 z-40 hidden md:block">
+    <div className="fixed bottom-6 right-4 z-40 md:right-6">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -593,7 +561,7 @@ function ExecSummary({ active }: { active: string }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-3 w-[22rem] rounded-3xl border p-6 shadow-[0_30px_60px_-24px_rgba(14,27,51,0.5)]"
+            className="mb-3 w-[min(22rem,calc(100vw-2rem))] rounded-3xl border p-6 shadow-[0_30px_60px_-24px_rgba(14,27,51,0.5)]"
             style={{ borderColor: C.line, background: C.white }}
           >
             <div className="flex items-center justify-between">
@@ -601,7 +569,7 @@ function ExecSummary({ active }: { active: string }) {
                 Executive summary
               </span>
               <span className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold" style={{ background: C.soft, color: C.grey }}>
-                {focus}
+                Nestlé India
               </span>
             </div>
             <dl className="mt-4 space-y-3">
