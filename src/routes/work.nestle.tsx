@@ -625,13 +625,11 @@ function ProgressBar() {
 }
 
 function NestleCaseStudy() {
-  const active = useScrollSpy(NAV.map((n) => n.id));
-
   return (
     <div style={{ background: C.softer, color: C.ink }}>
       <ProgressBar />
-      <SideNav active={active} />
-      <ExecSummary active={active} />
+      <ExecSummary />
+
 
       {/* ---------------- BLOCK 1 · HERO ---------------- */}
       <header id="overview" className="relative min-h-[90vh] w-full overflow-hidden scroll-mt-24">
