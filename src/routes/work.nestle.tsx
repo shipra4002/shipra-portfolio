@@ -297,7 +297,7 @@ function Heatmap() {
   };
   return (
     <div className="overflow-x-auto">
-      <table className="w-full min-w-[520px] border-separate" style={{ borderSpacing: 6 }}>
+      <table className="w-full min-w-[440px] border-separate" style={{ borderSpacing: 5 }}>the
         <thead>
           <tr>
             <th className="text-left text-xs font-semibold" style={{ color: C.grey }}></th>
