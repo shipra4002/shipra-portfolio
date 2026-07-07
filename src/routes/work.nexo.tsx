@@ -167,19 +167,22 @@ function TopNav() {
     <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-[var(--bg)]/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
         <Link
-          to="/"
-          hash="work"
+          to="/work/$slug"
+          params={{ slug: "smart-predictive-pos" }}
           className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-white"
         >
           <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-          Back to Work
+          <span className="hidden sm:inline">Smart Predictive POS</span>
+          <span className="sm:hidden">Back</span>
         </Link>
-        <span className="text-sm font-medium tracking-[0.35em] text-white/80">NEXO</span>
+        <span className="text-[0.65rem] font-medium uppercase tracking-[0.28em] text-white/70">Project</span>
         <Link
-          to="/work/smart-predictive-pos"
+          to="/work/$slug"
+          params={{ slug: "nestle" }}
           className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-white"
         >
-          Next Project
+          <span className="hidden sm:inline">Next: Strategy — Nestlé</span>
+          <span className="sm:hidden">Next</span>
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </div>
