@@ -674,7 +674,7 @@ function TajCaseStudy() {
                         className="flex size-9 shrink-0 items-center justify-center rounded-xl"
                         style={{ background: `${C.navy}0d` }}
                       >
-                        <x.icon className="size-4.5" style={{ color: C.navy }} />
+                        <x.icon className="size-5" style={{ color: C.navy }} />
                       </div>
                       <div>
                         <p className="text-sm font-semibold" style={{ color: C.navy }}>
@@ -810,7 +810,7 @@ function TajCaseStudy() {
                     className="flex size-9 items-center justify-center rounded-xl"
                     style={{ background: "rgba(182,139,45,0.16)" }}
                   >
-                    <s.icon className="size-4.5" style={{ color: C.goldSoft }} />
+                    <s.icon className="size-5" style={{ color: C.goldSoft }} />
                   </div>
                   <h4 className="text-base font-semibold text-white">{s.stage}</h4>
                 </div>
@@ -892,7 +892,7 @@ function TajCaseStudy() {
                         className="flex size-9 shrink-0 items-center justify-center rounded-xl"
                         style={{ background: `${step.c}18` }}
                       >
-                        <step.icon className="size-4.5" style={{ color: step.c }} />
+                        <step.icon className="size-5" style={{ color: step.c }} />
                       </div>
                       <div>
                         <p className="text-sm font-semibold" style={{ color: C.navy }}>

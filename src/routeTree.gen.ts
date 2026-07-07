@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WorkTajHotelsRouteImport } from './routes/work.taj-hotels'
 import { Route as WorkSmartPredictivePosRouteImport } from './routes/work.smart-predictive-pos'
 import { Route as WorkNexoRouteImport } from './routes/work.nexo'
 import { Route as WorkNestleRouteImport } from './routes/work.nestle'
@@ -25,6 +26,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkTajHotelsRoute = WorkTajHotelsRouteImport.update({
+  id: '/work/taj-hotels',
+  path: '/work/taj-hotels',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkSmartPredictivePosRoute = WorkSmartPredictivePosRouteImport.update({
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
+  '/work/taj-hotels': typeof WorkTajHotelsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
+  '/work/taj-hotels': typeof WorkTajHotelsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
+  '/work/taj-hotels': typeof WorkTajHotelsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/work/nestle'
     | '/work/nexo'
     | '/work/smart-predictive-pos'
+    | '/work/taj-hotels'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/work/nestle'
     | '/work/nexo'
     | '/work/smart-predictive-pos'
+    | '/work/taj-hotels'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/work/nestle'
     | '/work/nexo'
     | '/work/smart-predictive-pos'
+    | '/work/taj-hotels'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   WorkNestleRoute: typeof WorkNestleRoute
   WorkNexoRoute: typeof WorkNexoRoute
   WorkSmartPredictivePosRoute: typeof WorkSmartPredictivePosRoute
+  WorkTajHotelsRoute: typeof WorkTajHotelsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/taj-hotels': {
+      id: '/work/taj-hotels'
+      path: '/work/taj-hotels'
+      fullPath: '/work/taj-hotels'
+      preLoaderRoute: typeof WorkTajHotelsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work/smart-predictive-pos': {
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   WorkNestleRoute: WorkNestleRoute,
   WorkNexoRoute: WorkNexoRoute,
   WorkSmartPredictivePosRoute: WorkSmartPredictivePosRoute,
+  WorkTajHotelsRoute: WorkTajHotelsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
