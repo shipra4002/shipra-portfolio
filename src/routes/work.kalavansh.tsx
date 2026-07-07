@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
-import heroImg from "@/assets/kala-hero-weaver.jpg";
+import kalavanshLogo from "@/assets/kalavansh-logo.png.asset.json";
 import videoPoster from "@/assets/kala-video-poster.jpg";
 // Large video (83MB) is hosted on the Lovable CDN via an absolute URL so it
 // loads on any deploy host (Vercel/Netlify/Cloudflare) without living in the repo.
@@ -94,25 +94,26 @@ function Section({ children, className = "", id }: { children: React.ReactNode; 
 function PageNav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 md:px-10">
-        <BackLink />
+      <div className="mx-auto flex max-w-6xl items-center px-6 py-4 md:px-10">
+        <div className="flex-1">
+          <BackLink />
+        </div>
 
-        <Link
-          to="/work/$slug"
-          params={{ slug: "nexo" }}
-          className="group flex items-center gap-3 text-right"
-        >
-          <span className="hidden max-w-[15rem] flex-col items-end sm:flex">
-            <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
-              Next Project
-            </span>
-            <span className="font-serif text-sm text-foreground">Nexo</span>
-          </span>
-          <span className="flex items-center gap-1.5 text-sm text-foreground sm:hidden">
-            Nexo
-          </span>
-          <ArrowRight className="size-4 text-terracotta transition-transform duration-300 group-hover:translate-x-1" />
-        </Link>
+        <span className="hidden md:inline-block text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
+          Project
+        </span>
+
+        <div className="flex flex-1 justify-end">
+          <Link
+            to="/work/$slug"
+            params={{ slug: "nexo" }}
+            className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
+          >
+            <span className="hidden sm:inline">Next Project</span>
+            <span className="sm:hidden">Next</span>
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </header>
   );
@@ -207,14 +208,14 @@ function Hero() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.18} className="mt-8 flex flex-wrap gap-3">
+            <Reveal delay={0.18} className="mt-8 flex flex-wrap items-center justify-start gap-2 md:flex-nowrap md:gap-3">
               {links.map((l) => (
                 <a
                   key={l.label}
                   href={l.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 px-5 py-2.5 text-sm text-foreground transition-all duration-300 hover:translate-y-[-2px] hover:border-terracotta hover:bg-terracotta hover:text-primary-foreground hover:shadow-md hover:gap-3"
+                  className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-foreground/15 px-3 py-2 text-xs text-foreground transition-all duration-300 hover:translate-y-[-2px] hover:border-terracotta hover:bg-terracotta hover:text-primary-foreground hover:shadow-md hover:gap-3 md:px-4 md:py-2.5 md:text-sm"
                 >
                   <l.icon className="size-4" />
                   {l.label}
@@ -229,14 +230,14 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="overflow-hidden rounded-[1.75rem] border border-border shadow-lift">
+            <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.75rem] border border-border bg-background p-6 shadow-lift md:p-10">
               <motion.img
-                src={heroImg}
-                alt="A silk-saree weaver at her loom, surrounded by threads of colour"
-                width={1600}
-                height={1200}
+                src={kalavanshLogo.url}
+                alt="KalaVansh logo"
+                width={507}
+                height={542}
                 style={{ y, scale }}
-                className="aspect-[4/3] size-full object-cover"
+                className="h-full w-full object-contain"
               />
             </div>
           </motion.div>
