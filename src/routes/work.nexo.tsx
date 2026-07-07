@@ -228,7 +228,12 @@ function Hero() {
       ? {}
       : {
           animate: { y: [0, -dist, 0] },
-          transition: { duration: 6 + delay, repeat: Infinity, ease: "easeInOut", delay },
+          transition: {
+            duration: 6 + delay,
+            repeat: Infinity,
+            ease: "easeInOut" as const,
+            delay,
+          },
         };
 
   return (
