@@ -518,54 +518,29 @@ function CramersGauge() {
 
 /* ----------------------------- Navigation -------------------------------- */
 function ExecSummary() {
-  const [open, setOpen] = useState(false);
-  const rows = [
-    { k: "Business question", v: "Should Nestlé segment cereal marketing by age?" },
-    { k: "Dataset", v: "500 consumers · 4 age groups · 4 products" },
-    { k: "Method", v: "Chi-Square test of independence + Cramér's V" },
-    { k: "Key finding", v: "χ² = 105.09, p < 0.05 · Cramér's V = 0.27 (weak)" },
-    { k: "Recommendation", v: "Run a unified national campaign, not age-specific." },
-  ];
   return (
-    <div className="fixed bottom-6 right-4 z-40 md:right-6">
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: 16, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 16, scale: 0.96 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-3 w-[min(22rem,calc(100vw-2rem))] rounded-3xl border p-6 shadow-[0_30px_60px_-24px_rgba(14,27,51,0.5)]"
-            style={{ borderColor: C.line, background: C.white }}
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em]" style={{ color: C.red }}>
-                Executive summary
-              </span>
-              <span className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold" style={{ background: C.soft, color: C.grey }}>
-                Nestlé India
-              </span>
-            </div>
-            <dl className="mt-4 space-y-3">
-              {rows.map((r) => (
-                <div key={r.k}>
-                  <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.16em]" style={{ color: C.grey }}>{r.k}</dt>
-                  <dd className="mt-0.5 text-sm leading-snug" style={{ color: C.ink }}>{r.v}</dd>
-                </div>
-              ))}
-            </dl>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <button
-        onClick={() => setOpen((o) => !o)}
-        className="ml-auto flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5"
-        style={{ background: C.navy }}
-      >
-        {open ? <X className="size-4" /> : <ListChecks className="size-4" />}
-        {open ? "Close" : "Summary"}
-      </button>
-    </div>
+    <AtAGlance
+      project="Nestlé India"
+      rows={[
+        { k: "Business question", v: "Should Nestlé segment cereal marketing by age?" },
+        { k: "Dataset", v: "500 consumers · 4 age groups · 4 products" },
+        { k: "Method", v: "Chi-Square test of independence + Cramér's V" },
+        { k: "Key finding", v: "χ² = 105.09, p < 0.05 · Cramér's V = 0.27 (weak)" },
+        { k: "Recommendation", v: "Run a unified national campaign, not age-specific." },
+      ]}
+      palette={{
+        cardBg: "rgba(255,255,255,0.94)",
+        border: C.line,
+        title: C.red,
+        label: C.grey,
+        value: C.ink,
+        chipBg: C.soft,
+        chipFg: C.grey,
+        btnBg: C.navy,
+        btnFg: "#FFFFFF",
+        shadow: "0 30px 60px -24px rgba(14,27,51,0.5)",
+      }}
+    />
   );
 }
 
