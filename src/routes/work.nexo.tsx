@@ -1031,6 +1031,28 @@ function NexoCaseStudy() {
       <div className="border-t border-white/8">
         <BottomNav />
       </div>
+      <AtAGlance
+        project="NEXO"
+        rows={[
+          { k: "Vision", v: "A companion app that keeps solo travelers connected and grounded." },
+          { k: "Target Users", v: "Independent and first-time travelers navigating new places alone." },
+          { k: "Core Features", v: "Travel buddy matching, journaling, chat and rewards." },
+          { k: "Tech Stack", v: "React Native, Node & Express REST services, single codebase." },
+          { k: "My Contribution", v: "Product strategy, research, UX and full-stack build." },
+        ]}
+        palette={{
+          cardBg: "linear-gradient(180deg, rgba(18,36,61,0.85), rgba(12,24,41,0.9))",
+          border: "rgba(127,179,255,0.24)",
+          title: "#7fb3ff",
+          label: "#9db6c9",
+          value: "#eef4f8",
+          chipBg: "rgba(143,211,166,0.16)",
+          chipFg: "#8fd3a6",
+          btnBg: "#7fb3ff",
+          btnFg: "#0a1728",
+          shadow: "0 30px 60px -24px rgba(6,18,36,0.8)",
+        }}
+      />
     </div>
   );
 }
