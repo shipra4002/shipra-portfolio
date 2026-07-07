@@ -23,10 +23,14 @@ import { SiteFooter } from "@/components/site-footer";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
 import kalavanshLogo from "@/assets/kalavansh-logo.png";
 import videoPoster from "@/assets/kala-video-poster.jpg";
-// Large video (83MB) is hosted on the Lovable CDN via an absolute URL so it
-// loads on any deploy host (Vercel/Netlify/Cloudflare) without living in the repo.
+// The KalaVansh walkthrough video is ~84MB — larger than the repo's per-file
+// commit limit, so it cannot be bundled into the exported project. It is served
+// from this project's own published domain, which returns the file with a
+// permanent, immutable, CORS-enabled (access-control-allow-origin: *) URL. This
+// works from any deploy host (Vercel/Netlify/Cloudflare) and does not depend on
+// the Lovable preview runtime.
 const kalaVideoUrl =
-  "https://editorial-product-mind.lovable.app/__l5e/assets-v1/e7dac8b6-ed63-4287-9d45-7b41d7051367/kalavansh.mp4";
+  "https://shipra-maurya-portfolio.lovable.app/__l5e/assets-v1/e7dac8b6-ed63-4287-9d45-7b41d7051367/kalavansh.mp4";
 import storyImg from "@/assets/kala-batik-woman.jpg";
 import workshopImg from "@/assets/kala-designer.png";
 import profileImg from "@/assets/kala-basket-smile.png";
