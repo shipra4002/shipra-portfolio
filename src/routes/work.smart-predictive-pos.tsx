@@ -979,14 +979,54 @@ function IntelligenceLayer({ onZoom }: { onZoom: (src: string, alt: string) => v
         </p>
       </Reveal>
 
-      <Reveal delay={0.25} className="mt-10">
-        <ArtifactImage
-          src={DASHBOARD_IMG}
-          alt="Full manager dashboard"
-          label="Dashboard — click to expand"
-          className="mx-auto max-w-4xl"
-          onZoom={DASHBOARD_IMG ? () => onZoom(DASHBOARD_IMG, "Manager dashboard") : undefined}
-        />
+      <Reveal delay={0.25} className="mt-12">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-[24px] border border-white/10 bg-[var(--surface)] shadow-[0_50px_100px_-45px_rgba(0,0,0,0.95)]">
+          {/* executive header */}
+          <div className="flex flex-wrap items-center gap-4 border-b border-white/[0.06] bg-[var(--surface2)]/50 px-5 py-4 md:px-7">
+            <div className="flex items-center gap-2.5">
+              <span className="flex size-8 items-center justify-center rounded-lg bg-[var(--accent)]/15 text-[var(--accent)]">
+                <LineChart className="size-4" />
+              </span>
+              <div>
+                <div className="text-sm font-semibold text-[var(--text)]">Operational Analytics</div>
+                <div className="text-[0.65rem] uppercase tracking-[0.18em] text-[var(--muted)]">Power BI · Daily Snapshot</div>
+              </div>
+            </div>
+            <div className="ml-auto flex flex-wrap gap-2.5">
+              {[
+                { label: "Avg Turnover", value: "74.78%", tint: "var(--accent)" },
+                { label: "Waste · Lunch", value: "16.7%", tint: "var(--highlight)" },
+                { label: "Rush Signal", value: "Mapped", tint: "var(--accent2)" },
+              ].map((k) => (
+                <div key={k.label} className="rounded-xl border border-white/[0.06] bg-[var(--surface)] px-3.5 py-2">
+                  <div className="text-[0.55rem] uppercase tracking-[0.15em] text-[var(--muted)]">{k.label}</div>
+                  <div className="text-sm font-semibold" style={{ color: k.tint }}>{k.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => onZoom(DASHBOARD_IMG, "Power BI operational dashboard")}
+            className="group relative block w-full overflow-hidden bg-white"
+            aria-label="Expand Power BI dashboard to full screen"
+          >
+            <img
+              src={DASHBOARD_IMG}
+              alt="Power BI operational dashboard"
+              className="w-full object-contain p-3 transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+            />
+            <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-xs text-white opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
+              <Maximize2 className="size-3.5" /> Full screen
+            </span>
+          </button>
+          <div className="border-t border-white/[0.06] px-5 py-4 md:px-7">
+            <p className="text-xs leading-relaxed text-[var(--muted)]">
+              <span className="font-semibold text-[var(--text)]">Power BI Dashboard</span> — operational dashboard designed to
+              support data-driven decision-making across turnover, inventory burn, waste and rush-hour performance.
+            </p>
+          </div>
+        </div>
       </Reveal>
     </Section>
   );
