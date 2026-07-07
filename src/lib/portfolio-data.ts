@@ -120,7 +120,9 @@ export const workCategories: WorkCategory[] = [
         category: "Strategy Breakdown",
         kicker: "Brand & Strategy",
         cover: `url(${nestleCover})`,
+        coverFit: "contain",
         theme: {
+
           bgColor: "#faf5ec",
           bgImage: "radial-gradient(130% 130% at 15% 0%, rgba(10,43,107,0.08), transparent 55%)",
           fg: "#0a2b6b",
