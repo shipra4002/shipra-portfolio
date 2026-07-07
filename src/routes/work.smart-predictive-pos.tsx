@@ -499,6 +499,14 @@ function Opportunity() {
   return (
     <Section id="opportunity">
       <SectionLabel index="02" title="The Opportunity" />
+      <Reveal className="mb-12 max-w-3xl">
+        <p className="text-lg leading-relaxed text-[var(--muted)]">
+          Traditional POS systems handle billing and order entry, but leave managers planning on intuition. Industry
+          data shows restaurants lose an estimated{" "}
+          <span className="font-semibold text-[var(--accent)]">15% of revenue</span> to overstocking, food waste and
+          labour inefficiency—problems that surface only after the money is already gone.
+        </p>
+      </Reveal>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {kpis.map((k, i) => (
           <Reveal key={k.metric} delay={i * 0.08}>
