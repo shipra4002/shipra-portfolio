@@ -194,18 +194,19 @@ function BottomNav() {
   return (
     <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-10 md:px-8">
       <Link
-        to="/"
-        hash="work"
+        to="/work/$slug"
+        params={{ slug: "smart-predictive-pos" }}
         className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-white"
       >
         <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-        Back to Work
+        Smart Predictive POS
       </Link>
       <Link
-        to="/work/smart-predictive-pos"
+        to="/work/$slug"
+        params={{ slug: "nestle" }}
         className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-white"
       >
-        Next Project
+        Next: Strategy Breakdown — Nestlé
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
       </Link>
     </div>
