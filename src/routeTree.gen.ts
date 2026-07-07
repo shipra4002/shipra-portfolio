@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorkSmartPredictivePosRouteImport } from './routes/work.smart-predictive-pos'
 import { Route as WorkNexoRouteImport } from './routes/work.nexo'
+import { Route as WorkNestleRouteImport } from './routes/work.nestle'
 import { Route as WorkKalavanshRouteImport } from './routes/work.kalavansh'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 
@@ -36,6 +37,11 @@ const WorkNexoRoute = WorkNexoRouteImport.update({
   path: '/work/nexo',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkNestleRoute = WorkNestleRouteImport.update({
+  id: '/work/nestle',
+  path: '/work/nestle',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkKalavanshRoute = WorkKalavanshRouteImport.update({
   id: '/work/kalavansh',
   path: '/work/kalavansh',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work/$slug': typeof WorkSlugRoute
   '/work/kalavansh': typeof WorkKalavanshRoute
+  '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work/$slug': typeof WorkSlugRoute
   '/work/kalavansh': typeof WorkKalavanshRoute
+  '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work/$slug': typeof WorkSlugRoute
   '/work/kalavansh': typeof WorkKalavanshRoute
+  '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/work/$slug'
     | '/work/kalavansh'
+    | '/work/nestle'
     | '/work/nexo'
     | '/work/smart-predictive-pos'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/work/$slug'
     | '/work/kalavansh'
+    | '/work/nestle'
     | '/work/nexo'
     | '/work/smart-predictive-pos'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/work/$slug'
     | '/work/kalavansh'
+    | '/work/nestle'
     | '/work/nexo'
     | '/work/smart-predictive-pos'
   fileRoutesById: FileRoutesById
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WorkSlugRoute: typeof WorkSlugRoute
   WorkKalavanshRoute: typeof WorkKalavanshRoute
+  WorkNestleRoute: typeof WorkNestleRoute
   WorkNexoRoute: typeof WorkNexoRoute
   WorkSmartPredictivePosRoute: typeof WorkSmartPredictivePosRoute
 }
@@ -138,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkNexoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/nestle': {
+      id: '/work/nestle'
+      path: '/work/nestle'
+      fullPath: '/work/nestle'
+      preLoaderRoute: typeof WorkNestleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work/kalavansh': {
       id: '/work/kalavansh'
       path: '/work/kalavansh'
@@ -160,19 +180,10 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   WorkSlugRoute: WorkSlugRoute,
   WorkKalavanshRoute: WorkKalavanshRoute,
+  WorkNestleRoute: WorkNestleRoute,
   WorkNexoRoute: WorkNexoRoute,
   WorkSmartPredictivePosRoute: WorkSmartPredictivePosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
