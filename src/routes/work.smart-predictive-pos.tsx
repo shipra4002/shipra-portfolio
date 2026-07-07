@@ -174,6 +174,62 @@ function ArtifactImage({
   );
 }
 
+/**
+ * Premium titled figure: framed artifact with a professional title, one-line
+ * caption and click-to-zoom. Uses `contain` so diagrams stay fully readable.
+ */
+function Figure({
+  src,
+  alt,
+  title,
+  caption,
+  onZoom,
+  tint = "var(--accent)",
+  bg = "#ffffff",
+  className = "",
+  imgClassName = "aspect-[4/3]",
+}: {
+  src: string;
+  alt: string;
+  title: string;
+  caption: string;
+  onZoom?: () => void;
+  tint?: string;
+  bg?: string;
+  className?: string;
+  imgClassName?: string;
+}) {
+  return (
+    <figure className={`group overflow-hidden rounded-2xl border border-white/10 bg-[var(--surface)] shadow-[0_30px_60px_-40px_rgba(0,0,0,0.9)] ${className}`}>
+      <button
+        type="button"
+        onClick={onZoom}
+        className="relative block w-full overflow-hidden"
+        style={{ background: bg }}
+        aria-label={`Expand ${title}`}
+      >
+        <img
+          src={src}
+          alt={alt}
+          className={`w-full object-contain p-3 transition-transform duration-700 ease-out group-hover:scale-[1.02] ${imgClassName}`}
+        />
+        {onZoom && (
+          <span className="absolute right-3 top-3 flex size-9 items-center justify-center rounded-full bg-black/50 text-white opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
+            <Maximize2 className="size-4" />
+          </span>
+        )}
+      </button>
+      <figcaption className="border-t border-white/[0.06] p-5">
+        <div className="flex items-center gap-2">
+          <span className="h-3.5 w-1 rounded-full" style={{ background: tint }} />
+          <span className="text-sm font-semibold text-[var(--text)]">{title}</span>
+        </div>
+        <p className="mt-1.5 pl-3 text-xs leading-relaxed text-[var(--muted)]">{caption}</p>
+      </figcaption>
+    </figure>
+  );
+}
+
 /* ─────────────────────────── Lightbox / Zoom ─────────────────────────── */
 
 function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
