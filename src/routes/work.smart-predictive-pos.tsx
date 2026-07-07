@@ -16,31 +16,31 @@ import {
 } from "lucide-react";
 
 /* Case-study artifacts */
-import loginShot from "@/assets/spos-login-page.png.asset.json";
-import cashierShot from "@/assets/spos-cashier-screen.png.asset.json";
-import kitchenShot from "@/assets/spos-kitchen-order-management.png.asset.json";
-import managerShot from "@/assets/spos-manager-review-order.png.asset.json";
-import purchaseShot from "@/assets/spos-auto-order.png.asset.json";
-import customerFlow from "@/assets/spos-customer-flow-chart-drawio-1.png.asset.json";
-import kitchenFlow from "@/assets/spos-kitchen-flow-chart-drawio.png.asset.json";
-import managerFlow from "@/assets/spos-manager-flow-chart-drawio-1.png.asset.json";
-import asIsFlow from "@/assets/spos-as-is-flow.jpg.asset.json";
-import toBeFlow from "@/assets/spos-to-be-flow.jpg.asset.json";
-import contextDiagram from "@/assets/spos-context-diagram.jpg.asset.json";
-import excelAnalysis from "@/assets/spos-excel-analysis.png.asset.json";
-import powerbiDashboard from "@/assets/spos-powerbi-dashboard.png.asset.json";
-import heroDashboard from "@/assets/spos-hero-dashboard.png.asset.json";
-import brdPdf from "@/assets/spos-brd-v2.pdf.asset.json";
+import loginShot from "@/assets/spos-login-page.png";
+import cashierShot from "@/assets/spos-cashier-screen.png";
+import kitchenShot from "@/assets/spos-kitchen-order-management.png";
+import managerShot from "@/assets/spos-manager-review-order.png";
+import purchaseShot from "@/assets/spos-auto-order.png";
+import customerFlow from "@/assets/spos-customer-flow-chart-drawio-1.png";
+import kitchenFlow from "@/assets/spos-kitchen-flow-chart-drawio.png";
+import managerFlow from "@/assets/spos-manager-flow-chart-drawio-1.png";
+import asIsFlow from "@/assets/spos-as-is-flow.jpg";
+import toBeFlow from "@/assets/spos-to-be-flow.jpg";
+import contextDiagram from "@/assets/spos-context-diagram.jpg";
+import excelAnalysis from "@/assets/spos-excel-analysis.png";
+import powerbiDashboard from "@/assets/spos-powerbi-dashboard.png";
+import heroDashboard from "@/assets/spos-hero-dashboard.png";
+import brdPdf from "@/assets/spos-brd-v2.pdf";
 
 /* Real artifacts now wired in. */
-const DASHBOARD_IMG = powerbiDashboard.url;
-const HERO_DASHBOARD_IMG = heroDashboard.url;
-const EXCEL_IMG = excelAnalysis.url;
-const CONTEXT_DIAGRAM_IMG = contextDiagram.url;
-const ARCHITECTURE_IMG = toBeFlow.url;
-const AS_IS_IMG = asIsFlow.url;
-const TO_BE_IMG = toBeFlow.url;
-const BRD_PDF_URL = brdPdf.url;
+const DASHBOARD_IMG = powerbiDashboard;
+const HERO_DASHBOARD_IMG = heroDashboard;
+const EXCEL_IMG = excelAnalysis;
+const CONTEXT_DIAGRAM_IMG = contextDiagram;
+const ARCHITECTURE_IMG = toBeFlow;
+const AS_IS_IMG = asIsFlow;
+const TO_BE_IMG = toBeFlow;
+const BRD_PDF_URL = brdPdf;
 const PROTOTYPE_URL = "https://predicta-dine.lovable.app/";
 
 export const Route = createFileRoute("/work/smart-predictive-pos")({
@@ -601,11 +601,11 @@ function Approach({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
       blurb: "The key screens sketched before a single pixel of polish.",
       wide: true,
       figures: [
-        { src: loginShot.url, alt: "Login wireframe", title: "Login Wireframe", caption: "Authentication experience for restaurant staff.", bg: "#ffffff" },
-        { src: cashierShot.url, alt: "Cashier screen", title: "Cashier Screen", caption: "Fast order entry interface for front-of-house staff.", bg: "#ffffff" },
-        { src: kitchenShot.url, alt: "Kitchen screen", title: "Kitchen Screen", caption: "Real-time order management interface for kitchen operations.", bg: "#ffffff" },
-        { src: managerShot.url, alt: "Manager dashboard wireframe", title: "Manager Dashboard", caption: "Operational insights and decision support for managers.", bg: "#ffffff" },
-        { src: purchaseShot.url, alt: "Auto purchase order screen", title: "Auto Purchase Order", caption: "Automated inventory replenishment based on predictive demand.", bg: "#ffffff" },
+        { src: loginShot, alt: "Login wireframe", title: "Login Wireframe", caption: "Authentication experience for restaurant staff.", bg: "#ffffff" },
+        { src: cashierShot, alt: "Cashier screen", title: "Cashier Screen", caption: "Fast order entry interface for front-of-house staff.", bg: "#ffffff" },
+        { src: kitchenShot, alt: "Kitchen screen", title: "Kitchen Screen", caption: "Real-time order management interface for kitchen operations.", bg: "#ffffff" },
+        { src: managerShot, alt: "Manager dashboard wireframe", title: "Manager Dashboard", caption: "Operational insights and decision support for managers.", bg: "#ffffff" },
+        { src: purchaseShot, alt: "Auto purchase order screen", title: "Auto Purchase Order", caption: "Automated inventory replenishment based on predictive demand.", bg: "#ffffff" },
       ],
     },
     {
@@ -813,35 +813,35 @@ function ProductExperience({ onZoom }: { onZoom: (src: string, alt: string) => v
   const screens = [
     {
       title: "Login",
-      img: loginShot.url,
+      img: loginShot,
       why: "Role-based entry that routes each staff member to the tools they need.",
       problem: "Cashiers, kitchen and managers need different views, not one crowded screen.",
       objective: "Faster onboarding and cleaner access control.",
     },
     {
       title: "Cashier",
-      img: cashierShot.url,
+      img: cashierShot,
       why: "Fast, tactile order entry with live totals and availability checks.",
       problem: "Order mistakes and slow entry hurt table turnover at peak times.",
       objective: "Higher accuracy and quicker seating cycles.",
     },
     {
       title: "Kitchen",
-      img: kitchenShot.url,
+      img: kitchenShot,
       why: "A live order board with rush prioritisation and prep timers.",
       problem: "Kitchens lose track of priority during unpredictable rushes.",
       objective: "Rush-hour efficiency and on-time tickets.",
     },
     {
       title: "Manager",
-      img: managerShot.url,
+      img: managerShot,
       why: "Alerts surfaced by severity so managers act before problems escalate.",
       problem: "Critical inventory and supplier issues get buried in noise.",
       objective: "Reduced waste and fewer stockouts.",
     },
     {
       title: "Purchase Order",
-      img: purchaseShot.url,
+      img: purchaseShot,
       why: "Auto-generated POs from reorder points, editable before finalising.",
       problem: "Manual reordering is slow and error-prone.",
       objective: "Optimised inventory and controlled cost.",

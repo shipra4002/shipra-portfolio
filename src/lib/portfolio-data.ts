@@ -1,9 +1,9 @@
 import kalavanshCover from "@/assets/kalavansh.png";
 import nexoCover from "@/assets/nexo.png";
 import smartPosCover from "@/assets/smart-pos.png";
-import notionCover from "@/assets/notion-cover.png.asset.json";
-import tajCover from "@/assets/taj-cover.png.asset.json";
-import atherCover from "@/assets/ather-cover.png.asset.json";
+import notionCover from "@/assets/notion-cover.png";
+import tajCover from "@/assets/taj-cover.png";
+import atherCover from "@/assets/ather-cover.png";
 
 export type WorkCategory = {
   id: string;
@@ -132,7 +132,7 @@ export const workCategories: WorkCategory[] = [
         title: "Taj Hotels",
         category: "Strategy Breakdown",
         kicker: "Brand & Strategy",
-        cover: `url(${tajCover.url})`,
+        cover: `url(${tajCover})`,
         theme: {
           bgColor: "#f6efe2",
           bgImage: goldWash,
@@ -147,7 +147,7 @@ export const workCategories: WorkCategory[] = [
         title: "Ather",
         category: "Strategy Breakdown",
         kicker: "Brand & Strategy",
-        cover: `url(${atherCover.url})`,
+        cover: `url(${atherCover})`,
         theme: {
           bgColor: "#1b1e1c",
           bgImage: gridTexture,
@@ -169,7 +169,7 @@ export const workCategories: WorkCategory[] = [
         title: "Notion",
         category: "Investigation",
         kicker: "Product Teardown",
-        cover: `url(${notionCover.url})`,
+        cover: `url(${notionCover})`,
         theme: {
           bgColor: "#ffffff",
           bgImage: undefined,
