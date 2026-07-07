@@ -734,16 +734,18 @@ function NextProject() {
 
 function KalaVanshCaseStudy() {
   return (
-    <div className="kala-theme min-h-screen bg-background">
-      <PageNav />
-      <Hero />
-      <WatchTheStory />
-      <BehindTheThinking />
-      <InsightToExperience />
-      <Validation />
-      <LookingBack />
-      <NextProject />
-      <SiteFooter />
+    <>
+      <div className="kala-theme min-h-screen bg-background">
+        <PageNav />
+        <Hero />
+        <WatchTheStory />
+        <BehindTheThinking />
+        <InsightToExperience />
+        <Validation />
+        <LookingBack />
+        <NextProject />
+        <SiteFooter />
+      </div>
       <AtAGlance
         project="KalaVansh"
         rows={[
@@ -766,6 +768,6 @@ function KalaVanshCaseStudy() {
           shadow: "0 30px 60px -24px rgba(58,44,31,0.5)",
         }}
       />
-    </div>
+    </>
   );
 }
