@@ -400,7 +400,7 @@ function DashboardHero({ onZoom }: { onZoom?: () => void }) {
 }
 
 
-function Hero() {
+function Hero({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
   const meta = [
     { label: "Role", value: "Product Manager & Business Analyst" },
     { label: "Team", value: "Individual Project" },
