@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
