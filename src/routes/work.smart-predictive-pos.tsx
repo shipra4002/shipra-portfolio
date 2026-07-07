@@ -735,7 +735,7 @@ function Modal({ title, children, onClose, wide = false }: { title: string; chil
       <motion.div
         onClick={(e) => e.stopPropagation()}
         style={theme}
-        className="max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-white/10 bg-[var(--surface)] p-6 md:p-8"
+        className={`max-h-[88vh] w-full overflow-y-auto rounded-2xl border border-white/10 bg-[var(--surface)] p-6 md:p-8 ${wide ? "max-w-5xl" : "max-w-3xl"}`}
         initial={{ scale: 0.95, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.95, opacity: 0, y: 20 }}
