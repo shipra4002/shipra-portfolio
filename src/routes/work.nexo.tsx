@@ -43,6 +43,7 @@ import rewardsShot from "@/assets/nexo-rewards.jpg";
 import newJournalShot from "@/assets/nexo-new-journal.jpg";
 import architectureShot from "@/assets/nexo-architecture.jpg";
 import caseStudyDoc from "@/assets/nexo-case-study.docx?url";
+import { AtAGlance } from "@/components/at-a-glance";
 
 const GITHUB_URL = "https://github.com/mahekk-shahh/Nexo";
 const DOC_URL = caseStudyDoc;
