@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
@@ -5,12 +6,14 @@ import { workCategories, type Project } from "@/lib/portfolio-data";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
 
 function ProjectCard({ project }: { project: Project }) {
+  const { theme } = project;
   return (
     <motion.article variants={staggerItem} className="h-full">
       <Link
         to="/work/$slug"
         params={{ slug: project.slug }}
-        className="group flex h-full flex-col overflow-hidden rounded-[18px] bg-card shadow-[0_1px_2px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:shadow-[0_28px_50px_-24px_rgba(0,0,0,0.45)]"
+        style={{ "--pc-accent": theme.accent } as CSSProperties}
+        className="group flex h-full flex-col overflow-hidden rounded-[18px] shadow-[0_1px_2px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.06] transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:shadow-[0_28px_50px_-24px_rgba(0,0,0,0.45)]"
       >
         {/* Cover image */}
         <div className="relative aspect-[16/10] w-full overflow-hidden">
@@ -21,13 +24,27 @@ function ProjectCard({ project }: { project: Project }) {
           <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_20%_0%,rgba(255,255,255,0.14),transparent_55%)]" />
         </div>
 
-        {/* Content */}
-        <div className="flex flex-1 flex-col p-7 md:p-8">
-          <span className="text-[0.68rem] uppercase tracking-[0.2em] text-terracotta">{project.kicker}</span>
-          <h4 className="mt-3 font-serif text-2xl font-normal leading-tight tracking-tight text-card-foreground">
+        {/* Content — themed per project */}
+        <div
+          className="flex flex-1 flex-col p-7 md:p-8"
+          style={{ backgroundColor: theme.bgColor, backgroundImage: theme.bgImage }}
+        >
+          <span
+            className="text-[0.68rem] uppercase tracking-[0.2em]"
+            style={{ color: theme.kicker }}
+          >
+            {project.kicker}
+          </span>
+          <h4
+            className="mt-3 font-serif text-2xl font-normal leading-tight tracking-tight"
+            style={{ color: theme.fg }}
+          >
             {project.title}
           </h4>
-          <span className="mt-auto inline-flex items-center gap-1.5 pt-10 text-sm text-muted-foreground transition-colors duration-300 group-hover:text-terracotta">
+          <span
+            className="mt-auto inline-flex items-center gap-1.5 pt-10 text-sm transition-colors duration-300 group-hover:[color:var(--pc-accent)]"
+            style={{ color: theme.muted }}
+          >
             Read More
             <ArrowRight className="size-4 transition-transform duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1.5" />
           </span>
@@ -67,7 +84,7 @@ export function WorkSection() {
                 {category.projects.map((project) => (
                   <ProjectCard key={project.slug} project={project} />
                 ))}
-                {(category.id === "investigations" || category.id === "strategy-breakdowns") && (
+                {category.id === "investigations" && (
                   <motion.article variants={staggerItem} className="h-full">
                     <div className="group flex h-full min-h-[240px] flex-col items-center justify-center overflow-hidden rounded-[18px] border border-dashed border-gold/40 bg-white/[0.03] p-8 text-center transition-colors duration-500 hover:border-gold/70">
                       <span className="font-serif text-3xl leading-none text-gold/80">✦</span>
