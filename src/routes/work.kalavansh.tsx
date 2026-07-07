@@ -20,6 +20,7 @@ import {
   VolumeX,
 } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
+import { AtAGlance } from "@/components/at-a-glance";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
 import kalavanshLogo from "@/assets/kalavansh-logo.png";
 import videoPoster from "@/assets/kala-video-poster.jpg";
