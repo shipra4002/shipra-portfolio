@@ -208,14 +208,14 @@ function Hero() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.18} className="mt-8 flex flex-wrap gap-3">
+            <Reveal delay={0.18} className="mt-8 flex flex-wrap gap-3 md:flex-nowrap md:items-center">
               {links.map((l) => (
                 <a
                   key={l.label}
                   href={l.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 px-5 py-2.5 text-sm text-foreground transition-all duration-300 hover:translate-y-[-2px] hover:border-terracotta hover:bg-terracotta hover:text-primary-foreground hover:shadow-md hover:gap-3"
+                  className="group inline-flex items-center gap-2 rounded-full border border-foreground/15 px-3 py-2 text-sm text-foreground transition-all duration-300 hover:translate-y-[-2px] hover:border-terracotta hover:bg-terracotta hover:text-primary-foreground hover:shadow-md hover:gap-3 md:px-5 md:py-2.5"
                 >
                   <l.icon className="size-4" />
                   {l.label}
