@@ -24,15 +24,24 @@ import purchaseShot from "@/assets/spos-auto-order.png.asset.json";
 import customerFlow from "@/assets/spos-customer-flow-chart-drawio-1.png.asset.json";
 import kitchenFlow from "@/assets/spos-kitchen-flow-chart-drawio.png.asset.json";
 import managerFlow from "@/assets/spos-manager-flow-chart-drawio-1.png.asset.json";
+import asIsFlow from "@/assets/spos-as-is-flow.jpg.asset.json";
+import toBeFlow from "@/assets/spos-to-be-flow.jpg.asset.json";
+import contextDiagram from "@/assets/spos-context-diagram.jpg.asset.json";
+import excelAnalysis from "@/assets/spos-excel-analysis.png.asset.json";
+import powerbiDashboard from "@/assets/spos-powerbi-dashboard.png.asset.json";
+import heroDashboard from "@/assets/spos-hero-dashboard.png.asset.json";
+import brdPdf from "@/assets/spos-brd.pdf.asset.json";
 
-/* ── Assets that arrive next: dashboard, spreadsheet, context/architecture diagrams, BRD PDF. */
-const DASHBOARD_IMG = "";
-const SPREADSHEET_IMG = "";
-const CONTEXT_DIAGRAM_IMG = "";
-const ARCHITECTURE_IMG = "";
-const BUSINESS_PROCESS_IMG = "";
-const BRD_PDF_URL = "";
-const PROTOTYPE_URL = "";
+/* Real artifacts now wired in. */
+const DASHBOARD_IMG = powerbiDashboard.url;
+const HERO_DASHBOARD_IMG = heroDashboard.url;
+const EXCEL_IMG = excelAnalysis.url;
+const CONTEXT_DIAGRAM_IMG = contextDiagram.url;
+const ARCHITECTURE_IMG = toBeFlow.url;
+const AS_IS_IMG = asIsFlow.url;
+const TO_BE_IMG = toBeFlow.url;
+const BRD_PDF_URL = brdPdf.url;
+const PROTOTYPE_URL = "https://predicta-dine.lovable.app/";
 
 export const Route = createFileRoute("/work/smart-predictive-pos")({
   head: () => ({
