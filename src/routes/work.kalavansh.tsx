@@ -230,7 +230,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.75rem] border border-border bg-surface p-8 shadow-lift md:p-12">
+            <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.75rem] border border-border bg-background p-6 shadow-lift md:p-10">
               <motion.img
                 src={kalavanshLogo.url}
                 alt="KalaVansh logo"
