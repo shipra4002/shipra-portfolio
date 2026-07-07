@@ -71,15 +71,6 @@ const STATS = {
   cramersV: 0.27,
 };
 
-const NAV = [
-  { id: "overview", label: "Overview" },
-  { id: "context", label: "Context" },
-  { id: "research", label: "Research" },
-  { id: "dashboard", label: "Dashboard" },
-  { id: "findings", label: "Findings" },
-  { id: "recommendation", label: "Recommendation" },
-  { id: "downloads", label: "Downloads" },
-];
 
 /* ----------------------------- Hooks ------------------------------------- */
 function useCountUp(target: number, decimals = 0, duration = 1400) {
