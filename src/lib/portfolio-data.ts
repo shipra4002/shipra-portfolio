@@ -4,6 +4,7 @@ import smartPosCover from "@/assets/smart-pos.png";
 import notionCover from "@/assets/notion-cover.png";
 import tajCover from "@/assets/taj-cover.png";
 import atherCover from "@/assets/ather-cover.png";
+import nestleCover from "@/assets/nestle-cover.png";
 
 export type WorkCategory = {
   id: string;
