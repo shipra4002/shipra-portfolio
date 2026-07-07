@@ -39,7 +39,9 @@ export type Project = {
   category: string;
   kicker: string;
   cover: string;
+  coverFit?: "cover" | "contain";
   theme: ProjectTheme;
+
 };
 
 /* Reusable texture / pattern fragments (encoded SVG data URIs). */
