@@ -32,20 +32,20 @@ import {
 } from "lucide-react";
 
 /* ─── App screens & artifacts ─── */
-import loginShot from "@/assets/nexo-login.jpg.asset.json";
-import signupShot from "@/assets/nexo-signup.jpg.asset.json";
-import feedShot from "@/assets/nexo-feed.jpg.asset.json";
-import buddyShot from "@/assets/nexo-buddy.jpg.asset.json";
-import journalShot from "@/assets/nexo-journal.jpg.asset.json";
-import chatShot from "@/assets/nexo-chat.jpg.asset.json";
-import profileShot from "@/assets/nexo-profile.jpg.asset.json";
-import rewardsShot from "@/assets/nexo-rewards.jpg.asset.json";
-import newJournalShot from "@/assets/nexo-new-journal.jpg.asset.json";
-import architectureShot from "@/assets/nexo-architecture.jpg.asset.json";
-import caseStudyDoc from "@/assets/nexo-case-study.docx.asset.json";
+import loginShot from "@/assets/nexo-login.jpg";
+import signupShot from "@/assets/nexo-signup.jpg";
+import feedShot from "@/assets/nexo-feed.jpg";
+import buddyShot from "@/assets/nexo-buddy.jpg";
+import journalShot from "@/assets/nexo-journal.jpg";
+import chatShot from "@/assets/nexo-chat.jpg";
+import profileShot from "@/assets/nexo-profile.jpg";
+import rewardsShot from "@/assets/nexo-rewards.jpg";
+import newJournalShot from "@/assets/nexo-new-journal.jpg";
+import architectureShot from "@/assets/nexo-architecture.jpg";
+import caseStudyDoc from "@/assets/nexo-case-study.docx?url";
 
 const GITHUB_URL = "https://github.com/mahekk-shahh/Nexo";
-const DOC_URL = caseStudyDoc.url;
+const DOC_URL = caseStudyDoc;
 
 export const Route = createFileRoute("/work/nexo")({
   head: () => ({
@@ -63,7 +63,7 @@ export const Route = createFileRoute("/work/nexo")({
           "Product strategy, UX design and full-stack engineering behind Nexo — a community-driven travel app.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:image", content: `https://shipra-maurya-portfolio.lovable.app${feedShot.url}` },
+      { property: "og:image", content: `https://shipra-maurya-portfolio.lovable.app${feedShot}` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
@@ -334,7 +334,7 @@ function Hero() {
             transition={{ duration: 1, ease: EASE }}
           >
             <motion.div {...float(0.2, 14)}>
-              <Phone src={feedShot.url} alt="Nexo home feed" />
+              <Phone src={feedShot} alt="Nexo home feed" />
             </motion.div>
           </motion.div>
           <motion.div
@@ -344,7 +344,7 @@ function Hero() {
             transition={{ duration: 1, delay: 0.15, ease: EASE }}
           >
             <motion.div {...float(0.8, 18)}>
-              <Phone src={journalShot.url} alt="Nexo travel journal" />
+              <Phone src={journalShot} alt="Nexo travel journal" />
             </motion.div>
           </motion.div>
           <motion.div
@@ -354,7 +354,7 @@ function Hero() {
             transition={{ duration: 1, delay: 0.25, ease: EASE }}
           >
             <motion.div {...float(1.3, 16)}>
-              <Phone src={profileShot.url} alt="Nexo profile" />
+              <Phone src={profileShot} alt="Nexo profile" />
             </motion.div>
           </motion.div>
         </div>
@@ -511,49 +511,49 @@ function ProductThinking() {
 /* ─────────────── Section 3 · Product Experience ─────────────── */
 const SCREENS = [
   {
-    src: loginShot.url,
+    src: loginShot,
     name: "Login",
     purpose: "A calm, secure entry into the community.",
     user: "Fast, familiar access with social sign-in.",
     business: "Verified members build a trustworthy network.",
   },
   {
-    src: signupShot.url,
+    src: signupShot,
     name: "Preference Selection",
     purpose: "Capture travel interests up front.",
     user: "A feed and matches tuned to them from day one.",
     business: "Interest data powers better discovery.",
   },
   {
-    src: feedShot.url,
+    src: feedShot,
     name: "Home Feed",
     purpose: "Discovery through authentic community content.",
     user: "Real inspiration from real travelers.",
     business: "Content depth drives daily engagement.",
   },
   {
-    src: buddyShot.url,
+    src: buddyShot,
     name: "Travel Buddy Discovery",
     purpose: "Find compatible companions by shared interests.",
     user: "Meet like-minded people, travel less alone.",
     business: "Companion-matching creates network effects.",
   },
   {
-    src: journalShot.url,
+    src: journalShot,
     name: "Travel Journal",
     purpose: "Document journeys as structured stories.",
     user: "Memories preserved in context, not a camera roll.",
     business: "User-generated journals become discovery content.",
   },
   {
-    src: chatShot.url,
+    src: chatShot,
     name: "Chat",
     purpose: "Real-time messaging before, during and after trips.",
     user: "Plans come together without app-switching.",
     business: "Conversations drive retention and stickiness.",
   },
   {
-    src: profileShot.url,
+    src: profileShot,
     name: "Profile",
     purpose: "A traveler's identity, journals and connections.",
     user: "Build reputation and showcase journeys.",
@@ -688,42 +688,42 @@ const STAGES: Stage[] = [
     summary: "Designing the core flows.",
     detail:
       "Low-friction onboarding, a discovery-first feed, and structured journals over a flat photo feed. Every screen mapped to a job in the journey.",
-    image: signupShot.url,
+    image: signupShot,
   },
   {
     step: "Database Design",
     summary: "Modeling users, journals & connections.",
     detail:
       "A document model in MongoDB captured flexible journal structures, user preferences and social graph relationships without rigid schemas.",
-    image: architectureShot.url,
+    image: architectureShot,
   },
   {
     step: "Backend APIs",
     summary: "REST services on Node & Express.",
     detail:
       "Express REST APIs handled auth, feed, matching, journals and rewards — with Socket.io layered in for real-time chat and notifications.",
-    image: architectureShot.url,
+    image: architectureShot,
   },
   {
     step: "Frontend Development",
     summary: "A single React Native codebase.",
     detail:
       "One codebase shipping to iOS and Android, with reusable components for feed cards, journals and chat — keeping the experience consistent and fast to iterate.",
-    image: feedShot.url,
+    image: feedShot,
   },
   {
     step: "Testing",
     summary: "Validating the real journey.",
     detail:
       "Flow-based testing across onboarding, discovery, matching, journaling and chat ensured the end-to-end experience held together, not just isolated screens.",
-    image: rewardsShot.url,
+    image: rewardsShot,
   },
   {
     step: "Final Product",
     summary: "A working mobile application.",
     detail:
       "Nexo shipped as a functioning app: discover destinations, find companions, journal journeys, chat in real time and earn rewards — the full travel layer in one place.",
-    image: profileShot.url,
+    image: profileShot,
   },
 ];
 

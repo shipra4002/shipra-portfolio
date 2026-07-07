@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal, staggerContainer, staggerItem } from "@/components/reveal";
-import kalavanshLogo from "@/assets/kalavansh-logo.png.asset.json";
+import kalavanshLogo from "@/assets/kalavansh-logo.png";
 import videoPoster from "@/assets/kala-video-poster.jpg";
 // Large video (83MB) is hosted on the Lovable CDN via an absolute URL so it
 // loads on any deploy host (Vercel/Netlify/Cloudflare) without living in the repo.
@@ -232,7 +232,7 @@ function Hero() {
           >
             <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[1.75rem] border border-border bg-background p-6 shadow-lift md:p-10">
               <motion.img
-                src={kalavanshLogo.url}
+                src={kalavanshLogo}
                 alt="KalaVansh logo"
                 width={507}
                 height={542}
