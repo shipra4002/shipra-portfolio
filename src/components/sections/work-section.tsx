@@ -83,7 +83,7 @@ export function WorkSection() {
                 {category.projects.map((project) => (
                   <ProjectCard key={project.slug} project={project} />
                 ))}
-                {(category.id === "investigations" || category.id === "strategy-breakdowns") && (
+                {category.id === "investigations" && (
                   <motion.article variants={staggerItem} className="h-full">
                     <div className="group flex h-full min-h-[240px] flex-col items-center justify-center overflow-hidden rounded-[18px] border border-dashed border-gold/40 bg-white/[0.03] p-8 text-center transition-colors duration-500 hover:border-gold/70">
                       <span className="font-serif text-3xl leading-none text-gold/80">✦</span>
