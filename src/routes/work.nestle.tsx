@@ -29,6 +29,7 @@ import nestleHero from "@/assets/nestle-hero.jpg";
 import reportPdf from "@/assets/nestle-report.pdf.asset.json";
 import presentationPdf from "@/assets/nestle-presentation.pdf.asset.json";
 import datasetXlsx from "@/assets/nestle-dataset.xlsx.asset.json";
+import { AtAGlance } from "@/components/at-a-glance";
 
 /* ----------------------------- Brand palette ----------------------------- */
 const C = {
