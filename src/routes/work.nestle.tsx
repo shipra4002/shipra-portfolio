@@ -309,8 +309,9 @@ function Tabs({ tabs }: { tabs: { label: string; content: ReactNode }[] }) {
 }
 
 /* ----------------------------- Expandable card --------------------------- */
-
+function ExpandCard({ icon: Icon, title, accent, summary, detail }: { icon: typeof Target; title: string; accent: string; summary: string; detail: string }) {
   const [open, setOpen] = useState(false);
+
   return (
     <Card className="flex h-full flex-col" style={{ borderColor: accent, borderWidth: 2 }}>
       <div className="flex size-11 items-center justify-center rounded-2xl" style={{ background: `${accent}1a` }}>
