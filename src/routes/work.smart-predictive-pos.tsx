@@ -480,7 +480,7 @@ function Hero({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: EASE, delay: 0.15 }}
         >
-          <DashboardHero />
+          <DashboardHero onZoom={() => onZoom(HERO_DASHBOARD_IMG, "Smart Predictive POS operations dashboard")} />
         </motion.div>
       </div>
     </header>
