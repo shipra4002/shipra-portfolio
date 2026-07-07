@@ -24,15 +24,24 @@ import purchaseShot from "@/assets/spos-auto-order.png.asset.json";
 import customerFlow from "@/assets/spos-customer-flow-chart-drawio-1.png.asset.json";
 import kitchenFlow from "@/assets/spos-kitchen-flow-chart-drawio.png.asset.json";
 import managerFlow from "@/assets/spos-manager-flow-chart-drawio-1.png.asset.json";
+import asIsFlow from "@/assets/spos-as-is-flow.jpg.asset.json";
+import toBeFlow from "@/assets/spos-to-be-flow.jpg.asset.json";
+import contextDiagram from "@/assets/spos-context-diagram.jpg.asset.json";
+import excelAnalysis from "@/assets/spos-excel-analysis.png.asset.json";
+import powerbiDashboard from "@/assets/spos-powerbi-dashboard.png.asset.json";
+import heroDashboard from "@/assets/spos-hero-dashboard.png.asset.json";
+import brdPdf from "@/assets/spos-brd.pdf.asset.json";
 
-/* ── Assets that arrive next: dashboard, spreadsheet, context/architecture diagrams, BRD PDF. */
-const DASHBOARD_IMG = "";
-const SPREADSHEET_IMG = "";
-const CONTEXT_DIAGRAM_IMG = "";
-const ARCHITECTURE_IMG = "";
-const BUSINESS_PROCESS_IMG = "";
-const BRD_PDF_URL = "";
-const PROTOTYPE_URL = "";
+/* Real artifacts now wired in. */
+const DASHBOARD_IMG = powerbiDashboard.url;
+const HERO_DASHBOARD_IMG = heroDashboard.url;
+const EXCEL_IMG = excelAnalysis.url;
+const CONTEXT_DIAGRAM_IMG = contextDiagram.url;
+const ARCHITECTURE_IMG = toBeFlow.url;
+const AS_IS_IMG = asIsFlow.url;
+const TO_BE_IMG = toBeFlow.url;
+const BRD_PDF_URL = brdPdf.url;
+const PROTOTYPE_URL = "https://predicta-dine.lovable.app/";
 
 export const Route = createFileRoute("/work/smart-predictive-pos")({
   head: () => ({
@@ -165,6 +174,62 @@ function ArtifactImage({
   );
 }
 
+/**
+ * Premium titled figure: framed artifact with a professional title, one-line
+ * caption and click-to-zoom. Uses `contain` so diagrams stay fully readable.
+ */
+function Figure({
+  src,
+  alt,
+  title,
+  caption,
+  onZoom,
+  tint = "var(--accent)",
+  bg = "#ffffff",
+  className = "",
+  imgClassName = "aspect-[4/3]",
+}: {
+  src: string;
+  alt: string;
+  title: string;
+  caption: string;
+  onZoom?: () => void;
+  tint?: string;
+  bg?: string;
+  className?: string;
+  imgClassName?: string;
+}) {
+  return (
+    <figure className={`group overflow-hidden rounded-2xl border border-white/10 bg-[var(--surface)] shadow-[0_30px_60px_-40px_rgba(0,0,0,0.9)] ${className}`}>
+      <button
+        type="button"
+        onClick={onZoom}
+        className="relative block w-full overflow-hidden"
+        style={{ background: bg }}
+        aria-label={`Expand ${title}`}
+      >
+        <img
+          src={src}
+          alt={alt}
+          className={`w-full object-contain p-3 transition-transform duration-700 ease-out group-hover:scale-[1.02] ${imgClassName}`}
+        />
+        {onZoom && (
+          <span className="absolute right-3 top-3 flex size-9 items-center justify-center rounded-full bg-black/50 text-white opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
+            <Maximize2 className="size-4" />
+          </span>
+        )}
+      </button>
+      <figcaption className="border-t border-white/[0.06] p-5">
+        <div className="flex items-center gap-2">
+          <span className="h-3.5 w-1 rounded-full" style={{ background: tint }} />
+          <span className="text-sm font-semibold text-[var(--text)]">{title}</span>
+        </div>
+        <p className="mt-1.5 pl-3 text-xs leading-relaxed text-[var(--muted)]">{caption}</p>
+      </figcaption>
+    </figure>
+  );
+}
+
 /* ─────────────────────────── Lightbox / Zoom ─────────────────────────── */
 
 function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
@@ -293,63 +358,49 @@ function MiniLine({ points, color }: { points: number[]; color: string }) {
   );
 }
 
-function DashboardHero() {
+function DashboardHero({ onZoom }: { onZoom?: () => void }) {
   return (
-    <div className="rounded-[24px] border border-white/10 bg-[var(--surface)] p-5 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)] md:p-6">
-      {/* top bar */}
-      <div className="mb-5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="flex size-7 items-center justify-center rounded-lg bg-[var(--accent)]/15 text-[var(--accent)]">
-            <LineChart className="size-4" />
-          </span>
-          <span className="text-sm font-medium text-[var(--text)]">Operations Overview</span>
+    <div className="overflow-hidden rounded-[24px] border border-white/10 bg-[var(--surface)] shadow-[0_50px_100px_-45px_rgba(0,0,0,0.9)]">
+      {/* browser-style chrome */}
+      <div className="flex items-center gap-3 border-b border-white/[0.06] bg-[var(--surface2)]/60 px-4 py-3">
+        <div className="flex gap-1.5">
+          <span className="size-2.5 rounded-full bg-white/15" />
+          <span className="size-2.5 rounded-full bg-white/15" />
+          <span className="size-2.5 rounded-full bg-white/15" />
         </div>
-        <span className="rounded-full bg-[var(--surface2)] px-3 py-1 text-[0.65rem] uppercase tracking-[0.15em] text-[var(--muted)]">
+        <div className="flex items-center gap-2">
+          <span className="flex size-5 items-center justify-center rounded-md bg-[var(--accent)]/15 text-[var(--accent)]">
+            <LineChart className="size-3" />
+          </span>
+          <span className="text-xs font-medium text-[var(--muted)]">Restaurant Operations · Daily Snapshot</span>
+        </div>
+        <span className="ml-auto rounded-full bg-[var(--accent)]/15 px-2.5 py-0.5 text-[0.6rem] uppercase tracking-[0.15em] text-[var(--accent)]">
           Live
         </span>
       </div>
-
-      {/* kpi row */}
-      <div className="grid grid-cols-3 gap-3">
-        {[
-          { label: "Waste ↓", value: "34%", tint: "var(--accent)" },
-          { label: "Turnover ↑", value: "+22%", tint: "var(--accent2)" },
-          { label: "Accuracy", value: "98%", tint: "var(--highlight)" },
-        ].map((k) => (
-          <div key={k.label} className="rounded-xl border border-white/[0.06] bg-[var(--surface2)] p-3">
-            <div className="text-[0.6rem] uppercase tracking-[0.15em] text-[var(--muted)]">{k.label}</div>
-            <div className="mt-1 text-xl font-semibold" style={{ color: k.tint }}>
-              {k.value}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* charts */}
-      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-5">
-        <div className="rounded-xl border border-white/[0.06] bg-[var(--surface2)] p-4 sm:col-span-3">
-          <div className="mb-3 flex items-center justify-between">
-            <span className="text-xs text-[var(--muted)]">Predicted rush hours</span>
-            <span className="text-[0.6rem] text-[var(--accent)]">demand curve</span>
-          </div>
-          <MiniLine points={[20, 30, 28, 55, 80, 62, 90, 70, 45]} color="var(--accent)" />
-        </div>
-        <div className="rounded-xl border border-white/[0.06] bg-[var(--surface2)] p-4 sm:col-span-2">
-          <div className="mb-3 text-xs text-[var(--muted)]">Inventory burn</div>
-          <MiniBars values={[40, 65, 50, 80, 35, 70]} color="var(--accent2)" />
-        </div>
-      </div>
-
-      <div className="mt-3 rounded-xl border border-[var(--highlight)]/20 bg-[var(--highlight)]/[0.06] p-3">
-        <span className="text-xs text-[var(--highlight)]">
-          ⚡ Recommendation · Add 1 kitchen staff before 7 PM rush · reorder Salmon (2 left)
-        </span>
-      </div>
+      <button
+        type="button"
+        onClick={onZoom}
+        className="group relative block w-full overflow-hidden bg-[#0a0d12]"
+        aria-label="Expand operations dashboard"
+      >
+        <img
+          src={HERO_DASHBOARD_IMG}
+          alt="Smart Predictive POS operations dashboard"
+          className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+        />
+        {onZoom && (
+          <span className="absolute right-3 top-3 flex size-9 items-center justify-center rounded-full bg-black/50 text-white opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
+            <Maximize2 className="size-4" />
+          </span>
+        )}
+      </button>
     </div>
   );
 }
 
-function Hero() {
+
+function Hero({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
   const meta = [
     { label: "Role", value: "Product Manager & Business Analyst" },
     { label: "Team", value: "Individual Project" },
@@ -414,7 +465,8 @@ function Hero() {
             </a>
             <a
               href={BRD_PDF_URL || "#"}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-[var(--text)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--highlight)] hover:text-[var(--highlight)]"
             >
               <FileText className="size-4" />
@@ -428,7 +480,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: EASE, delay: 0.15 }}
         >
-          <DashboardHero />
+          <DashboardHero onZoom={() => onZoom(HERO_DASHBOARD_IMG, "Smart Predictive POS operations dashboard")} />
         </motion.div>
       </div>
     </header>
@@ -447,6 +499,14 @@ function Opportunity() {
   return (
     <Section id="opportunity">
       <SectionLabel index="02" title="The Opportunity" />
+      <Reveal className="mb-12 max-w-3xl">
+        <p className="text-lg leading-relaxed text-[var(--muted)]">
+          Traditional POS systems handle billing and order entry, but leave managers planning on intuition. Industry
+          data shows restaurants lose an estimated{" "}
+          <span className="font-semibold text-[var(--accent)]">15% of revenue</span> to overstocking, food waste and
+          labour inefficiency—problems that surface only after the money is already gone.
+        </p>
+      </Reveal>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {kpis.map((k, i) => (
           <Reveal key={k.metric} delay={i * 0.08}>
@@ -470,12 +530,16 @@ function Opportunity() {
 
 /* ─────────────────────────── S3 · Approach ─────────────────────────── */
 
+type StepFigure = { src: string; alt: string; title: string; caption: string; bg?: string };
+
 type ProcessStep = {
   key: string;
   title: string;
   blurb: string;
-  images: { src: string; alt: string; label: string }[];
+  figures?: StepFigure[];
+  requirements?: { name: string; desc: string }[];
   note?: string;
+  wide?: boolean;
 };
 
 function Approach({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
@@ -483,48 +547,103 @@ function Approach({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
     {
       key: "research",
       title: "Research",
-      blurb: "Operational data pulled apart to find where decisions actually break down.",
-      images: [{ src: SPREADSHEET_IMG, alt: "Research spreadsheet", label: "Spreadsheet — key cells highlighted" }],
-      note: "Cropped extracts with the decision-critical cells highlighted.",
+      blurb: "Restaurant operations data pulled apart to locate where revenue actually leaks.",
+      note: "Industry data pointed to ~15% revenue loss from waste, overstocking and mis-staffing.",
+      figures: [
+        {
+          src: EXCEL_IMG,
+          alt: "Excel analysis of restaurant operations data",
+          title: "Excel Analysis",
+          caption:
+            "Data exploration across turnover, waste % and staffing used to identify inefficiencies and validate the opportunity.",
+          bg: "#ffffff",
+        },
+      ],
     },
     {
       key: "process",
       title: "Business Process Mapping",
-      blurb: "How orders move across customer, cashier, kitchen and manager.",
-      images: [
-        { src: customerFlow.url, alt: "Customer order flow", label: "Customer Flow" },
-        { src: kitchenFlow.url, alt: "Kitchen order flow", label: "Kitchen Flow" },
-        { src: managerFlow.url, alt: "Manager flow", label: "Manager Flow" },
+      blurb: "Mapping the current restaurant workflow against the future predictive one.",
+      wide: true,
+      figures: [
+        {
+          src: AS_IS_IMG,
+          alt: "As-Is process flow",
+          title: "As-Is Process Flow",
+          caption: "Current restaurant workflow before introducing the Smart Predictive POS.",
+          bg: "#f7f7f5",
+        },
+        {
+          src: TO_BE_IMG,
+          alt: "To-Be process flow",
+          title: "To-Be Process Flow",
+          caption: "Future workflow after introducing predictive automation and operational intelligence.",
+          bg: "#f7f7f5",
+        },
       ],
     },
     {
       key: "requirements",
       title: "Requirements",
-      blurb: "Business needs translated into scoped, buildable requirements.",
-      images: [{ src: BRD_PDF_URL, alt: "BRD snippet", label: "BRD — relevant snippets" }],
-      note: "Selected requirement snippets from the Business Requirements Document.",
+      blurb: "Business needs from the BRD translated into scoped, prioritised requirements.",
+      note: "Extracted from the Business Requirements Document — the project's source of truth.",
+      requirements: [
+        { name: "Rush-Hour Prediction", desc: "Forecast peak & low periods from sales data." },
+        { name: "Real-Time Inventory Tracking", desc: "Auto-deduct stock on every order." },
+        { name: "Dynamic Thresholds", desc: "Min / max / reorder levels that adapt to demand." },
+        { name: "Automated Ordering", desc: "Generate supplier POs on threshold breach." },
+        { name: "Management Dashboard", desc: "Live KPIs on sales, waste & turnover." },
+        { name: "Manual Override & Audit", desc: "Manager control over automation, fully logged." },
+      ],
     },
     {
       key: "wireframes",
       title: "Wireframes",
       blurb: "The key screens sketched before a single pixel of polish.",
-      images: [
-        { src: loginShot.url, alt: "Login wireframe", label: "Login" },
-        { src: cashierShot.url, alt: "Cashier wireframe", label: "Cashier" },
-        { src: managerShot.url, alt: "Manager wireframe", label: "Manager" },
+      wide: true,
+      figures: [
+        { src: loginShot.url, alt: "Login wireframe", title: "Login Wireframe", caption: "Authentication experience for restaurant staff.", bg: "#ffffff" },
+        { src: cashierShot.url, alt: "Cashier screen", title: "Cashier Screen", caption: "Fast order entry interface for front-of-house staff.", bg: "#ffffff" },
+        { src: kitchenShot.url, alt: "Kitchen screen", title: "Kitchen Screen", caption: "Real-time order management interface for kitchen operations.", bg: "#ffffff" },
+        { src: managerShot.url, alt: "Manager dashboard wireframe", title: "Manager Dashboard", caption: "Operational insights and decision support for managers.", bg: "#ffffff" },
+        { src: purchaseShot.url, alt: "Auto purchase order screen", title: "Auto Purchase Order", caption: "Automated inventory replenishment based on predictive demand.", bg: "#ffffff" },
       ],
     },
     {
-      key: "solution",
-      title: "Solution",
-      blurb: "The system architecture that ties the pieces together.",
-      images: [{ src: ARCHITECTURE_IMG, alt: "System architecture", label: "System Architecture" }],
+      key: "architecture",
+      title: "Architecture",
+      blurb: "How stakeholders and operational data flow through the system.",
+      wide: true,
+      figures: [
+        {
+          src: CONTEXT_DIAGRAM_IMG,
+          alt: "Context diagram",
+          title: "Context Diagram",
+          caption: "High-level interactions between stakeholders and the Smart Predictive POS.",
+          bg: "#f1f4fb",
+        },
+        {
+          src: ARCHITECTURE_IMG,
+          alt: "System architecture / operational data flow",
+          title: "System Architecture",
+          caption: "High-level architecture showing how operational data flows through the system.",
+          bg: "#f7f7f5",
+        },
+      ],
     },
     {
       key: "dashboard",
       title: "Dashboard",
       blurb: "Where predictions surface as decisions a manager can act on.",
-      images: [{ src: DASHBOARD_IMG, alt: "Manager dashboard", label: "Dashboard Preview" }],
+      figures: [
+        {
+          src: DASHBOARD_IMG,
+          alt: "Power BI operational dashboard",
+          title: "Power BI Dashboard",
+          caption: "Operational dashboard designed to support data-driven decision-making.",
+          bg: "#ffffff",
+        },
+      ],
     },
   ];
 
@@ -561,20 +680,40 @@ function Approach({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
 
       <AnimatePresence>
         {active && (
-          <Modal title={active.title} onClose={() => setActive(null)}>
+          <Modal title={active.title} onClose={() => setActive(null)} wide={active.wide}>
             <p className="text-sm text-[var(--muted)]">{active.blurb}</p>
             {active.note && <p className="mt-1 text-xs text-[var(--muted)]/70">{active.note}</p>}
-            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {active.images.map((img) => (
-                <ArtifactImage
-                  key={img.label}
-                  src={img.src}
-                  alt={img.alt}
-                  label={img.label}
-                  onZoom={img.src ? () => onZoom(img.src, img.alt) : undefined}
-                />
-              ))}
-            </div>
+
+            {active.requirements && (
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {active.requirements.map((r) => (
+                  <div key={r.name} className="rounded-xl border border-white/[0.07] bg-[var(--surface2)] p-4">
+                    <div className="flex items-center gap-2">
+                      <span className="h-3.5 w-1 rounded-full bg-[var(--accent)]" />
+                      <span className="text-sm font-semibold text-[var(--text)]">{r.name}</span>
+                    </div>
+                    <p className="mt-1.5 pl-3 text-xs leading-relaxed text-[var(--muted)]">{r.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {active.figures && (
+              <div className={`mt-6 grid grid-cols-1 gap-4 ${active.figures.length > 1 ? "sm:grid-cols-2" : ""}`}>
+                {active.figures.map((f) => (
+                  <Figure
+                    key={f.title}
+                    src={f.src}
+                    alt={f.alt}
+                    title={f.title}
+                    caption={f.caption}
+                    bg={f.bg}
+                    imgClassName="max-h-[46vh]"
+                    onZoom={() => onZoom(f.src, f.alt)}
+                  />
+                ))}
+              </div>
+            )}
           </Modal>
         )}
       </AnimatePresence>
@@ -582,7 +721,7 @@ function Approach({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
   );
 }
 
-function Modal({ title, children, onClose }: { title: string; children: ReactNode; onClose: () => void }) {
+function Modal({ title, children, onClose, wide = false }: { title: string; children: ReactNode; onClose: () => void; wide?: boolean }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
@@ -604,7 +743,7 @@ function Modal({ title, children, onClose }: { title: string; children: ReactNod
       <motion.div
         onClick={(e) => e.stopPropagation()}
         style={theme}
-        className="max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-white/10 bg-[var(--surface)] p-6 md:p-8"
+        className={`max-h-[88vh] w-full overflow-y-auto rounded-2xl border border-white/10 bg-[var(--surface)] p-6 md:p-8 ${wide ? "max-w-5xl" : "max-w-3xl"}`}
         initial={{ scale: 0.95, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -635,23 +774,27 @@ function Understanding({ onZoom }: { onZoom: (src: string, alt: string) => void 
       <SectionLabel index="04" title="Understanding the System" />
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <Reveal>
-          <span className="mb-3 block text-xs uppercase tracking-[0.2em] text-[var(--accent2)]">Context Diagram</span>
-          <ArtifactImage
+          <Figure
             src={CONTEXT_DIAGRAM_IMG}
             alt="Context diagram"
-            label="Context Diagram"
-            onZoom={CONTEXT_DIAGRAM_IMG ? () => onZoom(CONTEXT_DIAGRAM_IMG, "Context diagram") : undefined}
+            title="Context Diagram"
+            caption="Illustrates how customers, kitchen, inventory, suppliers and managers interact with the Smart Predictive POS."
+            tint="var(--accent2)"
+            bg="#f1f4fb"
+            imgClassName="aspect-[4/3]"
+            onZoom={() => onZoom(CONTEXT_DIAGRAM_IMG, "Context diagram")}
           />
         </Reveal>
         <Reveal delay={0.1}>
-          <span className="mb-3 block text-xs uppercase tracking-[0.2em] text-[var(--highlight)]">
-            System Architecture
-          </span>
-          <ArtifactImage
+          <Figure
             src={ARCHITECTURE_IMG}
             alt="System architecture"
-            label="System Architecture"
-            onZoom={ARCHITECTURE_IMG ? () => onZoom(ARCHITECTURE_IMG, "System architecture") : undefined}
+            title="System Architecture"
+            caption="High-level architecture showing how operational data flows through the system."
+            tint="var(--highlight)"
+            bg="#f7f7f5"
+            imgClassName="aspect-[4/3]"
+            onZoom={() => onZoom(ARCHITECTURE_IMG, "System architecture")}
           />
         </Reveal>
       </div>
@@ -844,14 +987,54 @@ function IntelligenceLayer({ onZoom }: { onZoom: (src: string, alt: string) => v
         </p>
       </Reveal>
 
-      <Reveal delay={0.25} className="mt-10">
-        <ArtifactImage
-          src={DASHBOARD_IMG}
-          alt="Full manager dashboard"
-          label="Dashboard — click to expand"
-          className="mx-auto max-w-4xl"
-          onZoom={DASHBOARD_IMG ? () => onZoom(DASHBOARD_IMG, "Manager dashboard") : undefined}
-        />
+      <Reveal delay={0.25} className="mt-12">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-[24px] border border-white/10 bg-[var(--surface)] shadow-[0_50px_100px_-45px_rgba(0,0,0,0.95)]">
+          {/* executive header */}
+          <div className="flex flex-wrap items-center gap-4 border-b border-white/[0.06] bg-[var(--surface2)]/50 px-5 py-4 md:px-7">
+            <div className="flex items-center gap-2.5">
+              <span className="flex size-8 items-center justify-center rounded-lg bg-[var(--accent)]/15 text-[var(--accent)]">
+                <LineChart className="size-4" />
+              </span>
+              <div>
+                <div className="text-sm font-semibold text-[var(--text)]">Operational Analytics</div>
+                <div className="text-[0.65rem] uppercase tracking-[0.18em] text-[var(--muted)]">Power BI · Daily Snapshot</div>
+              </div>
+            </div>
+            <div className="ml-auto flex flex-wrap gap-2.5">
+              {[
+                { label: "Avg Turnover", value: "74.78%", tint: "var(--accent)" },
+                { label: "Waste · Lunch", value: "16.7%", tint: "var(--highlight)" },
+                { label: "Rush Signal", value: "Mapped", tint: "var(--accent2)" },
+              ].map((k) => (
+                <div key={k.label} className="rounded-xl border border-white/[0.06] bg-[var(--surface)] px-3.5 py-2">
+                  <div className="text-[0.55rem] uppercase tracking-[0.15em] text-[var(--muted)]">{k.label}</div>
+                  <div className="text-sm font-semibold" style={{ color: k.tint }}>{k.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => onZoom(DASHBOARD_IMG, "Power BI operational dashboard")}
+            className="group relative block w-full overflow-hidden bg-white"
+            aria-label="Expand Power BI dashboard to full screen"
+          >
+            <img
+              src={DASHBOARD_IMG}
+              alt="Power BI operational dashboard"
+              className="w-full object-contain p-3 transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+            />
+            <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-xs text-white opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
+              <Maximize2 className="size-3.5" /> Full screen
+            </span>
+          </button>
+          <div className="border-t border-white/[0.06] px-5 py-4 md:px-7">
+            <p className="text-xs leading-relaxed text-[var(--muted)]">
+              <span className="font-semibold text-[var(--text)]">Power BI Dashboard</span> — operational dashboard designed to
+              support data-driven decision-making across turnover, inventory burn, waste and rush-hour performance.
+            </p>
+          </div>
+        </div>
       </Reveal>
     </Section>
   );
@@ -923,7 +1106,7 @@ function SmartPosCaseStudy() {
   return (
     <div style={theme} className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased">
       <PageNav />
-      <Hero />
+      <Hero onZoom={onZoom} />
       <Opportunity />
       <Approach onZoom={onZoom} />
       <Understanding onZoom={onZoom} />
