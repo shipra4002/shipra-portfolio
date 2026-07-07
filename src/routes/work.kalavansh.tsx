@@ -708,16 +708,16 @@ function NextProject() {
               className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
             >
               <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-1" />
-              Back to Work
+              Back to Projects
             </Link>
             <Link
               to="/work/$slug"
-              params={{ slug: "nexo" }}
+              params={{ slug: "smart-predictive-pos" }}
               className="group inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
             >
               <span className="flex flex-col items-end">
                 <span className="text-[0.65rem] uppercase tracking-[0.22em]">Next Project</span>
-                <span className="font-serif text-lg font-light">Nexo</span>
+                <span className="font-serif text-lg font-light">Smart Predictive POS</span>
               </span>
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
