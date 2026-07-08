@@ -362,6 +362,17 @@ function NotionInvestigation() {
       <section className="relative overflow-hidden" style={{ background: C.softer }}>
         <div className="mx-auto max-w-6xl px-5 pb-16 pt-28 md:px-10 md:pb-24 md:pt-36">
           <Fade>
+            <Link
+              to="/"
+              hash="work"
+              className="group mb-10 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+              style={{ color: C.grey }}
+            >
+              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+              Back to Projects
+            </Link>
+          </Fade>
+          <Fade>
             <span
               className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.22em]"
               style={{ background: C.beige, color: C.ink, fontFamily: MONO }}
