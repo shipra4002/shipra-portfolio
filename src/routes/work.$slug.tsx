@@ -168,7 +168,7 @@ function CaseStudy() {
   const { project } = Route.useLoaderData();
   const journey = JOURNEY[project.slug];
 
-  const prevTarget: NavTarget = journey?.prev ?? { home: true, label: "Back to work" };
+  
   const nextTarget: NavTarget | null = journey?.next ?? null;
   const centerLabel = journey?.centerLabel ?? project.category;
 
