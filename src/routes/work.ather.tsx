@@ -1405,8 +1405,8 @@ function AtherCaseStudy() {
               className="group inline-flex items-center gap-2 text-sm font-semibold transition-colors"
               style={{ color: C.grey }}
             >
-              <ArrowRight className="size-4 rotate-180 transition-transform group-hover:-translate-x-0.5" />
-              Back to Work
+              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+              Back to Projects
             </Link>
           </Fade>
           <Fade>
