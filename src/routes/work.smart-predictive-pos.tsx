@@ -282,12 +282,12 @@ function PageNav() {
       <div className="mx-auto flex max-w-6xl items-center px-6 py-4 md:px-10">
         <div className="flex-1">
           <Link
-            to="/work/$slug"
-            params={{ slug: "kalavansh" }}
+            to="/"
+            hash="work"
             className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-[var(--text)]"
           >
-            <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-            KalaVansh
+            <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-1" />
+            Back to Projects
           </Link>
         </div>
         <span className="hidden text-[0.65rem] uppercase tracking-[0.28em] text-[var(--muted)] md:inline-block">
