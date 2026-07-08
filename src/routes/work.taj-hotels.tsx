@@ -570,11 +570,12 @@ function TajCaseStudy() {
         <div className="relative mx-auto flex min-h-[94vh] max-w-6xl flex-col justify-end px-5 pb-16 pt-24 md:px-10 md:pb-20">
           <Fade>
             <Link
-              to="/work/nestle"
+              to="/"
+              hash="work"
               className="group mb-auto inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
             >
-              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-              Nestlé India
+              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+              Back to Projects
             </Link>
           </Fade>
 
