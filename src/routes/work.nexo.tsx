@@ -194,12 +194,12 @@ function BottomNav() {
   return (
     <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-10 md:px-8">
       <Link
-        to="/work/$slug"
-        params={{ slug: "smart-predictive-pos" }}
+        to="/"
+        hash="work"
         className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-white"
       >
-        <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-        Smart Predictive POS
+        <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+        Back to Projects
       </Link>
       <Link
         to="/work/$slug"
