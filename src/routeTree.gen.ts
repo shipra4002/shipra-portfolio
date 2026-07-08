@@ -16,6 +16,7 @@ import { Route as WorkSmartPredictivePosRouteImport } from './routes/work.smart-
 import { Route as WorkNexoRouteImport } from './routes/work.nexo'
 import { Route as WorkNestleRouteImport } from './routes/work.nestle'
 import { Route as WorkKalavanshRouteImport } from './routes/work.kalavansh'
+import { Route as WorkAtherRouteImport } from './routes/work.ather'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -53,6 +54,11 @@ const WorkKalavanshRoute = WorkKalavanshRouteImport.update({
   path: '/work/kalavansh',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkAtherRoute = WorkAtherRouteImport.update({
+  id: '/work/ather',
+  path: '/work/ather',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkSlugRoute = WorkSlugRouteImport.update({
   id: '/work/$slug',
   path: '/work/$slug',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/work/ather': typeof WorkAtherRoute
   '/work/kalavansh': typeof WorkKalavanshRoute
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/work/ather': typeof WorkAtherRoute
   '/work/kalavansh': typeof WorkKalavanshRoute
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/work/ather': typeof WorkAtherRoute
   '/work/kalavansh': typeof WorkKalavanshRoute
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/sitemap.xml'
     | '/work/$slug'
+    | '/work/ather'
     | '/work/kalavansh'
     | '/work/nestle'
     | '/work/nexo'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/sitemap.xml'
     | '/work/$slug'
+    | '/work/ather'
     | '/work/kalavansh'
     | '/work/nestle'
     | '/work/nexo'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/sitemap.xml'
     | '/work/$slug'
+    | '/work/ather'
     | '/work/kalavansh'
     | '/work/nestle'
     | '/work/nexo'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WorkSlugRoute: typeof WorkSlugRoute
+  WorkAtherRoute: typeof WorkAtherRoute
   WorkKalavanshRoute: typeof WorkKalavanshRoute
   WorkNestleRoute: typeof WorkNestleRoute
   WorkNexoRoute: typeof WorkNexoRoute
@@ -185,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkKalavanshRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/ather': {
+      id: '/work/ather'
+      path: '/work/ather'
+      fullPath: '/work/ather'
+      preLoaderRoute: typeof WorkAtherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work/$slug': {
       id: '/work/$slug'
       path: '/work/$slug'
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   WorkSlugRoute: WorkSlugRoute,
+  WorkAtherRoute: WorkAtherRoute,
   WorkKalavanshRoute: WorkKalavanshRoute,
   WorkNestleRoute: WorkNestleRoute,
   WorkNexoRoute: WorkNexoRoute,
