@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorkTajHotelsRouteImport } from './routes/work.taj-hotels'
 import { Route as WorkSmartPredictivePosRouteImport } from './routes/work.smart-predictive-pos'
+import { Route as WorkNotionRouteImport } from './routes/work.notion'
 import { Route as WorkNexoRouteImport } from './routes/work.nexo'
 import { Route as WorkNestleRouteImport } from './routes/work.nestle'
 import { Route as WorkKalavanshRouteImport } from './routes/work.kalavansh'
@@ -37,6 +38,11 @@ const WorkTajHotelsRoute = WorkTajHotelsRouteImport.update({
 const WorkSmartPredictivePosRoute = WorkSmartPredictivePosRouteImport.update({
   id: '/work/smart-predictive-pos',
   path: '/work/smart-predictive-pos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkNotionRoute = WorkNotionRouteImport.update({
+  id: '/work/notion',
+  path: '/work/notion',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkNexoRoute = WorkNexoRouteImport.update({
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/work/kalavansh': typeof WorkKalavanshRoute
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
+  '/work/notion': typeof WorkNotionRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
   '/work/taj-hotels': typeof WorkTajHotelsRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/work/kalavansh': typeof WorkKalavanshRoute
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
+  '/work/notion': typeof WorkNotionRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
   '/work/taj-hotels': typeof WorkTajHotelsRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/work/kalavansh': typeof WorkKalavanshRoute
   '/work/nestle': typeof WorkNestleRoute
   '/work/nexo': typeof WorkNexoRoute
+  '/work/notion': typeof WorkNotionRoute
   '/work/smart-predictive-pos': typeof WorkSmartPredictivePosRoute
   '/work/taj-hotels': typeof WorkTajHotelsRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/work/kalavansh'
     | '/work/nestle'
     | '/work/nexo'
+    | '/work/notion'
     | '/work/smart-predictive-pos'
     | '/work/taj-hotels'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/work/kalavansh'
     | '/work/nestle'
     | '/work/nexo'
+    | '/work/notion'
     | '/work/smart-predictive-pos'
     | '/work/taj-hotels'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/work/kalavansh'
     | '/work/nestle'
     | '/work/nexo'
+    | '/work/notion'
     | '/work/smart-predictive-pos'
     | '/work/taj-hotels'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   WorkKalavanshRoute: typeof WorkKalavanshRoute
   WorkNestleRoute: typeof WorkNestleRoute
   WorkNexoRoute: typeof WorkNexoRoute
+  WorkNotionRoute: typeof WorkNotionRoute
   WorkSmartPredictivePosRoute: typeof WorkSmartPredictivePosRoute
   WorkTajHotelsRoute: typeof WorkTajHotelsRoute
 }
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/work/smart-predictive-pos'
       fullPath: '/work/smart-predictive-pos'
       preLoaderRoute: typeof WorkSmartPredictivePosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/notion': {
+      id: '/work/notion'
+      path: '/work/notion'
+      fullPath: '/work/notion'
+      preLoaderRoute: typeof WorkNotionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work/nexo': {
@@ -223,19 +243,10 @@ const rootRouteChildren: RootRouteChildren = {
   WorkKalavanshRoute: WorkKalavanshRoute,
   WorkNestleRoute: WorkNestleRoute,
   WorkNexoRoute: WorkNexoRoute,
+  WorkNotionRoute: WorkNotionRoute,
   WorkSmartPredictivePosRoute: WorkSmartPredictivePosRoute,
   WorkTajHotelsRoute: WorkTajHotelsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
