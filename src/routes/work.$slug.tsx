@@ -129,19 +129,6 @@ function HomeBackLink({ label }: { label: string }) {
   );
 }
 
-function PrevLink({ target }: { target: NavTarget }) {
-  if (target.home) return <HomeBackLink label={target.label} />;
-  return (
-    <Link
-      to="/work/$slug"
-      params={{ slug: target.slug }}
-      className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-    >
-      <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-      {target.label}
-    </Link>
-  );
-}
 
 function NextLink({ target }: { target: NavTarget }) {
   if (target.home) {
