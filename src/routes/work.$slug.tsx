@@ -233,7 +233,7 @@ function CaseStudy() {
 
         {/* Bottom journey nav */}
         <div className="flex items-center justify-between gap-6 border-t border-border py-16">
-          <PrevLink target={prevTarget} />
+          <HomeBackLink label="Back to Projects" />
           {nextTarget ? (
             <NextLink target={nextTarget} />
           ) : (
