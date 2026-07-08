@@ -9,6 +9,7 @@ import {
   useSpring,
 } from "motion/react";
 import {
+  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   Search,
