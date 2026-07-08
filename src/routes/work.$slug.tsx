@@ -123,7 +123,7 @@ function HomeBackLink({ label }: { label: string }) {
       hash="work"
       className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
     >
-      <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
+      <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-1" />
       {label}
     </Link>
   );
