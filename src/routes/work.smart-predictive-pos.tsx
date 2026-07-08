@@ -1077,12 +1077,12 @@ function KeyLearnings() {
 
       <div className="mt-20 flex items-center justify-between border-t border-white/[0.06] pt-10">
         <Link
-          to="/work/$slug"
-          params={{ slug: "kalavansh" }}
+          to="/"
+          hash="work"
           className="group inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-[var(--text)]"
         >
-          <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-          KalaVansh
+          <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-1" />
+          Back to Projects
         </Link>
         <Link
           to="/work/$slug"
