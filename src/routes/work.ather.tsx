@@ -1485,10 +1485,12 @@ function Kpi({
       className="rounded-xl border p-4"
       style={{ borderColor: "rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.03)" }}
     >
-      <p ref={ref} className="text-xl font-semibold tracking-tight text-white md:text-2xl" style={{ fontFamily: DISPLAY }}>
-        {pre}
-        {display}
-        {suf}
+      <p className="text-xl font-semibold tracking-tight text-white md:text-2xl" style={{ fontFamily: DISPLAY }}>
+        <span ref={ref}>
+          {pre}
+          {display}
+          {suf}
+        </span>
       </p>
       <p className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.14em]" style={{ color: C.greyLight, fontFamily: MONO }}>
         {l}
