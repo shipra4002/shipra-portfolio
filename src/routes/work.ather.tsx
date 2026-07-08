@@ -1394,38 +1394,34 @@ function AtherCaseStudy() {
         </div>
       </section>
 
-      {/* ---------------- NEXT STRATEGY ---------------- */}
+      {/* ---------------- BOTTOM NAV ---------------- */}
       <section style={{ background: C.soft }}>
-        <div className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-20">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-12 md:px-10 md:py-16">
+          <Fade>
+            <Link
+              to="/"
+              hash="work"
+              className="group inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+              style={{ color: C.grey }}
+            >
+              <ArrowRight className="size-4 rotate-180 transition-transform group-hover:-translate-x-0.5" />
+              Back to Work
+            </Link>
+          </Fade>
           <Fade>
             <Link
               to="/work/$slug"
               params={{ slug: "notion" }}
-              className="group flex flex-col gap-5 rounded-3xl border p-8 transition-all hover:-translate-y-1 md:flex-row md:items-center md:justify-between md:p-10"
-              style={{ borderColor: C.line, background: C.white }}
+              className="group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:translate-x-1"
+              style={{ background: C.black, color: C.white }}
             >
-              <div>
-                <p className="text-[0.62rem] font-semibold uppercase tracking-[0.24em]" style={{ color: C.green, fontFamily: MONO }}>
-                  Next Section · Investigation
-                </p>
-                <p className="mt-3 text-[clamp(1.8rem,4vw,2.6rem)] font-semibold tracking-tight" style={{ color: C.black, fontFamily: DISPLAY }}>
-                  Notion
-                </p>
-                <p className="mt-2 text-sm" style={{ color: C.grey }}>
-                  A product teardown — from strategy breakdowns to deep product investigation.
-                </p>
-              </div>
-              <span
-                className="inline-flex items-center gap-2 self-start rounded-full px-5 py-3 text-sm font-semibold transition-transform group-hover:translate-x-1 md:self-auto"
-                style={{ background: C.black, color: C.white }}
-              >
-                Continue Journey
-                <ArrowRight className="size-4" />
-              </span>
+              Next: Investigation · Notion
+              <ArrowRight className="size-4" />
             </Link>
           </Fade>
         </div>
       </section>
+
 
       <SiteFooter />
 
