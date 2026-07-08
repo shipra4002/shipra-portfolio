@@ -600,12 +600,12 @@ function NestleCaseStudy() {
         <div className="relative mx-auto flex min-h-[90vh] max-w-6xl flex-col justify-center px-5 py-24 md:px-10">
           <Fade>
             <Link
-              to="/work/$slug"
-              params={{ slug: "nexo" }}
+              to="/"
+              hash="work"
               className="group mb-8 inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
             >
-              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-              NEXO
+              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+              Back to Projects
             </Link>
           </Fade>
           <Fade delay={0.04}>
@@ -1175,12 +1175,12 @@ function NestleCaseStudy() {
           </div>
           <div className="mt-12 flex items-center justify-between gap-6 border-t border-white/10 pt-8">
             <Link
-              to="/work/$slug"
-              params={{ slug: "nexo" }}
+              to="/"
+              hash="work"
               className="group inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
             >
-              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-              NEXO
+              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+              Back to Projects
             </Link>
             <Link
               to="/work/$slug"

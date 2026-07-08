@@ -9,6 +9,7 @@ import {
   useSpring,
 } from "motion/react";
 import {
+  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   Search,
@@ -360,6 +361,17 @@ function NotionInvestigation() {
       {/* ---------------- HERO ---------------- */}
       <section className="relative overflow-hidden" style={{ background: C.softer }}>
         <div className="mx-auto max-w-6xl px-5 pb-16 pt-28 md:px-10 md:pb-24 md:pt-36">
+          <Fade>
+            <Link
+              to="/"
+              hash="work"
+              className="group mb-10 inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+              style={{ color: C.grey }}
+            >
+              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+              Back to Projects
+            </Link>
+          </Fade>
           <Fade>
             <span
               className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.22em]"
@@ -950,8 +962,8 @@ function NotionInvestigation() {
                 className="group inline-flex items-center gap-2 text-sm font-semibold transition-colors"
                 style={{ color: C.grey }}
               >
-                <ArrowRight className="size-4 rotate-180 transition-transform group-hover:-translate-x-0.5" />
-                Back to Work
+                <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+                Back to Projects
               </Link>
             </div>
           </Fade>

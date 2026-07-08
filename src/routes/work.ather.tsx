@@ -663,11 +663,12 @@ function AtherCaseStudy() {
         <div className="relative mx-auto max-w-6xl px-5 pb-14 pt-24 md:px-10 md:pb-20 md:pt-28">
           <Fade>
             <Link
-              to="/work/taj-hotels"
+              to="/"
+              hash="work"
               className="group inline-flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
             >
-              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />
-              Taj Hotels
+              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+              Back to Projects
             </Link>
           </Fade>
 
@@ -1404,8 +1405,8 @@ function AtherCaseStudy() {
               className="group inline-flex items-center gap-2 text-sm font-semibold transition-colors"
               style={{ color: C.grey }}
             >
-              <ArrowRight className="size-4 rotate-180 transition-transform group-hover:-translate-x-0.5" />
-              Back to Work
+              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+              Back to Projects
             </Link>
           </Fade>
           <Fade>

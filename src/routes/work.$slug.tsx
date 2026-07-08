@@ -123,25 +123,12 @@ function HomeBackLink({ label }: { label: string }) {
       hash="work"
       className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
     >
-      <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
+      <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-1" />
       {label}
     </Link>
   );
 }
 
-function PrevLink({ target }: { target: NavTarget }) {
-  if (target.home) return <HomeBackLink label={target.label} />;
-  return (
-    <Link
-      to="/work/$slug"
-      params={{ slug: target.slug }}
-      className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-    >
-      <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-      {target.label}
-    </Link>
-  );
-}
 
 function NextLink({ target }: { target: NavTarget }) {
   if (target.home) {
@@ -181,7 +168,7 @@ function CaseStudy() {
   const { project } = Route.useLoaderData();
   const journey = JOURNEY[project.slug];
 
-  const prevTarget: NavTarget = journey?.prev ?? { home: true, label: "Back to work" };
+  
   const nextTarget: NavTarget | null = journey?.next ?? null;
   const centerLabel = journey?.centerLabel ?? project.category;
 
@@ -190,7 +177,7 @@ function CaseStudy() {
       {/* Top journey nav */}
       <header className="sticky top-0 z-30 border-b border-border/40 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-3xl items-center px-6 py-4 md:px-10">
-          <div className="flex-1"><PrevLink target={prevTarget} /></div>
+          <div className="flex-1"><HomeBackLink label="Back to Projects" /></div>
           <span className="hidden text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground md:inline-block">
             {centerLabel}
           </span>
@@ -233,7 +220,7 @@ function CaseStudy() {
 
         {/* Bottom journey nav */}
         <div className="flex items-center justify-between gap-6 border-t border-border py-16">
-          <PrevLink target={prevTarget} />
+          <HomeBackLink label="Back to Projects" />
           {nextTarget ? (
             <NextLink target={nextTarget} />
           ) : (
