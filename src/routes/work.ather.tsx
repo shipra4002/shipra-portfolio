@@ -44,7 +44,7 @@ import {
 import { SiteFooter } from "@/components/site-footer";
 import { AtAGlance } from "@/components/at-a-glance";
 
-import heroImg from "@/assets/ather-hero.jpg.asset.json";
+import heroImg from "@/assets/ather-hero-scooter.jpg.asset.json";
 import revenueImg from "@/assets/ather-revenue.jpg.asset.json";
 import unitEconImg from "@/assets/ather-unit-economics.jpg.asset.json";
 import healthImg from "@/assets/ather-health-dashboard.jpg.asset.json";
