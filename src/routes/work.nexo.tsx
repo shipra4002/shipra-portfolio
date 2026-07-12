@@ -319,7 +319,8 @@ function Hero() {
               </a>
               <a
                 href={DOC_URL}
-                download
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/50 bg-[var(--accent)]/10 px-6 py-3 text-sm font-medium text-white transition-all hover:gap-3 hover:bg-[var(--accent)]/20"
               >
                 <FileText className="size-4" />
