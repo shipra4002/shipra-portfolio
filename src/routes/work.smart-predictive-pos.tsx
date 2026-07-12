@@ -466,7 +466,8 @@ function Hero({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
             </a>
             <a
               href={BRD_PDF_URL || "#"}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-[var(--text)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--highlight)] hover:text-[var(--highlight)]"
             >
               <FileText className="size-4" />
