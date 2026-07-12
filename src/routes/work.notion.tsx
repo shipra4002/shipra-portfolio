@@ -52,7 +52,7 @@ export const Route = createFileRoute("/work/notion")({
           "Question → Evidence → Patterns → Hypothesis → Experiment → Recommendation. A calm, evidence-led product investigation.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:image", content: notionHero.url },
+      { property: "og:image", content: "https://shipra-maurya-portfolio.lovable.app" + notionHero.url },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
