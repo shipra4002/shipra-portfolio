@@ -1145,7 +1145,7 @@ function TajCaseStudy() {
                 t: "IHCL Annual Report",
                 d: "Reference material for the independent 'Beyond the Classroom' research.",
                 meta: "Reference",
-                url: reportPdf.url,
+                url: ihclAnnualReport.url,
               },
             ].map((x, i) => (
               <Fade key={x.t} delay={i * 0.08}>
