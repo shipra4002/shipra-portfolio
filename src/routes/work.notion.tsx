@@ -29,10 +29,10 @@ import {
   Map,
   SplitSquareHorizontal,
 } from "lucide-react";
-import notionHero from "@/assets/notion-hero.jpg.asset.json";
-import notionBefore from "@/assets/notion-before.jpg.asset.json";
-import notionAfter from "@/assets/notion-after.jpg.asset.json";
-import deck from "@/assets/notion-presentation.pptx.asset.json";
+const notionHero = { url: "/assets/notion-hero.jpg" };
+const notionBefore = { url: "/assets/notion-before.jpg" };
+const notionAfter = { url: "/assets/notion-after.jpg" };
+const deck = { url: "https://drive.google.com/file/d/1_Tj8XkFOFrQvULYWyIn9RTBIYm8OJUJp/view?usp=sharing" };
 import { AtAGlance } from "@/components/at-a-glance";
 import { SiteFooter } from "@/components/site-footer";
 
