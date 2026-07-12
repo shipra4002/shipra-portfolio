@@ -904,10 +904,9 @@ function NotionInvestigation() {
       {/* ---------------- DOWNLOADS ---------------- */}
       <section className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-24">
         <SectionHead icon={FileText} step="Appendix" kicker="Explore the full investigation" title="The evidence behind the verdict" />
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
+        <div className="mt-10 grid gap-4 md:grid-cols-1">
           {[
-            { icon: Presentation, title: "Investigation Deck", desc: "The full 90-day product growth plan, slide by slide.", cta: "Download presentation" },
-            { icon: FileText, title: "Product Investigation Report", desc: "Framing, funnel diagnosis, hypotheses and experiment design.", cta: "Download report" },
+            { icon: Presentation, title: "Presentation Deck", desc: "The full 90-day product growth plan, slide by slide.", cta: "Open presentation" },
           ].map((d, i) => (
             <Fade key={d.title} delay={i * 0.06}>
               <a
