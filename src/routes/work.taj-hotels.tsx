@@ -47,9 +47,9 @@ import {
   Clock,
 } from "lucide-react";
 import tajHero from "@/assets/taj-hero.jpg";
-import tajArchitecture from "@/assets/taj-architecture.jpg.asset.json";
-import reportPdf from "@/assets/taj-report.pdf.asset.json";
-import presentationPdf from "@/assets/taj-presentation.pdf.asset.json";
+const tajArchitecture = { url: "/assets/taj-architecture.jpg" };
+const reportPdf = { url: "https://drive.google.com/file/d/1dS0ASJMit3slab0NZ8-hlH1TLuLiCA3e/view?usp=sharing" };
+const presentationPdf = { url: "https://drive.google.com/file/d/16t3r3shnuChyTzJI7AXc_FpNqAeqhC5n/view?usp=sharing" };
 import { AtAGlance } from "@/components/at-a-glance";
 
 /* ----------------------------- Brand palette ----------------------------- */
