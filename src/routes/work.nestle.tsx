@@ -26,9 +26,9 @@ import {
   ListChecks,
 } from "lucide-react";
 import nestleHero from "@/assets/nestle-hero.jpg";
-import reportPdf from "@/assets/nestle-report.pdf.asset.json";
-import presentationPdf from "@/assets/nestle-presentation.pdf.asset.json";
-import datasetXlsx from "@/assets/nestle-dataset.xlsx.asset.json";
+const reportPdf = { url: "https://docs.google.com/document/d/1azkKD3uCeqEOFhMYcKtA9hMkhu9-zAaX/edit?usp=sharing" };
+const presentationPdf = { url: "https://drive.google.com/file/d/1grTlnFgXKObQcnGstZpv24Gmf0bkW9Vy/view?usp=sharing" };
+const datasetXlsx = { url: "https://docs.google.com/spreadsheets/d/1WnTp7XY7tf2YHYE7zPRRM72kojKUeRkJ/edit?usp=sharing" };
 import { AtAGlance } from "@/components/at-a-glance";
 
 /* ----------------------------- Brand palette ----------------------------- */
