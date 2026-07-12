@@ -31,7 +31,7 @@ import contextDiagram from "@/assets/spos-context-diagram.jpg";
 import excelAnalysis from "@/assets/spos-excel-analysis.png";
 import powerbiDashboard from "@/assets/spos-powerbi-dashboard.png";
 import heroDashboard from "@/assets/spos-hero-dashboard.png";
-import brdPdf from "@/assets/spos-brd-v2.pdf";
+// BRD now opens via Google Drive link (see BRD_PDF_URL)
 
 /* Real artifacts now wired in. */
 const DASHBOARD_IMG = powerbiDashboard;
