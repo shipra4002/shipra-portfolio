@@ -50,6 +50,7 @@ import tajHero from "@/assets/taj-hero.jpg";
 const tajArchitecture = { url: "/assets/taj-architecture.jpg" };
 const reportPdf = { url: "https://drive.google.com/file/d/1dS0ASJMit3slab0NZ8-hlH1TLuLiCA3e/view?usp=sharing" };
 const presentationPdf = { url: "https://drive.google.com/file/d/16t3r3shnuChyTzJI7AXc_FpNqAeqhC5n/view?usp=sharing" };
+const ihclAnnualReport = { url: "https://drive.google.com/file/d/1fCWluZBXN5rOdB9zT9-h_6cV2_jkVpMp/view?usp=sharing" };
 import { AtAGlance } from "@/components/at-a-glance";
 
 /* ----------------------------- Brand palette ----------------------------- */
