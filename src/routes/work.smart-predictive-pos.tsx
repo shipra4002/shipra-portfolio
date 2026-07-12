@@ -31,7 +31,7 @@ import contextDiagram from "@/assets/spos-context-diagram.jpg";
 import excelAnalysis from "@/assets/spos-excel-analysis.png";
 import powerbiDashboard from "@/assets/spos-powerbi-dashboard.png";
 import heroDashboard from "@/assets/spos-hero-dashboard.png";
-import brdPdf from "@/assets/spos-brd-v2.pdf";
+// BRD now opens via Google Drive link (see BRD_PDF_URL)
 
 /* Real artifacts now wired in. */
 const DASHBOARD_IMG = powerbiDashboard;
@@ -41,7 +41,7 @@ const CONTEXT_DIAGRAM_IMG = contextDiagram;
 const ARCHITECTURE_IMG = toBeFlow;
 const AS_IS_IMG = asIsFlow;
 const TO_BE_IMG = toBeFlow;
-const BRD_PDF_URL = brdPdf;
+const BRD_PDF_URL = "https://drive.google.com/file/d/1JHDf1F0SMreVakBc37fH3QYqA8V6-w6W/view?usp=sharing";
 const PROTOTYPE_URL = "https://predicta-dine.lovable.app/";
 
 export const Route = createFileRoute("/work/smart-predictive-pos")({
@@ -466,7 +466,8 @@ function Hero({ onZoom }: { onZoom: (src: string, alt: string) => void }) {
             </a>
             <a
               href={BRD_PDF_URL || "#"}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-[var(--text)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--highlight)] hover:text-[var(--highlight)]"
             >
               <FileText className="size-4" />

@@ -29,10 +29,10 @@ import {
   Map,
   SplitSquareHorizontal,
 } from "lucide-react";
-import notionHero from "@/assets/notion-hero.jpg.asset.json";
-import notionBefore from "@/assets/notion-before.jpg.asset.json";
-import notionAfter from "@/assets/notion-after.jpg.asset.json";
-import deck from "@/assets/notion-presentation.pptx.asset.json";
+const notionHero = { url: "/assets/notion-hero.jpg" };
+const notionBefore = { url: "/assets/notion-before.jpg" };
+const notionAfter = { url: "/assets/notion-after.jpg" };
+const deck = { url: "https://docs.google.com/presentation/d/17-ntdLFaGQaUXwm7KrTuYJpVoGodCwaW/edit?usp=sharing" };
 import { AtAGlance } from "@/components/at-a-glance";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -52,7 +52,7 @@ export const Route = createFileRoute("/work/notion")({
           "Question → Evidence → Patterns → Hypothesis → Experiment → Recommendation. A calm, evidence-led product investigation.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:image", content: notionHero.url },
+      { property: "og:image", content: "https://shipra-maurya-portfolio.lovable.app" + notionHero.url },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
@@ -904,10 +904,9 @@ function NotionInvestigation() {
       {/* ---------------- DOWNLOADS ---------------- */}
       <section className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-24">
         <SectionHead icon={FileText} step="Appendix" kicker="Explore the full investigation" title="The evidence behind the verdict" />
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
+        <div className="mt-10 grid gap-4 md:grid-cols-1">
           {[
-            { icon: Presentation, title: "Investigation Deck", desc: "The full 90-day product growth plan, slide by slide.", cta: "Download presentation" },
-            { icon: FileText, title: "Product Investigation Report", desc: "Framing, funnel diagnosis, hypotheses and experiment design.", cta: "Download report" },
+            { icon: Presentation, title: "Presentation Deck", desc: "The full 90-day product growth plan, slide by slide.", cta: "Open presentation" },
           ].map((d, i) => (
             <Fade key={d.title} delay={i * 0.06}>
               <a

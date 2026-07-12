@@ -42,11 +42,11 @@ import profileShot from "@/assets/nexo-profile.jpg";
 import rewardsShot from "@/assets/nexo-rewards.jpg";
 import newJournalShot from "@/assets/nexo-new-journal.jpg";
 import architectureShot from "@/assets/nexo-architecture.jpg";
-import caseStudyDoc from "@/assets/nexo-case-study.docx?url";
+// Project documentation now opens via Google Drive link (see DOC_URL)
 import { AtAGlance } from "@/components/at-a-glance";
 
 const GITHUB_URL = "https://github.com/mahekk-shahh/Nexo";
-const DOC_URL = caseStudyDoc;
+const DOC_URL = "https://docs.google.com/document/d/1QyJ1oDOKN3ZA91BgezcD1hzymmuJWqEv/edit?usp=sharing";
 
 export const Route = createFileRoute("/work/nexo")({
   head: () => ({
@@ -319,7 +319,8 @@ function Hero() {
               </a>
               <a
                 href={DOC_URL}
-                download
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/50 bg-[var(--accent)]/10 px-6 py-3 text-sm font-medium text-white transition-all hover:gap-3 hover:bg-[var(--accent)]/20"
               >
                 <FileText className="size-4" />

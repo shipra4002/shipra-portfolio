@@ -44,17 +44,14 @@ import {
 import { SiteFooter } from "@/components/site-footer";
 import { AtAGlance } from "@/components/at-a-glance";
 
-import heroImg from "@/assets/ather-hero-scooter.jpg.asset.json";
-import revenueImg from "@/assets/ather-revenue.jpg.asset.json";
-import unitEconImg from "@/assets/ather-unit-economics.jpg.asset.json";
-import healthImg from "@/assets/ather-health-dashboard.jpg.asset.json";
-import assumptionsImg from "@/assets/ather-assumptions.jpg.asset.json";
-import scenarioImg from "@/assets/ather-scenario.jpg.asset.json";
-import recommendationsImg from "@/assets/ather-recommendations.jpg.asset.json";
-import valuationImg from "@/assets/ather-valuation.jpg.asset.json";
-import presentationPdf from "@/assets/ather-presentation.pdf.asset.json";
-import reportDoc from "@/assets/ather-report.docx.asset.json";
-import modelXlsx from "@/assets/ather-financial-model.xlsx.asset.json";
+const heroImg = { url: "/assets/ather-hero-scooter.jpg" };
+const revenueImg = { url: "/assets/ather-revenue.jpg" };
+const unitEconImg = { url: "/assets/ather-unit-economics.jpg" };
+const healthImg = { url: "/assets/ather-health-dashboard.jpg" };
+const assumptionsImg = { url: "/assets/ather-assumptions.jpg" };
+const scenarioImg = { url: "/assets/ather-scenario.jpg" };
+const recommendationsImg = { url: "/assets/ather-recommendations.jpg" };
+const valuationImg = { url: "/assets/ather-valuation.jpg" };
 
 /* ----------------------------- Brand palette ----------------------------- */
 const C = {
@@ -497,21 +494,21 @@ const DOWNLOADS = [
     icon: FileText,
     title: "Financial Modelling Report",
     desc: "27-page corporate health assessment, ratios, valuation & recommendations.",
-    href: reportDoc.url,
-    cta: "Download report",
+    href: "https://docs.google.com/document/d/1ndIhNfgBAvFEDHPy1wdERjEly783EVDC/edit?usp=sharing",
+    cta: "Open report",
   },
   {
     icon: Presentation,
     title: "Presentation",
     desc: "Executive deck — dashboards, scenarios and the investment verdict.",
-    href: presentationPdf.url,
-    cta: "Download deck",
+    href: "https://drive.google.com/file/d/1n0C02JmTGgLVO21yUETLymiZanwSd18s/view?usp=sharing",
+    cta: "Open deck",
   },
   {
     icon: Sheet,
     title: "Excel Financial Model",
     desc: "Full model: assumptions, forecast, scenarios, sensitivity & DCF.",
-    href: modelXlsx.url,
+    href: "https://docs.google.com/spreadsheets/d/1XzaCMYLzUU8fT7jRgS5LrIvoVO32epLo/edit?usp=sharing",
     cta: "Download model",
   },
 ];
