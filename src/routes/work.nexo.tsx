@@ -46,7 +46,7 @@ import architectureShot from "@/assets/nexo-architecture.jpg";
 import { AtAGlance } from "@/components/at-a-glance";
 
 const GITHUB_URL = "https://github.com/mahekk-shahh/Nexo";
-const DOC_URL = caseStudyDoc;
+const DOC_URL = "https://docs.google.com/document/d/1QyJ1oDOKN3ZA91BgezcD1hzymmuJWqEv/edit?usp=sharing";
 
 export const Route = createFileRoute("/work/nexo")({
   head: () => ({
