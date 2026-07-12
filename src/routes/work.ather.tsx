@@ -44,17 +44,14 @@ import {
 import { SiteFooter } from "@/components/site-footer";
 import { AtAGlance } from "@/components/at-a-glance";
 
-import heroImg from "@/assets/ather-hero-scooter.jpg.asset.json";
-import revenueImg from "@/assets/ather-revenue.jpg.asset.json";
-import unitEconImg from "@/assets/ather-unit-economics.jpg.asset.json";
-import healthImg from "@/assets/ather-health-dashboard.jpg.asset.json";
-import assumptionsImg from "@/assets/ather-assumptions.jpg.asset.json";
-import scenarioImg from "@/assets/ather-scenario.jpg.asset.json";
-import recommendationsImg from "@/assets/ather-recommendations.jpg.asset.json";
-import valuationImg from "@/assets/ather-valuation.jpg.asset.json";
-import presentationPdf from "@/assets/ather-presentation.pdf.asset.json";
-import reportDoc from "@/assets/ather-report.docx.asset.json";
-import modelXlsx from "@/assets/ather-financial-model.xlsx.asset.json";
+const heroImg = { url: "/assets/ather-hero-scooter.jpg" };
+const revenueImg = { url: "/assets/ather-revenue.jpg" };
+const unitEconImg = { url: "/assets/ather-unit-economics.jpg" };
+const healthImg = { url: "/assets/ather-health-dashboard.jpg" };
+const assumptionsImg = { url: "/assets/ather-assumptions.jpg" };
+const scenarioImg = { url: "/assets/ather-scenario.jpg" };
+const recommendationsImg = { url: "/assets/ather-recommendations.jpg" };
+const valuationImg = { url: "/assets/ather-valuation.jpg" };
 
 /* ----------------------------- Brand palette ----------------------------- */
 const C = {
