@@ -41,7 +41,7 @@ const CONTEXT_DIAGRAM_IMG = contextDiagram;
 const ARCHITECTURE_IMG = toBeFlow;
 const AS_IS_IMG = asIsFlow;
 const TO_BE_IMG = toBeFlow;
-const BRD_PDF_URL = brdPdf;
+const BRD_PDF_URL = "https://drive.google.com/file/d/1JHDf1F0SMreVakBc37fH3QYqA8V6-w6W/view?usp=sharing";
 const PROTOTYPE_URL = "https://predicta-dine.lovable.app/";
 
 export const Route = createFileRoute("/work/smart-predictive-pos")({
