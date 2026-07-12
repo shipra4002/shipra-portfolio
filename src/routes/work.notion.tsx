@@ -32,7 +32,7 @@ import {
 const notionHero = { url: "/assets/notion-hero.jpg" };
 const notionBefore = { url: "/assets/notion-before.jpg" };
 const notionAfter = { url: "/assets/notion-after.jpg" };
-const deck = { url: "https://drive.google.com/file/d/1_Tj8XkFOFrQvULYWyIn9RTBIYm8OJUJp/view?usp=sharing" };
+const deck = { url: "https://docs.google.com/presentation/d/17-ntdLFaGQaUXwm7KrTuYJpVoGodCwaW/edit?usp=sharing" };
 import { AtAGlance } from "@/components/at-a-glance";
 import { SiteFooter } from "@/components/site-footer";
 
