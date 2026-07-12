@@ -42,7 +42,7 @@ import profileShot from "@/assets/nexo-profile.jpg";
 import rewardsShot from "@/assets/nexo-rewards.jpg";
 import newJournalShot from "@/assets/nexo-new-journal.jpg";
 import architectureShot from "@/assets/nexo-architecture.jpg";
-import caseStudyDoc from "@/assets/nexo-case-study.docx?url";
+// Project documentation now opens via Google Drive link (see DOC_URL)
 import { AtAGlance } from "@/components/at-a-glance";
 
 const GITHUB_URL = "https://github.com/mahekk-shahh/Nexo";
